@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Олег Митькин](https://up.htmlacademy.ru/react/4/user/791669).
-* Наставник: `Неизвестно`.
+* Наставник: [Евгений Щеколдин](https://htmlacademy.ru/profile/id861059).
 
 ---
 
