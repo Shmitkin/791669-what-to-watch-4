@@ -101,9 +101,9 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
 
           <div className="catalog__movies-list">
 
-            {movieTitles.map((title, i) =>
+            {movieTitles.map((title, index) =>
               <MovieCard
-                key = {title + i}
+                key = {title + index}
                 movieTitle = {title}
               />
             )}
