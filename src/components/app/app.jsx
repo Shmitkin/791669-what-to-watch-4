@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import MainScreen from "../main-screen/main-screen.jsx";
 
+const movieCardTitleHandler = () => {};
 
 const App = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movieTitles}) => {
   return (
@@ -10,6 +11,7 @@ const App = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movieTitles}
       mainMovieGenre = {mainMovieGenre}
       mainMovieReleaseDate = {mainMovieReleaseDate}
       movieTitles = {movieTitles}
+      movieCardTitleHandler = {movieCardTitleHandler}
     />
   );
 };

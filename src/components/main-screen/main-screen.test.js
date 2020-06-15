@@ -10,6 +10,7 @@ it(`Should MainScreen render correctly`, () => {
           mainMovieGenre = {`Thriller, Comedy`}
           mainMovieReleaseDate = {2017}
           movieTitles = {[`First Movie`, `Second Moviem`, `Third Movie`]}
+          movieCardTitleHandler = {() => {}}
         />
     )
     .toJSON();

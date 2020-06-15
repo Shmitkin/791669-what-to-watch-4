@@ -7,6 +7,7 @@ it(`Should MovieCard render correctly`, () => {
     .create(
         <MovieCard
           movieTitle={`Stranger Things`}
+          onMovieCardTitleClick = {() => {}}
         />
     )
     .toJSON();
