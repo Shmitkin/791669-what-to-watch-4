@@ -15,7 +15,7 @@ export default class MoviesList extends PureComponent {
   }
 
   _movieCardHoverHandler(evt) {
-    const movie = evt.target.parentNode.innerText;
+    const movie = evt.target.parentElement.querySelector(`.small-movie-card__link`).text;
     this.setState({movie});
   }
 
@@ -30,7 +30,7 @@ export default class MoviesList extends PureComponent {
       <div className="catalog__movies-list">
         {movies.map((movie, index) =>
           <MovieCard
-            key = {movie + index}
+            key = {`${index}-${movie.title}`}
             movieTitle = {movie.title}
             moviePreview = {movie.preview}
             onMovieCardHover = {this._movieCardHoverHandler}
