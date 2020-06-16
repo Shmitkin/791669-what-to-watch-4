@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
+import MoviesList from "./movies-list.jsx";
 
 const testState = [
   {
@@ -21,13 +21,10 @@ const testState = [
   }
 ];
 
-it(`Should App render correctly`, () => {
+it(`Should MoviesList render correctly`, () => {
   const tree = renderer
     .create(
-        <App
-          mainMovieTitle = {`Stranger Things`}
-          mainMovieGenre = {`Thriller, Comedy`}
-          mainMovieReleaseDate = {2017}
+        <MoviesList
           movies = {testState}
         />
     )

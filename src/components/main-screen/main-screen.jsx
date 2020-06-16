@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MovieCard from "../movie-card/movie-card.jsx";
+import MoviesList from "../movies-list/movies-list.jsx";
 
-const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movieTitles, movieCardTitleHandler}) => {
+const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movies}) => {
 
   return (
     <React.Fragment>
@@ -98,17 +98,10 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
+          <MoviesList
+            movies = {movies}
+          />
 
-            {movieTitles.map((title, index) =>
-              <MovieCard
-                key = {title + index}
-                movieTitle = {title}
-                onMovieCardTitleClick = {movieCardTitleHandler}
-              />
-            )}
-
-          </div>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -137,11 +130,7 @@ MainScreen.propTypes = {
   mainMovieTitle: PropTypes.string.isRequired,
   mainMovieGenre: PropTypes.string.isRequired,
   mainMovieReleaseDate: PropTypes.number.isRequired,
-  movieTitles:
-  PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  ).isRequired,
-  movieCardTitleHandler: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired,
 };
 
 export default MainScreen;
