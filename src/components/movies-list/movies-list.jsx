@@ -11,6 +11,7 @@ export default class MoviesList extends PureComponent {
     };
     this._movieCardHoverHandler = this._movieCardHoverHandler.bind(this);
     this._movieCardUnhoverHandler = this._movieCardUnhoverHandler.bind(this);
+    this._movieCardClickHandler = this._movieCardClickHandler.bind(this);
 
   }
 
@@ -20,6 +21,10 @@ export default class MoviesList extends PureComponent {
 
   _movieCardUnhoverHandler() {
     this.setState({movie: ``});
+  }
+
+  _movieCardClickHandler(evt) {
+    evt.preventDefault();
   }
 
   render() {
@@ -34,6 +39,7 @@ export default class MoviesList extends PureComponent {
             moviePreview = {movie.preview}
             onMovieCardHover = {this._movieCardHoverHandler}
             onMovieCardUnhover = {this._movieCardUnhoverHandler}
+            onMovieCardClick = {this._movieCardClickHandler}
           />
         )}
       </div>

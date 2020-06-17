@@ -10,6 +10,7 @@ it(`Should MovieCard render correctly`, () => {
           moviePreview = {`img/stranger-thisngs.jpg`}
           onMovieCardHover = {() => {}}
           onMovieCardUnhover = {() => {}}
+          onMovieCardClick = {() => {}}
         />
     )
     .toJSON();

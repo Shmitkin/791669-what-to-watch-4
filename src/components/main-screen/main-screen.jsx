@@ -15,9 +15,11 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
       <section className="movie-card">
 
         <MovieCardBg altDesc = {mainMovieTitle} />
+
         <h1 className="visually-hidden">WTW</h1>
 
         <PageHeader />
+
         <div className="movie-card__wrap">
 
           <MovieCardInfo
@@ -25,6 +27,7 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
             genre = {mainMovieGenre}
             release = {mainMovieReleaseDate}
           />
+
         </div>
       </section>
       <div className="page-content">
@@ -34,6 +37,7 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
           <GenresList genres = {genres} />
           <MoviesList movies = {movies} />
           <ShowMoreButton />
+
         </section>
 
         <PageFooter />
