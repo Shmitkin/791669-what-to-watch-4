@@ -24,11 +24,11 @@ it(`Movie Card should return a value that match card title(movie title) when it 
 
   const movieCard = shallow(
       <MovieCard
-        movieTitle={testState.title}
-        moviePreview = {testState.preview}
-        onMovieCardHover = {testState.hoverHandler}
-        onMovieCardUnhover = {testState.unhoverHandler}
-        onMovieCardClick = {testState.clickHandler}
+        title={testState.title}
+        preview = {testState.preview}
+        onHover = {testState.hoverHandler}
+        onUnhover = {testState.unhoverHandler}
+        onClick = {testState.clickHandler}
       />
   );
 

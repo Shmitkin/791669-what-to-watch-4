@@ -35,11 +35,11 @@ export default class MoviesList extends PureComponent {
         {movies.map((movie, index) =>
           <MovieCard
             key = {`${index}-${movie.title}`}
-            movieTitle = {movie.title}
-            moviePreview = {movie.preview}
-            onMovieCardHover = {this._movieCardHoverHandler}
-            onMovieCardUnhover = {this._movieCardUnhoverHandler}
-            onMovieCardClick = {this._movieCardClickHandler}
+            title = {movie.title}
+            preview = {movie.preview}
+            onHover = {this._movieCardHoverHandler}
+            onUnhover = {this._movieCardUnhoverHandler}
+            onClick = {this._movieCardClickHandler}
           />
         )}
       </div>
