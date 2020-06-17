@@ -22,9 +22,9 @@ it(`Should all movie cards titles be pressed`, () => {
 
   const movieCardTitles = mainScreen.find(`.small-movie-card__link`);
 
-  movieCardTitles.at(0).props().onClick();
-  movieCardTitles.at(1).props().onClick();
-  movieCardTitles.at(2).props().onClick();
+  movieCardTitles.at(0).simulate(`click`);
+  movieCardTitles.at(1).simulate(`click`);
+  movieCardTitles.at(2).simulate(`click`);
 
   expect(onMovieCardTitleClick.mock.calls.length).toBe(3);
 });

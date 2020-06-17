@@ -19,7 +19,7 @@ it(`Should movie card title be pressed`, () => {
 
   const movieCardTitle = movieCard.find(`.small-movie-card__link`);
 
-  movieCardTitle.props().onClick();
+  movieCardTitle.simulate(`click`);
 
   expect(onMovieCardTitleClick.mock.calls.length).toBe(1);
 });
