@@ -4,7 +4,7 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import Footer from "../footer/footer.jsx";
-import MovieCardButtons from "../movie-card-buttons/movie-card-buttons.jsx";
+import MovieCardInfo from "../movie-card-info/movie-card-info.jsx";
 
 const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movies, genres}) => {
 
@@ -34,20 +34,11 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
         </header>
 
         <div className="movie-card__wrap">
-          <div className="movie-card__info">
-            <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={`${mainMovieTitle} poster`} width="218" height="327" />
-            </div>
-
-            <div className="movie-card__desc">
-              <h2 className="movie-card__title">{mainMovieTitle}</h2>
-              <p className="movie-card__meta">
-                <span className="movie-card__genre">{mainMovieGenre}</span>
-                <span className="movie-card__year">{mainMovieReleaseDate}</span>
-              </p>
-              <MovieCardButtons />
-            </div>
-          </div>
+          <MovieCardInfo
+            title = {mainMovieTitle}
+            genre = {mainMovieGenre}
+            release = {mainMovieReleaseDate}
+          />
         </div>
       </section>
 
