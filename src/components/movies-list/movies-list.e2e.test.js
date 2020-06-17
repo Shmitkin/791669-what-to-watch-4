@@ -30,23 +30,10 @@ it(`Movies List state should get a value of a card, whitch currently hovered and
 
   const movieCards = moviesList.find(`.catalog__movies-card`);
 
-  //  movieCards.forEach((node, index) => {
-  //    node.simulate(`mouseenter`);
-  //    expect(moviesList.state().movie).toBe(films[index].title);
-  //    node.simulate(`mouseleave`);
-  //    expect(moviesList.state().movie).toBe(emptyState);
-  //  });
-
-  movieCards.at(0).simulate(`mouseenter`);
-  expect(moviesList.state().movie).toBe(films[0].title);
-
-  movieCards.at(0).simulate(`mouseleave`);
-  expect(moviesList.state().movie).toBe(emptyState);
-
-  movieCards.at(1).simulate(`mouseenter`);
-  expect(moviesList.state().movie).toBe(films[1].title);
-
-  movieCards.at(1).simulate(`mouseleave`);
-  expect(moviesList.state().movie).toBe(emptyState);
-
+  movieCards.forEach((node, index) => {
+    node.simulate(`mouseenter`);
+    expect(moviesList.state().movie).toBe(films[index].title);
+    node.simulate(`mouseleave`);
+    expect(moviesList.state().movie).toBe(emptyState);
+  });
 });

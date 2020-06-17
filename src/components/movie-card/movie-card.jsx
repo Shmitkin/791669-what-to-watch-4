@@ -12,7 +12,7 @@ export default class MovieCard extends PureComponent {
     return (
       <article
         className="small-movie-card catalog__movies-card"
-        onMouseEnter={onMovieCardHover}
+        onMouseEnter={() => onMovieCardHover(movieTitle)}
         onMouseLeave={onMovieCardUnhover}
       >
         <div className="small-movie-card__image">

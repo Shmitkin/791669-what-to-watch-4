@@ -14,9 +14,8 @@ export default class MoviesList extends PureComponent {
 
   }
 
-  _movieCardHoverHandler(evt) {
-    const movie = evt.target.parentElement.querySelector(`.small-movie-card__link`).text;
-    this.setState({movie});
+  _movieCardHoverHandler(movieTitle) {
+    this.setState({movie: movieTitle});
   }
 
   _movieCardUnhoverHandler() {

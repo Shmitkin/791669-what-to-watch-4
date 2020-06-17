@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
 import {films} from "./mocks/films.js";
+import {genres} from "./mocks/genres.js";
 
 
 const Settings = {
@@ -18,6 +19,7 @@ ReactDOM.render(
       mainMovieGenre = {Settings.MainMovie.GENRE}
       mainMovieReleaseDate = {Settings.MainMovie.RELEASE_DATE}
       movies = {films}
+      genres = {genres}
     />,
     document.querySelector(`#root`)
 );

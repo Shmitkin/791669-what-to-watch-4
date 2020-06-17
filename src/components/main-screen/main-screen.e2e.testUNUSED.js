@@ -7,6 +7,22 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
+const testState = {
+  title: `Stranger Things`,
+  genre: `Thriller, Comedy`,
+  release: 2017,
+  movies: [
+    {
+      title: `Mindhunter`,
+      preview: `img/mindhunter.jpg`
+    },
+    {
+      title: `Orlando`,
+      preview: `img/orlando.jpg`
+    }
+  ]
+}
+
 it(`Should all movie cards titles be pressed`, () => {
   const onMovieCardTitleClick = jest.fn();
 
@@ -15,8 +31,7 @@ it(`Should all movie cards titles be pressed`, () => {
         mainMovieTitle = {`Stranger Things`}
         mainMovieGenre = {`Thriller, Comedy`}
         mainMovieReleaseDate = {2017}
-        movieTitles = {[`First Movie`, `Second Moviem`, `Third Movie`]}
-        movieCardTitleHandler = {onMovieCardTitleClick}
+        movies = {[`First Movie`, `Second Moviem`, `Third Movie`]}
       />
   );
 
