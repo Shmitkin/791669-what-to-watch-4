@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should MovieInfoPoster render correctly 1`] = `
+<div
+  className="movie-card__poster movie-card__poster--big"
+>
+  <img
+    alt="description poster"
+    height="327"
+    src="src/image"
+    width="218"
+  />
+</div>
+`;
