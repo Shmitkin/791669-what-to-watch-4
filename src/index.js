@@ -1,23 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
-import {films} from "./mocks/films.js";
+import {films, mainFilm} from "./mocks/films.js";
 import {genres} from "./mocks/genres.js";
-
-
-const Settings = {
-  MainMovie: {
-    TITLE: `Hotel Grand Budapesht`,
-    GENRE: `Drama`,
-    RELEASE_DATE: 2014
-  }
-};
 
 ReactDOM.render(
     <App
-      mainMovieTitle = {Settings.MainMovie.TITLE}
-      mainMovieGenre = {Settings.MainMovie.GENRE}
-      mainMovieReleaseDate = {Settings.MainMovie.RELEASE_DATE}
+      mainMovie = {mainFilm}
       movies = {films}
       genres = {genres}
     />,

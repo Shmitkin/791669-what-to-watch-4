@@ -9,6 +9,7 @@ it(`Should MovieDescription render correctly`, () => {
           title = {`Some Title`}
           release = {2014}
           genre = {`Some Genre`}
+          isMovieDetails = {false}
         />
     )
     .toJSON();

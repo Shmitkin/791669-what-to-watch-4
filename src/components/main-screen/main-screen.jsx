@@ -4,17 +4,17 @@ import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import PageFooter from "../page-footer/page-footer.jsx";
-import MovieInfo from "../movie-info/movie-info.jsx";
+import HeaderMovieInfo from "../header-movie-info/header-movie-info.jsx";
 import PageHeader from "../page-header/page-header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 
-const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movies, genres}) => {
+const MainScreen = ({mainMovie, movies, genres}) => {
 
   return (
     <React.Fragment>
       <section className="movie-card">
 
-        <MovieBackground altDesc = {mainMovieTitle} />
+        <MovieBackground altDesc = {mainMovie.title} />
 
         <h1 className="visually-hidden">WTW</h1>
 
@@ -22,10 +22,11 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
 
         <div className="movie-card__wrap">
 
-          <MovieInfo
-            title = {mainMovieTitle}
-            genre = {mainMovieGenre}
-            release = {mainMovieReleaseDate}
+          <HeaderMovieInfo
+            title = {mainMovie.title}
+            genre = {mainMovie.genre}
+            release = {mainMovie.release}
+            isMovieDetails = {false}
           />
 
         </div>
@@ -47,9 +48,11 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
 };
 
 MainScreen.propTypes = {
-  mainMovieTitle: PropTypes.string.isRequired,
-  mainMovieGenre: PropTypes.string.isRequired,
-  mainMovieReleaseDate: PropTypes.number.isRequired,
+  mainMovie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    release: PropTypes.number.isRequired,
+  }).isRequired,
   movies: PropTypes.array.isRequired,
   genres: PropTypes.array.isRequired,
 };

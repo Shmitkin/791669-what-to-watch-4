@@ -1,14 +1,15 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieInfo from "./movie-info.jsx";
+import HeaderMovieInfo from "./header-movie-info.jsx";
 
-it(`Should MovieInfo render correctly`, () => {
+it(`Should HeaderMovieInfo render correctly`, () => {
   const tree = renderer
     .create(
-        <MovieInfo
+        <HeaderMovieInfo
           title = {`Some Title`}
           release = {2014}
           genre = {`Some Genre`}
+          isMovieDetails = {false}
         />
     )
     .toJSON();

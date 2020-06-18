@@ -1,26 +1,56 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainScreen from "../main-screen/main-screen.jsx";
+import MovieInfo from "../movie-info/movie-info.jsx";
 
-const App = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movies, genres}) => {
-  return (
-    <MainScreen
-      mainMovieTitle = {mainMovieTitle}
-      mainMovieGenre = {mainMovieGenre}
-      mainMovieReleaseDate = {mainMovieReleaseDate}
-      movies = {movies}
-      genres = {genres}
-    />
-  );
-};
+export default class App extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  _renderMainScreen() {
+    const {mainMovie, movies, genres} = this.props;
+    return (
+      <MainScreen
+        mainMovie = {mainMovie}
+        movies = {movies}
+        genres = {genres}
+      />
+    );
+  }
+
+  _renderMovieDetails() {
+    const {mainMovie} = this.props;
+    return (
+      <MovieInfo
+        title = {mainMovie.title}
+        genre = {mainMovie.genre}
+        release = {mainMovie.release}
+      />
+    );
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderMainScreen()}
+          </Route>
+          <Route exact path="/movie">
+            {this._renderMovieDetails()}
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+
+  }
+}
 
 App.propTypes = {
-  mainMovieTitle: PropTypes.string.isRequired,
-  mainMovieGenre: PropTypes.string.isRequired,
-  mainMovieReleaseDate: PropTypes.number.isRequired,
+  mainMovie: PropTypes.object.isRequired,
   movies: PropTypes.array.isRequired,
   genres: PropTypes.array.isRequired,
 };
 
-
-export default App;

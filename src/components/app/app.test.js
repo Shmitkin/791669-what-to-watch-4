@@ -3,9 +3,11 @@ import renderer from "react-test-renderer";
 import App from "./app.jsx";
 
 const testState = {
-  title: `Stranger Things`,
-  genre: `Thriller`,
-  release: 2017,
+  mainMovie:
+  {title: `Stranger Things`,
+    genre: `Thriller`,
+    release: 2017
+  },
   genres: [
     `Comedies`,
     `Crime`,
@@ -36,9 +38,7 @@ it(`Should App render correctly`, () => {
   const tree = renderer
     .create(
         <App
-          mainMovieTitle = {testState.title}
-          mainMovieGenre = {testState.genre}
-          mainMovieReleaseDate = {testState.release}
+          mainMovie = {testState.mainMovie}
           movies = {testState.movies}
           genres = {testState.genres}
         />
