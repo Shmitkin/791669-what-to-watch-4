@@ -1,12 +1,13 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import PageFooter from "../page-footer/page-footer.jsx";
 import MovieDescription from "../movie-description/movie-description.jsx";
 import PageHeader from "../page-header/page-header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 import MovieOverview from "../movie-overview/movie-overview.jsx";
+import MovieInfoNav from "../movie-info-nav/movie-info-nav.jsx";
+import MovieInfoPoster from "../movie-info-poster/movie-info-poster.jsx";
 
 export default class MovieInfo extends PureComponent {
   constructor(props) {
@@ -14,13 +15,16 @@ export default class MovieInfo extends PureComponent {
   }
 
   render() {
-    const {title, genre, release} = this.props;
+    const {movie} = this.props;
     return (
       <React.Fragment>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
 
-            <MovieBackground altDesc = {title} />
+            <MovieBackground
+              altDesc = {movie.title}
+              image = {movie.background}
+            />
 
             <h1 className="visually-hidden">WTW</h1>
 
@@ -29,17 +33,33 @@ export default class MovieInfo extends PureComponent {
             <div className="movie-card__wrap">
 
               <MovieDescription
-                title = {title}
-                genre = {genre}
-                release = {release}
+                title = {movie.title}
+                genre = {movie.genre}
+                release = {movie.release}
                 isMovieDetails = {true}
               />
 
             </div>
           </div>
           <div className="movie-card__wrap movie-card__translate-top">
+            <div className="movie-card__info">
+              <MovieInfoPoster
+                altDesc = {movie.title}
+                image = {movie.poster}
+              />
 
-            <MovieOverview />
+              <div className="movie-card__desc">
+
+                <MovieInfoNav />
+                <MovieOverview
+                  rating = {movie.rating}
+                  votes = {movie.votes}
+                  description = {movie.description}
+                  director = {movie.director}
+                  starring = {movie.starring}
+                />
+              </div>
+            </div>
 
           </div>
         </section>
@@ -94,8 +114,17 @@ export default class MovieInfo extends PureComponent {
 }
 
 MovieInfo.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  release: PropTypes.number.isRequired,
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    release: PropTypes.number.isRequired,
+    background: PropTypes.string.isRequired,
+    poster: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    votes: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.string.isRequired,
+  }).isRequired
 };
 

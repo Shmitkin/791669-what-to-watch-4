@@ -6,7 +6,8 @@ const testState = {
   mainMovie:
   {title: `Stranger Things`,
     genre: `Thriller`,
-    release: 2017
+    release: 2017,
+    background: `src/image`,
   },
   genres: [
     `Comedies`,
@@ -16,21 +17,33 @@ const testState = {
   ],
   movies: [
     {
-      title: `First Film`,
-      preview: `img/first-film.jpg`
+      title: `Pulp Fiction`,
+      preview: `img/pulp-fiction.jpg`,
+      poster: `img/pulp-fiction.jpg`,
+      background: `img/pulp-fiction.jpg`,
+      genre: `Thriller`,
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci. Donec cursus lectus auctor quam tempus ultricies. Nullam at aliquam massa. Donec mollis quis urna eget condimentum. Mauris at dictum ante. Phasellus maximus massa augue, ut luctus dolor rutrum et. Aliquam faucibus turpis lectus, sed hendrerit dolor malesuada at.`,
+      rating: 9,
+      votes: 344,
+      director: `Best Director`,
+      starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+      duration: 156,
+      release: 2016,
     },
     {
-      title: `Second Film`,
-      preview: `img/second-film.jpg`
+      title: `Pulp Fiction`,
+      preview: `img/pulp-fiction.jpg`,
+      poster: `img/pulp-fiction.jpg`,
+      background: `img/pulp-fiction.jpg`,
+      genre: `Thriller`,
+      description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci. Donec cursus lectus auctor quam tempus ultricies. Nullam at aliquam massa. Donec mollis quis urna eget condimentum. Mauris at dictum ante. Phasellus maximus massa augue, ut luctus dolor rutrum et. Aliquam faucibus turpis lectus, sed hendrerit dolor malesuada at.`,
+      rating: 9,
+      votes: 344,
+      director: `Best Director`,
+      starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+      duration: 156,
+      release: 2016,
     },
-    {
-      title: `Third Film`,
-      preview: `img/third-film.jpg`
-    },
-    {
-      title: `Fourth Film`,
-      preview: `img/fourth-film.jpg`
-    }
   ]
 };
 

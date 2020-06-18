@@ -10,7 +10,6 @@ Array [
     >
       <img
         alt="Stranger Things"
-        src="img/bg-the-grand-budapest-hotel.jpg"
       />
     </div>
     <h1
@@ -207,9 +206,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="First Film"
+              alt="Pulp Fiction"
               height="175"
-              src="img/first-film.jpg"
+              src="img/pulp-fiction.jpg"
               width="280"
             />
           </div>
@@ -220,7 +219,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              First Film
+              Pulp Fiction
             </a>
           </h3>
         </article>
@@ -234,9 +233,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Second Film"
+              alt="Pulp Fiction"
               height="175"
-              src="img/second-film.jpg"
+              src="img/pulp-fiction.jpg"
               width="280"
             />
           </div>
@@ -247,7 +246,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Second Film
+              Pulp Fiction
             </a>
           </h3>
         </article>
@@ -261,9 +260,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Third Film"
+              alt="Pulp Fiction"
               height="175"
-              src="img/third-film.jpg"
+              src="img/pulp-fiction.jpg"
               width="280"
             />
           </div>
@@ -274,7 +273,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Third Film
+              Pulp Fiction
             </a>
           </h3>
         </article>
@@ -288,9 +287,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Fourth Film"
+              alt="Pulp Fiction"
               height="175"
-              src="img/fourth-film.jpg"
+              src="img/pulp-fiction.jpg"
               width="280"
             />
           </div>
@@ -301,7 +300,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Fourth Film
+              Pulp Fiction
             </a>
           </h3>
         </article>

@@ -21,12 +21,10 @@ export default class App extends PureComponent {
   }
 
   _renderMovieDetails() {
-    const {mainMovie} = this.props;
+    const {movies} = this.props;
     return (
       <MovieInfo
-        title = {mainMovie.title}
-        genre = {mainMovie.genre}
-        release = {mainMovie.release}
+        movie = {movies[0]}
       />
     );
   }

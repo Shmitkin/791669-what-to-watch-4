@@ -14,7 +14,10 @@ const MainScreen = ({mainMovie, movies, genres}) => {
     <React.Fragment>
       <section className="movie-card">
 
-        <MovieBackground altDesc = {mainMovie.title} />
+        <MovieBackground
+          altDesc = {mainMovie.title}
+          image = {mainMovie.background}
+        />
 
         <h1 className="visually-hidden">WTW</h1>
 
@@ -52,6 +55,7 @@ MainScreen.propTypes = {
     title: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     release: PropTypes.number.isRequired,
+    background: PropTypes.string.isRequired,
   }).isRequired,
   movies: PropTypes.array.isRequired,
   genres: PropTypes.array.isRequired,

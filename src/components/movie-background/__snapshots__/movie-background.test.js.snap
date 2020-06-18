@@ -6,7 +6,7 @@ exports[`Should MovieBackground render correctly 1`] = `
 >
   <img
     alt="Some bg Description"
-    src="img/bg-the-grand-budapest-hotel.jpg"
+    src="src/image"
   />
 </div>
 `;
