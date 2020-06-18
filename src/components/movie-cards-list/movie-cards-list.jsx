@@ -11,7 +11,6 @@ export default class MovieCardsList extends PureComponent {
     };
     this._movieCardHoverHandler = this._movieCardHoverHandler.bind(this);
     this._movieCardUnhoverHandler = this._movieCardUnhoverHandler.bind(this);
-    //   this._movieCardClickHandler = this._movieCardClickHandler.bind(this);
 
   }
 
