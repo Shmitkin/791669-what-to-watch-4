@@ -2,8 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 
-
-const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movieTitles}) => {
+const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movieTitles, movieCardTitleHandler}) => {
 
   return (
     <React.Fragment>
@@ -105,6 +104,7 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
               <MovieCard
                 key = {title + index}
                 movieTitle = {title}
+                onMovieCardTitleClick = {movieCardTitleHandler}
               />
             )}
 
@@ -141,6 +141,7 @@ MainScreen.propTypes = {
   PropTypes.arrayOf(
       PropTypes.string.isRequired
   ).isRequired,
+  movieCardTitleHandler: PropTypes.func.isRequired,
 };
 
 export default MainScreen;
