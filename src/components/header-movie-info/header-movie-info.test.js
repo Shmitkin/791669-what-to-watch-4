@@ -1,14 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import HeaderMovieInfo from "./header-movie-info.jsx";
+import {movie} from "../../test-state.js";
 
 it(`Should HeaderMovieInfo render correctly`, () => {
   const tree = renderer
     .create(
         <HeaderMovieInfo
-          title = {`Some Title`}
-          release = {2014}
-          genre = {`Some Genre`}
+          movie = {movie}
           isMovieDetails = {false}
         />
     )

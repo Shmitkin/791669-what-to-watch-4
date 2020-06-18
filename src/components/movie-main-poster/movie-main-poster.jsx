@@ -8,16 +8,19 @@ export default class MovieMainPoster extends PureComponent {
   }
 
   render() {
-    const {altDesc} = this.props;
+    const {movie} = this.props;
 
     return (
       <div className="movie-card__poster">
-        <img src="img/the-grand-budapest-hotel-poster.jpg" alt={`${altDesc} poster`} width="218" height="327" />
+        <img src={movie.poster} alt={`${movie.title} poster`} width="218" height="327" />
       </div>
     );
   }
 }
 
 MovieMainPoster.propTypes = {
-  altDesc: PropTypes.string.isRequired
+  movie: PropTypes.shape({
+    poster: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }).isRequired,
 };

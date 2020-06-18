@@ -22,8 +22,7 @@ export default class MovieInfo extends PureComponent {
           <div className="movie-card__hero">
 
             <MovieBackground
-              altDesc = {movie.title}
-              image = {movie.background}
+              movie = {movie}
             />
 
             <h1 className="visually-hidden">WTW</h1>
@@ -33,9 +32,7 @@ export default class MovieInfo extends PureComponent {
             <div className="movie-card__wrap">
 
               <MovieDescription
-                title = {movie.title}
-                genre = {movie.genre}
-                release = {movie.release}
+                movie = {movie}
                 isMovieDetails = {true}
               />
 
@@ -44,19 +41,14 @@ export default class MovieInfo extends PureComponent {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <MovieInfoPoster
-                altDesc = {movie.title}
-                image = {movie.poster}
+                movie = {movie}
               />
 
               <div className="movie-card__desc">
 
                 <MovieInfoNav />
                 <MovieOverview
-                  rating = {movie.rating}
-                  votes = {movie.votes}
-                  description = {movie.description}
-                  director = {movie.director}
-                  starring = {movie.starring}
+                  movie = {movie}
                 />
               </div>
             </div>
@@ -84,17 +76,6 @@ export default class MovieInfo extends PureComponent {
 MovieInfo.propTypes = {
   similarMovies: PropTypes.array.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-    background: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    votes: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.string.isRequired,
-  }).isRequired
+  movie: PropTypes.object.isRequired,
 };
 

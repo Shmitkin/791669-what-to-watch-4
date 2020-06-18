@@ -7,7 +7,7 @@ exports[`Should MovieDescription render correctly 1`] = `
   <h2
     className="movie-card__title"
   >
-    Some Title
+    Pulp Fiction
   </h2>
   <p
     className="movie-card__meta"
@@ -15,12 +15,12 @@ exports[`Should MovieDescription render correctly 1`] = `
     <span
       className="movie-card__genre"
     >
-      Some Genre
+      Drama
     </span>
     <span
       className="movie-card__year"
     >
-      2014
+      2020
     </span>
   </p>
   <div

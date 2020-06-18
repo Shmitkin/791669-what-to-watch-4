@@ -1,0 +1,67 @@
+export const movie = {
+  title: `Pulp Fiction`,
+  preview: `img/pulp-fiction.jpg`,
+  poster: `img/pulp-fiction.jpg`,
+  background: `img/pulp-fiction.jpg`,
+  genre: `Drama`,
+  description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci. Donec cursus lectus auctor quam tempus ultricies. Nullam at aliquam massa. Donec mollis quis urna eget condimentum. Mauris at dictum ante. Phasellus maximus massa augue, ut luctus dolor rutrum et. Aliquam faucibus turpis lectus, sed hendrerit dolor malesuada at.`,
+  rating: 2.3,
+  votes: 293,
+  director: `Best Director`,
+  starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+  duration: 87,
+  release: 2020,
+};
+
+export const movies = [
+  {
+    title: `Seven Years IN Tibet`,
+    preview: `img/seven-years-in-tibet.jpg`,
+    poster: `img/seven-years-in-tibet.jpg`,
+    background: `img/seven-years-in-tibet.jpg`,
+    genre: `Family`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci. Donec cursus lectus auctor quam tempus ultricies. Nullam at aliquam massa. Donec mollis quis urna eget condimentum. Mauris at dictum ante. Phasellus maximus massa augue, ut luctus dolor rutrum et. Aliquam faucibus turpis lectus, sed hendrerit dolor malesuada at.`,
+    rating: 5.0,
+    votes: 1255,
+    director: `Best Director`,
+    starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+    duration: 24,
+    release: 2005,
+  },
+  {
+    title: `Moonrise Kingdom`,
+    preview: `img/moonrise-kingdom.jpg`,
+    poster: `img/moonrise-kingdom.jpg`,
+    background: `img/moonrise-kingdom.jpg`,
+    genre: `Horror`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci. Donec cursus lectus auctor quam tempus ultricies. Nullam at aliquam massa. Donec mollis quis urna eget condimentum. Mauris at dictum ante. Phasellus maximus massa augue, ut luctus dolor rutrum et. Aliquam faucibus turpis lectus, sed hendrerit dolor malesuada at.`,
+    rating: 4.8,
+    votes: 213,
+    director: `Best Director`,
+    starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+    duration: 79,
+    release: 2012,
+  },
+  {
+    title: `Snatch`,
+    preview: `img/snatch.jpg`,
+    poster: `img/snatch.jpg`,
+    background: `img/snatch.jpg`,
+    genre: `Comedy`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci. Donec cursus lectus auctor quam tempus ultricies. Nullam at aliquam massa. Donec mollis quis urna eget condimentum. Mauris at dictum ante. Phasellus maximus massa augue, ut luctus dolor rutrum et. Aliquam faucibus turpis lectus, sed hendrerit dolor malesuada at.`,
+    rating: 3.0,
+    votes: 22,
+    director: `Best Director`,
+    starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+    duration: 210,
+    release: 1998,
+  },
+];
+
+export const genres = [
+  `First`,
+  `Second`,
+  `Third`,
+  `Fourth`,
+  `Fifth`
+];

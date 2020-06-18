@@ -12,25 +12,25 @@ export default class MovieOverview extends PureComponent {
   }
 
   render() {
-    const {rating, votes, description, director, starring} = this.props;
+    const {movie} = this.props;
     return (
       <React.Fragment>
         <div className="movie-rating">
-          <div className="movie-rating__score">{rating}</div>
+          <div className="movie-rating__score">{movie.rating}</div>
           <p className="movie-rating__meta">
-            <span className="movie-rating__level">{this._getMovieTextRating(rating)}</span>
-            <span className="movie-rating__count">{votes} ratings</span>
+            <span className="movie-rating__level">{this._getMovieTextRating(movie.rating)}</span>
+            <span className="movie-rating__count">{movie.votes} ratings</span>
           </p>
         </div>
 
         <div className="movie-card__text">
           <p>
-            {description}
+            {movie.description}
           </p>
 
-          <p className="movie-card__director"><strong>Director: {director}</strong></p>
+          <p className="movie-card__director"><strong>Director: {movie.director}</strong></p>
 
-          <p className="movie-card__starring"><strong>Starring: {starring}</strong></p>
+          <p className="movie-card__starring"><strong>Starring: {movie.starring}</strong></p>
         </div>
       </React.Fragment>
     );
@@ -38,9 +38,11 @@ export default class MovieOverview extends PureComponent {
 }
 
 MovieOverview.propTypes = {
-  rating: PropTypes.number.isRequired,
-  votes: PropTypes.number.isRequired,
-  description: PropTypes.string.isRequired,
-  director: PropTypes.string.isRequired,
-  starring: PropTypes.string.isRequired,
+  movie: PropTypes.shape({
+    rating: PropTypes.number.isRequired,
+    votes: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.string.isRequired,
+  }).isRequired,
 };

@@ -1,16 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MovieOverview from "./movie-overview.jsx";
+import {movie} from "../../test-state.js";
 
 it(`Should MovieOverview render correctly`, () => {
   const tree = renderer
     .create(
         <MovieOverview
-          rating = {5}
-          votes = {344}
-          description = {`description`}
-          director = {`Oleg Mitkin`}
-          starring = {`Some People`}
+          movie = {movie}
         />
     )
     .toJSON();

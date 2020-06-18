@@ -1,13 +1,14 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MovieBackground from "./movie-background.jsx";
+import {movie} from "../../test-state.js";
 
 it(`Should MovieBackground render correctly`, () => {
   const tree = renderer
     .create(
         <MovieBackground
-          altDesc = {`Some bg Description`}
-          image = {`src/image`}/>
+          movie = {movie}
+        />
     )
     .toJSON();
 

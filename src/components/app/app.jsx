@@ -49,6 +49,8 @@ export default class App extends PureComponent {
     return (
       <MovieInfo
         movie = {movies[0]}
+        similarMovies = {movies.slice(0, 4)}
+        onMovieCardClick = {() => {}}
       />
     );
   }

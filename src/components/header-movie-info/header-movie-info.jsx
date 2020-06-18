@@ -11,15 +11,13 @@ export default class HeaderMovieInfo extends PureComponent {
   }
 
   render() {
-    const {title, release, genre, isMovieDetails} = this.props;
+    const {movie, isMovieDetails} = this.props;
 
     return (
       <div className="movie-card__info">
-        <MovieMainPoster altDesc = {title} />
+        <MovieMainPoster movie = {movie} />
         <MovieDescription
-          title = {title}
-          genre = {genre}
-          release = {release}
+          movie = {movie}
           isMovieDetails = {isMovieDetails}
         />
       </div>
@@ -28,8 +26,10 @@ export default class HeaderMovieInfo extends PureComponent {
 }
 
 HeaderMovieInfo.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  release: PropTypes.number.isRequired,
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    release: PropTypes.number.isRequired,
+  }).isRequired,
   isMovieDetails: PropTypes.bool.isRequired,
 };

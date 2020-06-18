@@ -5,9 +5,9 @@ exports[`Should MovieInfoPoster render correctly 1`] = `
   className="movie-card__poster movie-card__poster--big"
 >
   <img
-    alt="description poster"
+    alt="Pulp Fiction poster"
     height="327"
-    src="src/image"
+    src="img/pulp-fiction.jpg"
     width="218"
   />
 </div>

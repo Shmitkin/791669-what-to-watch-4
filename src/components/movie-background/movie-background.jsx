@@ -8,17 +8,19 @@ export default class MovieBackground extends PureComponent {
   }
 
   render() {
-    const {altDesc, image} = this.props;
+    const {movie} = this.props;
 
     return (
       <div className="movie-card__bg">
-        <img src={image} alt={altDesc} />
+        <img src={movie.background} alt={movie.title} />
       </div>
     );
   }
 }
 
 MovieBackground.propTypes = {
-  altDesc: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    background: PropTypes.string.isRequired,
+  }).isRequired,
 };

@@ -15,8 +15,7 @@ const MainScreen = ({mainMovie, movies, genres, onMovieCardClick}) => {
       <section className="movie-card">
 
         <MovieBackground
-          altDesc = {mainMovie.title}
-          image = {mainMovie.background}
+          movie = {mainMovie}
         />
 
         <h1 className="visually-hidden">WTW</h1>
@@ -26,9 +25,7 @@ const MainScreen = ({mainMovie, movies, genres, onMovieCardClick}) => {
         <div className="movie-card__wrap">
 
           <HeaderMovieInfo
-            title = {mainMovie.title}
-            genre = {mainMovie.genre}
-            release = {mainMovie.release}
+            movie = {mainMovie}
             isMovieDetails = {false}
           />
 
@@ -54,12 +51,7 @@ const MainScreen = ({mainMovie, movies, genres, onMovieCardClick}) => {
 };
 
 MainScreen.propTypes = {
-  mainMovie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-    background: PropTypes.string.isRequired,
-  }).isRequired,
+  mainMovie: PropTypes.object.isRequired,
   movies: PropTypes.array.isRequired,
   genres: PropTypes.array.isRequired,
   onMovieCardClick: PropTypes.func.isRequired
