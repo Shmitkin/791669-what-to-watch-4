@@ -7,19 +7,38 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Should movie card title be pressed`, () => {
-  const onMovieCardTitleClick = jest.fn();
+it(`Movie Card should return a value that match card title(movie title) when it hovered and empty string when it unhovered`, () => {
+
+  const testState = {
+    title: `Stranger Things`,
+    preview: `img/stranger-thisngs.jpg`,
+    emptyString: ``,
+    hoverHandler: jest.fn(() => {
+      return testState.title;
+    }),
+    unhoverHandler: jest.fn(() => {
+      return testState.emptyString;
+    }),
+    clickHandler: jest.fn(),
+  };
 
   const movieCard = shallow(
       <MovieCard
-        movieTitle={`Stranger Things`}
-        onMovieCardTitleClick = {onMovieCardTitleClick}
+        title={testState.title}
+        preview = {testState.preview}
+        onHover = {testState.hoverHandler}
+        onUnhover = {testState.unhoverHandler}
+        onClick = {testState.clickHandler}
       />
   );
 
-  const movieCardTitle = movieCard.find(`.small-movie-card__link`);
+  movieCard.simulate(`mouseenter`);
+  movieCard.simulate(`mouseleave`);
+  movieCard.simulate(`click`);
 
-  movieCardTitle.simulate(`click`);
-
-  expect(onMovieCardTitleClick.mock.calls.length).toBe(1);
+  expect(testState.hoverHandler.mock.calls.length).toBe(1);
+  expect(testState.unhoverHandler.mock.calls.length).toBe(1);
+  expect(testState.clickHandler.mock.calls.length).toBe(1);
+  expect(testState.hoverHandler.mock.results[0].value).toBe(testState.title);
+  expect(testState.unhoverHandler.mock.results[0].value).toBe(testState.emptyString);
 });

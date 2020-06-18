@@ -2,16 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import MainScreen from "../main-screen/main-screen.jsx";
 
-const movieCardTitleHandler = () => {};
-
-const App = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movieTitles}) => {
+const App = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movies, genres}) => {
   return (
     <MainScreen
       mainMovieTitle = {mainMovieTitle}
       mainMovieGenre = {mainMovieGenre}
       mainMovieReleaseDate = {mainMovieReleaseDate}
-      movieTitles = {movieTitles}
-      movieCardTitleHandler = {movieCardTitleHandler}
+      movies = {movies}
+      genres = {genres}
     />
   );
 };
@@ -20,10 +18,8 @@ App.propTypes = {
   mainMovieTitle: PropTypes.string.isRequired,
   mainMovieGenre: PropTypes.string.isRequired,
   mainMovieReleaseDate: PropTypes.number.isRequired,
-  movieTitles:
-  PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  ).isRequired,
+  movies: PropTypes.array.isRequired,
+  genres: PropTypes.array.isRequired,
 };
 
 

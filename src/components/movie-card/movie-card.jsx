@@ -1,28 +1,42 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-const MovieCard = ({movieTitle, onMovieCardTitleClick}) => {
-  return (
-    <React.Fragment>
-      <article className="small-movie-card catalog__movies-card">
+export default class MovieCard extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const {title, preview, onHover, onUnhover, onClick} = this.props;
+
+    return (
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseEnter = {() => onHover(title)}
+        onMouseLeave = {onUnhover}
+        onClick = {onClick}
+      >
         <div className="small-movie-card__image">
-          <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt={movieTitle} width="280" height="175" />
+          <img
+            src = {preview}
+            alt = {title}
+            width="280" height="175" />
         </div>
         <h3 className="small-movie-card__title">
           <a
             className="small-movie-card__link"
-            onClick={onMovieCardTitleClick}
-            href="movie-page.html">{movieTitle}
+            href="movie-page.html">{title}
           </a>
         </h3>
       </article>
-    </React.Fragment>
-  );
-};
+    );
+  }
+}
 
 MovieCard.propTypes = {
-  movieTitle: PropTypes.string.isRequired,
-  onMovieCardTitleClick: PropTypes.func.isRequired
+  title: PropTypes.string.isRequired,
+  preview: PropTypes.string.isRequired,
+  onHover: PropTypes.func.isRequired,
+  onUnhover: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
-
-export default MovieCard;
