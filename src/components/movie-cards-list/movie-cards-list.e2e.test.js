@@ -20,8 +20,6 @@ it(`Movies List state should get a value of a card, whitch currently hovered and
     }
   ];
 
-  const emptyState = ``;
-
   const movieCardsList = mount(
       <MovieCardsList
         movies = {films}
@@ -32,8 +30,8 @@ it(`Movies List state should get a value of a card, whitch currently hovered and
 
   movieCards.forEach((node, index) => {
     node.simulate(`mouseenter`);
-    expect(movieCardsList.state().movie).toBe(films[index].title);
+    expect(movieCardsList.state().movie).toBe(films[index]);
     node.simulate(`mouseleave`);
-    expect(movieCardsList.state().movie).toBe(emptyState);
+    expect(movieCardsList.state().movie).toBe(null);
   });
 });
