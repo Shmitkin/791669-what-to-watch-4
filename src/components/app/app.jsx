@@ -7,17 +7,37 @@ import MovieInfo from "../movie-info/movie-info.jsx";
 export default class App extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      movie: null
+    };
   }
 
   _renderMainScreen() {
     const {mainMovie, movies, genres} = this.props;
-    return (
-      <MainScreen
-        mainMovie = {mainMovie}
-        movies = {movies}
-        genres = {genres}
-      />
-    );
+
+    if (this.state.movie === null) {
+      return (
+        <MainScreen
+          mainMovie = {mainMovie}
+          movies = {movies}
+          genres = {genres}
+          onMovieCardClick = {(movie) => {
+            this.setState({movie});
+          }}
+        />
+      );
+    }
+
+    if (this.state.movie !== null) {
+      return (
+        <MovieInfo
+          movie = {this.state.movie}
+        />
+      );
+    }
+
+    return null;
   }
 
   _renderMovieDetails() {

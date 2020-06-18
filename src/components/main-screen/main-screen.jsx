@@ -8,7 +8,7 @@ import HeaderMovieInfo from "../header-movie-info/header-movie-info.jsx";
 import PageHeader from "../page-header/page-header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 
-const MainScreen = ({mainMovie, movies, genres}) => {
+const MainScreen = ({mainMovie, movies, genres, onMovieCardClick}) => {
 
   return (
     <React.Fragment>
@@ -39,7 +39,10 @@ const MainScreen = ({mainMovie, movies, genres}) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenresList genres = {genres} />
-          <MovieCardsList movies = {movies} />
+          <MovieCardsList
+            movies = {movies}
+            onMovieCardClick = {onMovieCardClick}
+          />
           <ShowMoreButton />
 
         </section>
@@ -59,6 +62,7 @@ MainScreen.propTypes = {
   }).isRequired,
   movies: PropTypes.array.isRequired,
   genres: PropTypes.array.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired
 };
 
 export default MainScreen;
