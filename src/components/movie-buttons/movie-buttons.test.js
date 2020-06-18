@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieCardButtons from "./movie-card-buttons.jsx";
+import MovieButtons from "./movie-buttons.jsx";
 
-it(`Should MovieCardButtons render correctly`, () => {
+it(`Should MovieButtons render correctly`, () => {
   const tree = renderer
     .create(
-        <MovieCardButtons />
+        <MovieButtons />
     )
     .toJSON();
 

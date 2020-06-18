@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MoviesList from "./movies-list.jsx";
+import MovieCardsList from "./movie-cards-list.jsx";
 
 const testState = [
   {
@@ -21,10 +21,10 @@ const testState = [
   }
 ];
 
-it(`Should MoviesList render correctly`, () => {
+it(`Should MovieCardsList render correctly`, () => {
   const tree = renderer
     .create(
-        <MoviesList
+        <MovieCardsList
           movies = {testState}
         />
     )

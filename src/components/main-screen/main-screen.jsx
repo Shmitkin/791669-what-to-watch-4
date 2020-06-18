@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MoviesList from "../movies-list/movies-list.jsx";
+import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import PageFooter from "../page-footer/page-footer.jsx";
-import MovieCardInfo from "../movie-card-info/movie-card-info.jsx";
+import MovieInfo from "../movie-info/movie-info.jsx";
 import PageHeader from "../page-header/page-header.jsx";
-import MovieCardBg from "../movie-card-bg/movie-card-bg.jsx";
+import MovieBackground from "../movie-background/movie-background.jsx";
 
 const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movies, genres}) => {
 
@@ -14,7 +14,7 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
     <React.Fragment>
       <section className="movie-card">
 
-        <MovieCardBg altDesc = {mainMovieTitle} />
+        <MovieBackground altDesc = {mainMovieTitle} />
 
         <h1 className="visually-hidden">WTW</h1>
 
@@ -22,7 +22,7 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
 
         <div className="movie-card__wrap">
 
-          <MovieCardInfo
+          <MovieInfo
             title = {mainMovieTitle}
             genre = {mainMovieGenre}
             release = {mainMovieReleaseDate}
@@ -35,7 +35,7 @@ const MainScreen = ({mainMovieTitle, mainMovieGenre, mainMovieReleaseDate, movie
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <GenresList genres = {genres} />
-          <MoviesList movies = {movies} />
+          <MovieCardsList movies = {movies} />
           <ShowMoreButton />
 
         </section>

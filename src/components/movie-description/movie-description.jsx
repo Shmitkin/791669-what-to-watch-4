@@ -1,9 +1,9 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-import MovieCardButtons from "../movie-card-buttons/movie-card-buttons.jsx";
+import MovieButtons from "../movie-buttons/movie-buttons.jsx";
 
-export default class MovieCardDesc extends PureComponent {
+export default class MovieDescription extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -17,13 +17,13 @@ export default class MovieCardDesc extends PureComponent {
           <span className="movie-card__genre">{genre}</span>
           <span className="movie-card__year">{release}</span>
         </p>
-        <MovieCardButtons />
+        <MovieButtons />
       </div>
     );
   }
 }
 
-MovieCardDesc.propTypes = {
+MovieDescription.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   release: PropTypes.number.isRequired,

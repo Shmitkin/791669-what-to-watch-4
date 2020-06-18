@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieCardBg from "./movie-card-bg.jsx";
+import MovieMainPoster from "./movie-main-poster.jsx";
 
-it(`Should MovieCardBg render correctly`, () => {
+it(`Should MovieMainPoster render correctly`, () => {
   const tree = renderer
     .create(
-        <MovieCardBg altDesc = {`Some bg Description`}/>
+        <MovieMainPoster altDesc = {`someDescription`} />
     )
     .toJSON();
 

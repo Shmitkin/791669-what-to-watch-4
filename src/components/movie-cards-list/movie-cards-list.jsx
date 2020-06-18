@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 
 
-export default class MoviesList extends PureComponent {
+export default class MovieCardsList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,7 +47,7 @@ export default class MoviesList extends PureComponent {
   }
 }
 
-MoviesList.propTypes = {
+MovieCardsList.propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,

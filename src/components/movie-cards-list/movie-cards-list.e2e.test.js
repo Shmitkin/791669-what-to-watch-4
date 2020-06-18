@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import MoviesList from "./movies-list.jsx";
+import MovieCardsList from "./movie-cards-list.jsx";
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -22,18 +22,18 @@ it(`Movies List state should get a value of a card, whitch currently hovered and
 
   const emptyState = ``;
 
-  const moviesList = mount(
-      <MoviesList
+  const movieCardsList = mount(
+      <MovieCardsList
         movies = {films}
       />
   );
 
-  const movieCards = moviesList.find(`.catalog__movies-card`);
+  const movieCards = movieCardsList.find(`.catalog__movies-card`);
 
   movieCards.forEach((node, index) => {
     node.simulate(`mouseenter`);
-    expect(moviesList.state().movie).toBe(films[index].title);
+    expect(movieCardsList.state().movie).toBe(films[index].title);
     node.simulate(`mouseleave`);
-    expect(moviesList.state().movie).toBe(emptyState);
+    expect(movieCardsList.state().movie).toBe(emptyState);
   });
 });

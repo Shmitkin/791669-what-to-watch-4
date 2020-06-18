@@ -1,11 +1,11 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-import MovieCardDesc from "../movie-card-desc/movie-card-desc.jsx";
-import MovieCardPoster from "../movie-card-poster/movie-card-poster.jsx";
+import MovieDescription from "../movie-description/movie-description.jsx";
+import MovieMainPoster from "../movie-main-poster/movie-main-poster.jsx";
 
 
-export default class MovieCardInfo extends PureComponent {
+export default class MovieInfo extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -15,8 +15,8 @@ export default class MovieCardInfo extends PureComponent {
 
     return (
       <div className="movie-card__info">
-        <MovieCardPoster altDesc = {title} />
-        <MovieCardDesc
+        <MovieMainPoster altDesc = {title} />
+        <MovieDescription
           title = {title}
           genre = {genre}
           release = {release}
@@ -26,7 +26,7 @@ export default class MovieCardInfo extends PureComponent {
   }
 }
 
-MovieCardInfo.propTypes = {
+MovieInfo.propTypes = {
   title: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   release: PropTypes.number.isRequired,

@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieCardInfo from "./movie-card-info.jsx";
+import MovieInfo from "./movie-info.jsx";
 
-it(`Should MovieCardInfo render correctly`, () => {
+it(`Should MovieInfo render correctly`, () => {
   const tree = renderer
     .create(
-        <MovieCardInfo
+        <MovieInfo
           title = {`Some Title`}
           release = {2014}
           genre = {`Some Genre`}

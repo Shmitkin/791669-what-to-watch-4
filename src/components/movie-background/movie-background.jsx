@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
 
-export default class MovieCardPoster extends PureComponent {
+export default class MovieBackground extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -11,13 +11,13 @@ export default class MovieCardPoster extends PureComponent {
     const {altDesc} = this.props;
 
     return (
-      <div className="movie-card__poster">
-        <img src="img/the-grand-budapest-hotel-poster.jpg" alt={`${altDesc} poster`} width="218" height="327" />
+      <div className="movie-card__bg">
+        <img src="img/bg-the-grand-budapest-hotel.jpg" alt={altDesc} />
       </div>
     );
   }
 }
 
-MovieCardPoster.propTypes = {
+MovieBackground.propTypes = {
   altDesc: PropTypes.string.isRequired
 };

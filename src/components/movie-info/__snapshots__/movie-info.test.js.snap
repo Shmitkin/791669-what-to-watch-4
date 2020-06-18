@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should MovieCardInfo render correctly 1`] = `
+exports[`Should MovieInfo render correctly 1`] = `
 <div
   className="movie-card__info"
 >
