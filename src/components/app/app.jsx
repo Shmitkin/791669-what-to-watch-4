@@ -33,6 +33,10 @@ export default class App extends PureComponent {
       return (
         <MovieInfo
           movie = {this.state.movie}
+          onMovieCardClick = {(movie) => {
+            this.setState({movie});
+          }}
+          similarMovies = {movies.slice(0, 4)}
         />
       );
     }
