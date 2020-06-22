@@ -27,9 +27,7 @@ export default class App extends PureComponent {
           }}
         />
       );
-    }
-
-    if (this.state.movie !== null) {
+    } else if (this.state.movie !== null) {
       return (
         <MovieInfo
           movie = {this.state.movie}
@@ -39,9 +37,9 @@ export default class App extends PureComponent {
           similarMovies = {movies.slice(0, 4)}
         />
       );
+    } else {
+      return null;
     }
-
-    return null;
   }
 
   _renderMovieDetails() {

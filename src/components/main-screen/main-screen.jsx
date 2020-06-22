@@ -8,7 +8,7 @@ import HeaderMovieInfo from "../header-movie-info/header-movie-info.jsx";
 import PageHeader from "../page-header/page-header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 
-const MainScreen = ({mainMovie, movies, genres, onMovieCardClick}) => {
+export default function MainScreen({mainMovie, movies, genres, onMovieCardClick}) {
 
   return (
     <React.Fragment>
@@ -48,7 +48,7 @@ const MainScreen = ({mainMovie, movies, genres, onMovieCardClick}) => {
       </div>
     </React.Fragment>
   );
-};
+}
 
 MainScreen.propTypes = {
   mainMovie: PropTypes.object.isRequired,
@@ -56,5 +56,3 @@ MainScreen.propTypes = {
   genres: PropTypes.array.isRequired,
   onMovieCardClick: PropTypes.func.isRequired
 };
-
-export default MainScreen;

@@ -10,6 +10,7 @@ it(`Should MainScreen render correctly`, () => {
           mainMovie = {movie}
           movies = {movies}
           genres = {genres}
+          onMovieCardClick = {() => {}}
         />
     )
     .toJSON();

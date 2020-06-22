@@ -1,20 +1,15 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-export default class MovieInfoPoster extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+export default function MovieInfoPoster({movie}) {
 
-  render() {
-    const {movie} = this.props;
-    return (
-      <div className="movie-card__poster movie-card__poster--big">
-        <img src = {movie.poster} alt = {`${movie.title} poster`} width="218" height="327" />
-      </div>
-    );
-  }
+  return (
+    <div className="movie-card__poster movie-card__poster--big">
+      <img src = {movie.poster} alt = {`${movie.title} poster`} width="218" height="327" />
+    </div>
+  );
 }
+
 
 MovieInfoPoster.propTypes = {
   movie: PropTypes.shape({

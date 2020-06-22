@@ -12,8 +12,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="Snatch"
-          src="img/snatch.jpg"
+          alt="Pulp Fiction"
+          src="img/pulp-fiction.jpg"
         />
       </div>
       <h1
@@ -71,7 +71,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Snatch
+            Pulp Fiction
           </h2>
           <p
             className="movie-card__meta"
@@ -79,12 +79,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Thriller
+              Drama
             </span>
             <span
               className="movie-card__year"
             >
-              2016
+              2020
             </span>
           </p>
           <div
@@ -144,9 +144,9 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Snatch poster"
+            alt="Pulp Fiction poster"
             height="327"
-            src="img/snatch.jpg"
+            src="img/pulp-fiction.jpg"
             width="218"
           />
         </div>
@@ -197,7 +197,7 @@ Array [
             <div
               className="movie-rating__score"
             >
-              9
+              2.3
             </div>
             <p
               className="movie-rating__meta"
@@ -205,12 +205,12 @@ Array [
               <span
                 className="movie-rating__level"
               >
-                Very good
+                Bad
               </span>
               <span
                 className="movie-rating__count"
               >
-                344
+                293
                  ratings
               </span>
             </p>
@@ -256,6 +256,60 @@ Array [
       <div
         className="catalog__movies-list"
       >
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Seven Years IN Tibet"
+              height="175"
+              src="img/seven-years-in-tibet.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Seven Years IN Tibet
+            </a>
+          </h3>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Moonrise Kingdom"
+              height="175"
+              src="img/moonrise-kingdom.jpg"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="movie-page.html"
+            >
+              Moonrise Kingdom
+            </a>
+          </h3>
+        </article>
         <article
           className="small-movie-card catalog__movies-card"
           onClick={[Function]}

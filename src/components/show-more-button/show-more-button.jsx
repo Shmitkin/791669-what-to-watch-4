@@ -1,12 +1,11 @@
-import React, {PureComponent} from "react";
+import React from "react";
 
-export default class ShowMoreButton extends PureComponent {
+export default function ShowMoreButton() {
 
-  render() {
-    return (
-      <div className="catalog__more">
-        <button className="catalog__button" type="button">Show more</button>
-      </div>
-    );
-  }
+  return (
+    <div className="catalog__more">
+      <button className="catalog__button" type="button">Show more</button>
+    </div>
+  );
 }
+

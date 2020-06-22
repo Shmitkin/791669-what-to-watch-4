@@ -1,27 +1,22 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import MovieButtons from "../movie-buttons/movie-buttons.jsx";
 
-export default class MovieDescription extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+export default function MovieDescription({movie, isMovieDetails}) {
 
-  render() {
-    const {movie, isMovieDetails} = this.props;
-    return (
-      <div className="movie-card__desc">
-        <h2 className="movie-card__title">{movie.title}</h2>
-        <p className="movie-card__meta">
-          <span className="movie-card__genre">{movie.genre}</span>
-          <span className="movie-card__year">{movie.release}</span>
-        </p>
-        <MovieButtons isMovieDetails = {isMovieDetails}/>
-      </div>
-    );
-  }
+  return (
+    <div className="movie-card__desc">
+      <h2 className="movie-card__title">{movie.title}</h2>
+      <p className="movie-card__meta">
+        <span className="movie-card__genre">{movie.genre}</span>
+        <span className="movie-card__year">{movie.release}</span>
+      </p>
+      <MovieButtons isMovieDetails = {isMovieDetails}/>
+    </div>
+  );
 }
+
 
 MovieDescription.propTypes = {
   movie: PropTypes.shape({
