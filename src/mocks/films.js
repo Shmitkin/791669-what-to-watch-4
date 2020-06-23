@@ -1,6 +1,7 @@
 export const films = [
   {
     title: `Mindhunter`,
+    videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     preview: `img/mindhunter.jpg`,
     poster: `img/mindhunter.jpg`,
     background: `img/mindhunter.jpg`,
@@ -15,6 +16,7 @@ export const films = [
   },
   {
     title: `Orlando`,
+    videoPrev: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     preview: `img/orlando.jpg`,
     poster: `img/orlando.jpg`,
     background: `img/orlando.jpg`,
@@ -39,6 +41,7 @@ export const films = [
     director: `Best Director`,
     starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
     duration: 98,
+    videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 1999,
   },
   {
@@ -53,6 +56,7 @@ export const films = [
     director: `Best Director`,
     starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
     duration: 102,
+    videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 2001,
   },
   {
@@ -67,6 +71,7 @@ export const films = [
     director: `Best Director`,
     starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
     duration: 24,
+    videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 2005,
   },
   {
@@ -81,6 +86,7 @@ export const films = [
     director: `Best Director`,
     starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
     duration: 79,
+    videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 2012,
   },
   {
@@ -95,6 +101,7 @@ export const films = [
     director: `Best Director`,
     starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
     duration: 210,
+    videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 1998,
   },
   {
@@ -109,6 +116,7 @@ export const films = [
     director: `Best Director`,
     starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
     duration: 87,
+    videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 2020,
   },
 ];

@@ -10,10 +10,11 @@ exports[`Should MovieCard render correctly 1`] = `
   <div
     className="small-movie-card__image"
   >
-    <img
-      alt="Stranger Things"
+    <video
       height="175"
-      src="img/stranger-thisngs.jpg"
+      loop={true}
+      muted={true}
+      poster="img/stranger-thisngs.jpg"
       width="280"
     />
   </div>
