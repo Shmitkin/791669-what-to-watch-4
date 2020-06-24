@@ -8,7 +8,7 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Movie Card should return a value that match card title(movie title) when it hovered and empty string when it unhovered`, () => {
+it(`Movie Card should call every handler for 1 time when it hovered, unhovered and clicked`, () => {
 
   const testState = {
     movie,
@@ -26,6 +26,7 @@ it(`Movie Card should return a value that match card title(movie title) when it 
 
   const movieCard = shallow(
       <MovieCard
+        isPlaying = {true}
         movie = {testState.movie}
         onHover = {testState.hoverHandler}
         onUnhover = {testState.unhoverHandler}
@@ -43,6 +44,4 @@ it(`Movie Card should return a value that match card title(movie title) when it 
   expect(testState.hoverHandler.mock.calls.length).toBe(1);
   expect(testState.unhoverHandler.mock.calls.length).toBe(1);
   expect(testState.clickHandler.mock.calls.length).toBe(1);
-  expect(testState.hoverHandler.mock.results[0].value).toBe(testState.title);
-  expect(testState.unhoverHandler.mock.results[0].value).toBe(testState.emptyString);
 });

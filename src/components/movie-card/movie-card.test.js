@@ -7,6 +7,7 @@ it(`Should MovieCard render correctly`, () => {
   const tree = renderer
     .create(
         <MovieCard
+          isPlaying = {true}
           movie ={movie}
           onHover = {() => {}}
           onUnhover = {() => {}}

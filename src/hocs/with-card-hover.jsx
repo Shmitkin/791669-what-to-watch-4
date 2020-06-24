@@ -6,7 +6,7 @@ export default function withVideoPlayer(Component) {
       super(props);
 
       this.state = {
-        isPlaying: false,
+        isHovered: false,
       };
 
       this._timeout = null;
@@ -17,22 +17,22 @@ export default function withVideoPlayer(Component) {
 
     _mouseEnterHandler() {
       this._timeout = setTimeout(() => {
-        this.setState({isPlaying: true});
+        this.setState({isHovered: true});
       }, 1000);
     }
 
     _mouseLeaveHandler() {
       clearTimeout(this._timeout);
-      this.setState({isPlaying: false});
+      this.setState({isHovered: false});
     }
 
     render() {
       return (
         <Component
           {...this.props}
-          isPlaying={this.state.isPlaying}
-          onHover={this._mouseEnterHandler}
-          onUnhover={this._mouseLeaveHandler}
+          isPlaying = {this.state.isHovered}
+          onHover = {this._mouseEnterHandler}
+          onUnhover = {this._mouseLeaveHandler}
         />
       );
     }
