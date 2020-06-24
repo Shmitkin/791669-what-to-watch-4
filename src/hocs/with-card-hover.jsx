@@ -26,6 +26,10 @@ export default function withVideoPlayer(Component) {
       this.setState({isHovered: false});
     }
 
+    componentWillUnmount() {
+      clearTimeout(this._timeout);
+    }
+
     render() {
       return (
         <Component
