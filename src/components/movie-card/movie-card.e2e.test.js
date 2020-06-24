@@ -10,6 +10,7 @@ Enzyme.configure({
 it(`Movie Card should return a value that match card title(movie title) when it hovered and empty string when it unhovered`, () => {
 
   const testState = {
+    movie: {},
     title: `Stranger Things`,
     preview: `img/stranger-thisngs.jpg`,
     emptyString: ``,
@@ -24,6 +25,7 @@ it(`Movie Card should return a value that match card title(movie title) when it 
 
   const movieCard = shallow(
       <MovieCard
+        movie = {testState.movie}
         title={testState.title}
         preview = {testState.preview}
         onHover = {testState.hoverHandler}
@@ -34,7 +36,10 @@ it(`Movie Card should return a value that match card title(movie title) when it 
 
   movieCard.simulate(`mouseenter`);
   movieCard.simulate(`mouseleave`);
-  movieCard.simulate(`click`);
+  movieCard.simulate(`click`, {
+    preventDefault: () => {
+    }
+  });
 
   expect(testState.hoverHandler.mock.calls.length).toBe(1);
   expect(testState.unhoverHandler.mock.calls.length).toBe(1);

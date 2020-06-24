@@ -1,14 +1,13 @@
-import React, {PureComponent} from "react";
+import React from "react";
 
-export default class UserBlock extends PureComponent {
+export default function UserBlock() {
 
-  render() {
-    return (
-      <div className="user-block">
-        <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-        </div>
+  return (
+    <div className="user-block">
+      <div className="user-block__avatar">
+        <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
       </div>
-    );
-  }
+    </div>
+  );
 }
+

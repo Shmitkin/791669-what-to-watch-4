@@ -5,8 +5,8 @@ exports[`Should MovieBackground render correctly 1`] = `
   className="movie-card__bg"
 >
   <img
-    alt="Some bg Description"
-    src="img/bg-the-grand-budapest-hotel.jpg"
+    alt="Pulp Fiction"
+    src="img/pulp-fiction.jpg"
   />
 </div>
 `;

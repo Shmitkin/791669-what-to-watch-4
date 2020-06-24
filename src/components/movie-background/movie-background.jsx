@@ -1,23 +1,20 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 
-export default class MovieBackground extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+export default function MovieBackground({movie}) {
 
-  render() {
-    const {altDesc} = this.props;
-
-    return (
-      <div className="movie-card__bg">
-        <img src="img/bg-the-grand-budapest-hotel.jpg" alt={altDesc} />
-      </div>
-    );
-  }
+  return (
+    <div className="movie-card__bg">
+      <img src={movie.background} alt={movie.title} />
+    </div>
+  );
 }
 
+
 MovieBackground.propTypes = {
-  altDesc: PropTypes.string.isRequired
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    background: PropTypes.string.isRequired,
+  }).isRequired,
 };

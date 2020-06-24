@@ -9,8 +9,8 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="Stranger Things"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Pulp Fiction"
+        src="img/pulp-fiction.jpg"
       />
     </div>
     <h1
@@ -69,9 +69,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="Stranger Things poster"
+            alt="Pulp Fiction poster"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="img/pulp-fiction.jpg"
             width="218"
           />
         </div>
@@ -81,7 +81,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Stranger Things
+            Pulp Fiction
           </h2>
           <p
             className="movie-card__meta"
@@ -89,12 +89,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Thriller
+              Drama
             </span>
             <span
               className="movie-card__year"
             >
-              2017
+              2020
             </span>
           </p>
           <div
@@ -160,7 +160,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Comedies
+            First
           </a>
         </li>
         <li
@@ -170,7 +170,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Crime
+            Second
           </a>
         </li>
         <li
@@ -180,7 +180,7 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Documentary
+            Third
           </a>
         </li>
         <li
@@ -190,7 +190,17 @@ Array [
             className="catalog__genres-link"
             href="#"
           >
-            Dramas
+            Fourth
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item"
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+          >
+            Fifth
           </a>
         </li>
       </ul>
@@ -207,9 +217,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="First Film"
+              alt="Seven Years IN Tibet"
               height="175"
-              src="img/first-film.jpg"
+              src="img/seven-years-in-tibet.jpg"
               width="280"
             />
           </div>
@@ -220,7 +230,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              First Film
+              Seven Years IN Tibet
             </a>
           </h3>
         </article>
@@ -234,9 +244,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Second Film"
+              alt="Moonrise Kingdom"
               height="175"
-              src="img/second-film.jpg"
+              src="img/moonrise-kingdom.jpg"
               width="280"
             />
           </div>
@@ -247,7 +257,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Second Film
+              Moonrise Kingdom
             </a>
           </h3>
         </article>
@@ -261,9 +271,9 @@ Array [
             className="small-movie-card__image"
           >
             <img
-              alt="Third Film"
+              alt="Snatch"
               height="175"
-              src="img/third-film.jpg"
+              src="img/snatch.jpg"
               width="280"
             />
           </div>
@@ -274,34 +284,7 @@ Array [
               className="small-movie-card__link"
               href="movie-page.html"
             >
-              Third Film
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Fourth Film"
-              height="175"
-              src="img/fourth-film.jpg"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Fourth Film
+              Snatch
             </a>
           </h3>
         </article>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const PlayButton = () => {
+export default function PlayButton() {
   return (
     <button className="btn btn--play movie-card__button" type="button">
       <svg viewBox="0 0 19 19" width="19" height="19">
@@ -9,6 +9,5 @@ const PlayButton = () => {
       <span>Play</span>
     </button>
   );
-};
+}
 
-export default PlayButton;

@@ -1,33 +1,76 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
-
+import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
+import PageFooter from "../page-footer/page-footer.jsx";
 import MovieDescription from "../movie-description/movie-description.jsx";
-import MovieMainPoster from "../movie-main-poster/movie-main-poster.jsx";
+import PageHeader from "../page-header/page-header.jsx";
+import MovieBackground from "../movie-background/movie-background.jsx";
+import MovieOverview from "../movie-overview/movie-overview.jsx";
+import MovieInfoNav from "../movie-info-nav/movie-info-nav.jsx";
+import MovieInfoPoster from "../movie-info-poster/movie-info-poster.jsx";
 
+export default function MovieInfo({movie, similarMovies, onMovieCardClick}) {
 
-export default class MovieInfo extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+  return (
+    <React.Fragment>
+      <section className="movie-card movie-card--full">
+        <div className="movie-card__hero">
 
-  render() {
-    const {title, release, genre} = this.props;
+          <MovieBackground
+            movie = {movie}
+          />
 
-    return (
-      <div className="movie-card__info">
-        <MovieMainPoster altDesc = {title} />
-        <MovieDescription
-          title = {title}
-          genre = {genre}
-          release = {release}
-        />
+          <h1 className="visually-hidden">WTW</h1>
+
+          <PageHeader />
+
+          <div className="movie-card__wrap">
+
+            <MovieDescription
+              movie = {movie}
+              isMovieDetails = {true}
+            />
+
+          </div>
+        </div>
+        <div className="movie-card__wrap movie-card__translate-top">
+          <div className="movie-card__info">
+            <MovieInfoPoster
+              movie = {movie}
+            />
+
+            <div className="movie-card__desc">
+
+              <MovieInfoNav />
+              <MovieOverview
+                movie = {movie}
+              />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <div className="page-content">
+        <section className="catalog catalog--like-this">
+          <h2 className="catalog__title">More like this</h2>
+
+          <MovieCardsList
+            movies = {similarMovies}
+            onMovieCardClick = {onMovieCardClick}
+          />
+
+        </section>
+        <PageFooter />
       </div>
-    );
-  }
+    </React.Fragment>
+  );
+
 }
 
 MovieInfo.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  release: PropTypes.number.isRequired,
+  similarMovies: PropTypes.array.isRequired,
+  onMovieCardClick: PropTypes.func.isRequired,
+  movie: PropTypes.object.isRequired,
 };
+

@@ -1,11 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieButtons from "./movie-buttons.jsx";
+import MovieInfoNav from "./movie-info-nav.jsx";
 
-it(`Should MovieButtons render correctly`, () => {
+it(`Should MovieInfoNav render correctly`, () => {
   const tree = renderer
     .create(
-        <MovieButtons isMovieDetails = {false} />
+        <MovieInfoNav />
     )
     .toJSON();
 

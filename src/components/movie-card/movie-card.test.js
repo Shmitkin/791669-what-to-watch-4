@@ -6,6 +6,7 @@ it(`Should MovieCard render correctly`, () => {
   const tree = renderer
     .create(
         <MovieCard
+          movie = {{}}
           title={`Stranger Things`}
           preview = {`img/stranger-thisngs.jpg`}
           onHover = {() => {}}

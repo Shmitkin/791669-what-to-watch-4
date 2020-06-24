@@ -7,39 +7,35 @@ export default class MovieCardsList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      movie: ``
+      movie: null
     };
     this._movieCardHoverHandler = this._movieCardHoverHandler.bind(this);
     this._movieCardUnhoverHandler = this._movieCardUnhoverHandler.bind(this);
-    this._movieCardClickHandler = this._movieCardClickHandler.bind(this);
 
   }
 
-  _movieCardHoverHandler(movieTitle) {
-    this.setState({movie: movieTitle});
+  _movieCardHoverHandler(movie) {
+    this.setState({movie});
   }
 
   _movieCardUnhoverHandler() {
-    this.setState({movie: ``});
-  }
-
-  _movieCardClickHandler(evt) {
-    evt.preventDefault();
+    this.setState({movie: null});
   }
 
   render() {
-    const {movies} = this.props;
+    const {movies, onMovieCardClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
         {movies.map((movie, index) =>
           <MovieCard
+            movie = {movie}
             key = {`${index}-${movie.title}`}
             title = {movie.title}
             preview = {movie.preview}
             onHover = {this._movieCardHoverHandler}
             onUnhover = {this._movieCardUnhoverHandler}
-            onClick = {this._movieCardClickHandler}
+            onClick = {onMovieCardClick}
           />
         )}
       </div>
@@ -48,6 +44,7 @@ export default class MovieCardsList extends PureComponent {
 }
 
 MovieCardsList.propTypes = {
+  onMovieCardClick: PropTypes.func.isRequired,
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,

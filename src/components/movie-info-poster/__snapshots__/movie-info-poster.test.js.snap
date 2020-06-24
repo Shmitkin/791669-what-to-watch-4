@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should MovieMainPoster render correctly 1`] = `
+exports[`Should MovieInfoPoster render correctly 1`] = `
 <div
-  className="movie-card__poster"
+  className="movie-card__poster movie-card__poster--big"
 >
   <img
     alt="Pulp Fiction poster"
