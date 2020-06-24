@@ -56,22 +56,16 @@ export default class MovieInfo extends React.PureComponent {
       <React.Fragment>
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
-
             <MovieBackground
               movie = {movie}
             />
-
             <h1 className="visually-hidden">WTW</h1>
-
             <PageHeader />
-
             <div className="movie-card__wrap">
-
               <MovieDescription
                 movie = {movie}
                 isMovieDetails = {true}
               />
-
             </div>
           </div>
           <div className="movie-card__wrap movie-card__translate-top">
@@ -79,9 +73,7 @@ export default class MovieInfo extends React.PureComponent {
               <MovieInfoPoster
                 movie = {movie}
               />
-
               <div className="movie-card__desc">
-
                 <MovieInfoNav
                   onClick = {this._tabClickHandler}
                   activeTab = {this.state.activeTab}
@@ -89,19 +81,21 @@ export default class MovieInfo extends React.PureComponent {
                 {this._getTabInfo(movie)}
               </div>
             </div>
-
           </div>
         </section>
 
         <div className="page-content">
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
-
             <MovieCardsList
               movies = {similarMovies}
-              onMovieCardClick = {onMovieCardClick}
+              onMovieCardClick = {(activeMovie) => {
+                onMovieCardClick(activeMovie);
+                this.setState({
+                  activeTab: MovieInfoTitles.OVERVIEW
+                });
+              }}
             />
-
           </section>
           <PageFooter />
         </div>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainScreen from "../main-screen/main-screen.jsx";
 import MovieInfo from "../movie-info/movie-info.jsx";
+import {MovieInfoTitles} from "../../consts.js";
 
 export default class App extends PureComponent {
   constructor(props) {
@@ -11,6 +12,21 @@ export default class App extends PureComponent {
     this.state = {
       movie: null
     };
+  }
+
+  _getSimilarMovies() {
+    const {genre, title} = this.state.movie;
+
+    const {movies} = this.props;
+    return movies.reduce((similarMovies, movie) => {
+      if (movie.title === title) {
+        return similarMovies;
+      }
+      if (movie.genre === genre) {
+        similarMovies.push(movie);
+      }
+      return similarMovies;
+    }, []);
   }
 
   _renderMainScreen() {
@@ -31,10 +47,11 @@ export default class App extends PureComponent {
       return (
         <MovieInfo
           movie = {this.state.movie}
+          activeTab = {MovieInfoTitles.OVERVIEW}
           onMovieCardClick = {(movie) => {
             this.setState({movie});
           }}
-          similarMovies = {movies.slice(0, 4)}
+          similarMovies = {this._getSimilarMovies()}
         />
       );
     } else {
