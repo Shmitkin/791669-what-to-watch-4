@@ -1,7 +1,7 @@
 import React from "react";
 import {MovieInfoTitles} from "../../consts.js";
 import PropTypes from "prop-types";
-import MovieInfoNavTab from "../movie-info-nav-tab/movie-info-van-tab.jsx";
+import MovieInfoNavTab from "../movie-info-nav-tab/movie-info-nav-tab.jsx";
 
 export default function MovieInfoNav(props) {
   const {onClick, activeTab} = props;

@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 
-export default function withVideoPlayer(Component) {
-  return class WithVideoPlayer extends PureComponent {
+export default function withCardHover(Component) {
+  return class WithCardHover extends PureComponent {
     constructor(props) {
       super(props);
 
