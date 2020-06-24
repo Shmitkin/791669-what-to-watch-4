@@ -221,6 +221,7 @@ Array [
               loop={true}
               muted={true}
               poster="img/seven-years-in-tibet.jpg"
+              src="img/seven-years-in-tibet.mp4"
               width="280"
             />
           </div>
@@ -249,6 +250,7 @@ Array [
               loop={true}
               muted={true}
               poster="img/moonrise-kingdom.jpg"
+              src="img/seven-years-in-tibet.mp4"
               width="280"
             />
           </div>
@@ -277,6 +279,7 @@ Array [
               loop={true}
               muted={true}
               poster="img/snatch.jpg"
+              src="img/seven-years-in-tibet.mp4"
               width="280"
             />
           </div>

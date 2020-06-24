@@ -12,7 +12,8 @@ export default class MovieCard extends React.PureComponent {
   }
 
   render() {
-    const {title, preview, onHover, onUnhover, onClick, movie} = this.props;
+    const {onHover, onUnhover, onClick, movie} = this.props;
+    const {title, preview, videoPrev} = movie;
     return (
       <article
         className="small-movie-card catalog__movies-card"
@@ -32,7 +33,7 @@ export default class MovieCard extends React.PureComponent {
         <div className="small-movie-card__image">
 
           <VideoPlayer
-            src = {movie.videoPrev}
+            src = {videoPrev}
             poster = {preview}
             isPlaying = {this.state.isPlaying}
           />
@@ -50,9 +51,11 @@ export default class MovieCard extends React.PureComponent {
 }
 
 MovieCard.propTypes = {
-  movie: PropTypes.object.isRequired,
-  title: PropTypes.string.isRequired,
-  preview: PropTypes.string.isRequired,
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    preview: PropTypes.string.isRequired,
+    videoPrev: PropTypes.string.isRequired,
+  }).isRequired,
   onHover: PropTypes.func.isRequired,
   onUnhover: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,

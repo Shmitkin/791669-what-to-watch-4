@@ -31,8 +31,6 @@ export default class MovieCardsList extends PureComponent {
           <MovieCard
             movie = {movie}
             key = {`${index}-${movie.title}`}
-            title = {movie.title}
-            preview = {movie.preview}
             onHover = {this._movieCardHoverHandler}
             onUnhover = {this._movieCardUnhoverHandler}
             onClick = {onMovieCardClick}
@@ -48,7 +46,6 @@ MovieCardsList.propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
-        preview: PropTypes.string.isRequired
       }).isRequired
   ).isRequired,
 };

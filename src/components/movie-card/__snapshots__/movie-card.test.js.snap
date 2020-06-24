@@ -14,7 +14,8 @@ exports[`Should MovieCard render correctly 1`] = `
       height="175"
       loop={true}
       muted={true}
-      poster="img/stranger-thisngs.jpg"
+      poster="img/pulp-fiction.jpg"
+      src="img/seven-years-in-tibet.mp4"
       width="280"
     />
   </div>
@@ -25,7 +26,7 @@ exports[`Should MovieCard render correctly 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      Stranger Things
+      Pulp Fiction
     </a>
   </h3>
 </article>
