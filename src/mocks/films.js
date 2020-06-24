@@ -13,6 +13,26 @@ export const films = [
     starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
     duration: 48,
     release: 2016,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(),
+      },
+    ]
   },
   {
     title: `Orlando`,
@@ -28,6 +48,26 @@ export const films = [
     starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
     duration: 156,
     release: 2017,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(),
+      },
+    ]
   },
   {
     title: `Dardjeeling Limited`,
@@ -43,6 +83,26 @@ export const films = [
     duration: 98,
     videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 1999,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(),
+      },
+    ]
   },
   {
     title: `Midnight Special`,
@@ -58,6 +118,26 @@ export const films = [
     duration: 102,
     videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 2001,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(),
+      },
+    ]
   },
   {
     title: `Seven Years IN Tibet`,
@@ -73,6 +153,26 @@ export const films = [
     duration: 24,
     videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 2005,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(),
+      },
+    ]
   },
   {
     title: `Moonrise Kingdom`,
@@ -88,6 +188,26 @@ export const films = [
     duration: 79,
     videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 2012,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(),
+      },
+    ]
   },
   {
     title: `Snatch`,
@@ -103,6 +223,26 @@ export const films = [
     duration: 210,
     videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 1998,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(),
+      },
+    ]
   },
   {
     title: `Pulp Fiction`,
@@ -118,6 +258,26 @@ export const films = [
     duration: 87,
     videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     release: 2020,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(),
+      },
+    ]
   },
 ];
 
