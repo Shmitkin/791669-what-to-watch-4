@@ -1,13 +1,14 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieInfoNav from "./movie-info-nav.jsx";
+import MovieInfoNavTab from "./movie-info-nav-tab.jsx";
 
-it(`Should MovieInfoNav render correctly`, () => {
+it(`Should MovieInfoNavTab render correctly`, () => {
   const tree = renderer
     .create(
-        <MovieInfoNav
+        <MovieInfoNavTab
           onClick = {()=>{}}
           activeTab = {`Overview`}
+          tabTitle = {`Overview`}
         />
     )
     .toJSON();

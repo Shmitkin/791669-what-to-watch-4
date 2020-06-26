@@ -12,6 +12,26 @@ export const movie = {
   starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
   duration: 87,
   release: 2020,
+  reviews: [
+    {
+      text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+      author: `Olegsey`,
+      rating: 8.4,
+      date: new Date(234242323),
+    },
+    {
+      text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+      author: `Mihail`,
+      rating: 3.4,
+      date: new Date(3234323432),
+    },
+    {
+      text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+      author: `Yuliiiiiya`,
+      rating: 5.2,
+      date: new Date(234321234),
+    },
+  ]
 };
 
 export const movies = [
@@ -29,6 +49,26 @@ export const movies = [
     starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
     duration: 24,
     release: 2005,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(234242323),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(3234323432),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(234321234),
+      },
+    ]
   },
   {
     title: `Moonrise Kingdom`,
@@ -44,6 +84,26 @@ export const movies = [
     starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
     duration: 79,
     release: 2012,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(234242323),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(3234323432),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(234321234),
+      },
+    ]
   },
   {
     title: `Snatch`,
@@ -59,6 +119,26 @@ export const movies = [
     starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
     duration: 210,
     release: 1998,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(234242323),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(3234323432),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(234321234),
+      },
+    ]
   },
 ];
 

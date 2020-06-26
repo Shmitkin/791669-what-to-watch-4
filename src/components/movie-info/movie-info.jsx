@@ -8,64 +8,100 @@ import MovieBackground from "../movie-background/movie-background.jsx";
 import MovieOverview from "../movie-overview/movie-overview.jsx";
 import MovieInfoNav from "../movie-info-nav/movie-info-nav.jsx";
 import MovieInfoPoster from "../movie-info-poster/movie-info-poster.jsx";
+import MovieDetails from "../movie-details/movie-details.jsx";
+import MovieReviews from "../movie-reviews/movie-reviews.jsx";
+import {MovieInfoTitles} from "../../consts.js";
 
-export default function MovieInfo({movie, similarMovies, onMovieCardClick}) {
+export default class MovieInfo extends React.PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
-    <React.Fragment>
-      <section className="movie-card movie-card--full">
-        <div className="movie-card__hero">
+    this.state = {
+      activeTab: MovieInfoTitles.OVERVIEW
+    };
 
-          <MovieBackground
-            movie = {movie}
-          />
+    this._tabClickHandler = this._tabClickHandler.bind(this);
+  }
 
-          <h1 className="visually-hidden">WTW</h1>
+  _getTabInfo(movie) {
+    switch (this.state.activeTab) {
+      case MovieInfoTitles.OVERVIEW:
+        return <MovieOverview
+          movie = {movie}
+        />;
+      case MovieInfoTitles.DETAILS:
+        return <MovieDetails
+          movie = {movie}
+        />;
+      case MovieInfoTitles.REVIEWS:
+        return <MovieReviews
+          movie = {movie}
+        />;
+      default:
+        return <MovieOverview
+          movie = {movie}
+        />;
+    }
+  }
 
-          <PageHeader />
+  _tabClickHandler(activeTab) {
+    this.setState({
+      activeTab
+    });
+  }
 
-          <div className="movie-card__wrap">
-
-            <MovieDescription
+  render() {
+    const {movie, similarMovies, onMovieCardClick} = this.props;
+    return (
+      <React.Fragment>
+        <section className="movie-card movie-card--full">
+          <div className="movie-card__hero">
+            <MovieBackground
               movie = {movie}
-              isMovieDetails = {true}
             />
-
-          </div>
-        </div>
-        <div className="movie-card__wrap movie-card__translate-top">
-          <div className="movie-card__info">
-            <MovieInfoPoster
-              movie = {movie}
-            />
-
-            <div className="movie-card__desc">
-
-              <MovieInfoNav />
-              <MovieOverview
+            <h1 className="visually-hidden">WTW</h1>
+            <PageHeader />
+            <div className="movie-card__wrap">
+              <MovieDescription
                 movie = {movie}
+                isMovieDetails = {true}
               />
             </div>
           </div>
-
-        </div>
-      </section>
-
-      <div className="page-content">
-        <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
-
-          <MovieCardsList
-            movies = {similarMovies}
-            onMovieCardClick = {onMovieCardClick}
-          />
-
+          <div className="movie-card__wrap movie-card__translate-top">
+            <div className="movie-card__info">
+              <MovieInfoPoster
+                movie = {movie}
+              />
+              <div className="movie-card__desc">
+                <MovieInfoNav
+                  onClick = {this._tabClickHandler}
+                  activeTab = {this.state.activeTab}
+                />
+                {this._getTabInfo(movie)}
+              </div>
+            </div>
+          </div>
         </section>
-        <PageFooter />
-      </div>
-    </React.Fragment>
-  );
 
+        <div className="page-content">
+          <section className="catalog catalog--like-this">
+            <h2 className="catalog__title">More like this</h2>
+            <MovieCardsList
+              movies = {similarMovies}
+              onMovieCardClick = {(activeMovie) => {
+                onMovieCardClick(activeMovie);
+                this.setState({
+                  activeTab: MovieInfoTitles.OVERVIEW
+                });
+              }}
+            />
+          </section>
+          <PageFooter />
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
 MovieInfo.propTypes = {
