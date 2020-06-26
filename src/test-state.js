@@ -1,5 +1,6 @@
 export const movie = {
   title: `Pulp Fiction`,
+  videoPrev: `img/seven-years-in-tibet.mp4`,
   preview: `img/pulp-fiction.jpg`,
   poster: `img/pulp-fiction.jpg`,
   background: `img/pulp-fiction.jpg`,
@@ -16,6 +17,7 @@ export const movie = {
 export const movies = [
   {
     title: `Seven Years IN Tibet`,
+    videoPrev: `img/seven-years-in-tibet.mp4`,
     preview: `img/seven-years-in-tibet.jpg`,
     poster: `img/seven-years-in-tibet.jpg`,
     background: `img/seven-years-in-tibet.jpg`,
@@ -30,6 +32,7 @@ export const movies = [
   },
   {
     title: `Moonrise Kingdom`,
+    videoPrev: `img/seven-years-in-tibet.mp4`,
     preview: `img/moonrise-kingdom.jpg`,
     poster: `img/moonrise-kingdom.jpg`,
     background: `img/moonrise-kingdom.jpg`,
@@ -44,6 +47,7 @@ export const movies = [
   },
   {
     title: `Snatch`,
+    videoPrev: `img/seven-years-in-tibet.mp4`,
     preview: `img/snatch.jpg`,
     poster: `img/snatch.jpg`,
     background: `img/snatch.jpg`,

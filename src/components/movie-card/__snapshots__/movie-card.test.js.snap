@@ -10,10 +10,12 @@ exports[`Should MovieCard render correctly 1`] = `
   <div
     className="small-movie-card__image"
   >
-    <img
-      alt="Stranger Things"
+    <video
       height="175"
-      src="img/stranger-thisngs.jpg"
+      loop={true}
+      muted={true}
+      poster="img/pulp-fiction.jpg"
+      src="img/seven-years-in-tibet.mp4"
       width="280"
     />
   </div>
@@ -24,7 +26,7 @@ exports[`Should MovieCard render correctly 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      Stranger Things
+      Pulp Fiction
     </a>
   </h3>
 </article>
