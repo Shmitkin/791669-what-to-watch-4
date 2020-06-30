@@ -11,3 +11,5 @@ export const MovieInfoTitles = {
   DETAILS: `Details`,
   REVIEWS: `Reviews`
 };
+
+export const DEFAULT_GENRE = `All genres`;

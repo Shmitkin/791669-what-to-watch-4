@@ -7,8 +7,9 @@ import PageFooter from "../page-footer/page-footer.jsx";
 import HeaderMovieInfo from "../header-movie-info/header-movie-info.jsx";
 import PageHeader from "../page-header/page-header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
+import {connect} from "react-redux";
 
-export default function MainScreen({mainMovie, movies, genres, onMovieCardClick}) {
+function MainScreen({mainMovie, onMovieCardClick}) {
 
   return (
     <React.Fragment>
@@ -35,9 +36,8 @@ export default function MainScreen({mainMovie, movies, genres, onMovieCardClick}
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenresList genres = {genres} />
+          <GenresList />
           <MovieCardsList
-            movies = {movies}
             onMovieCardClick = {onMovieCardClick}
           />
           <ShowMoreButton />
@@ -52,7 +52,13 @@ export default function MainScreen({mainMovie, movies, genres, onMovieCardClick}
 
 MainScreen.propTypes = {
   mainMovie: PropTypes.object.isRequired,
-  movies: PropTypes.array.isRequired,
-  genres: PropTypes.array.isRequired,
   onMovieCardClick: PropTypes.func.isRequired
 };
+
+const mapStateToProps = (state) => ({
+  mainMovie: state.mainMovie,
+});
+
+
+export {MainScreen};
+export default connect(mapStateToProps)(MainScreen);

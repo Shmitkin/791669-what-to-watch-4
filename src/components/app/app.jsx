@@ -4,40 +4,24 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainScreen from "../main-screen/main-screen.jsx";
 import MovieInfo from "../movie-info/movie-info.jsx";
 import {MovieInfoTitles} from "../../consts.js";
+import {ActionCreator} from "../../reducer.js";
+import {connect} from "react-redux";
 
-export default class App extends PureComponent {
+class App extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      movie: null
+      movie: null,
     };
   }
 
-  _getSimilarMovies() {
-    const {genre, title} = this.state.movie;
-
-    const {movies} = this.props;
-    return movies.reduce((similarMovies, movie) => {
-      if (movie.title === title) {
-        return similarMovies;
-      }
-      if (movie.genre === genre) {
-        similarMovies.push(movie);
-      }
-      return similarMovies;
-    }, []);
-  }
-
   _renderMainScreen() {
-    const {mainMovie, movies, genres} = this.props;
+    const {mainMovie, movies} = this.props;
 
     if (this.state.movie === null) {
       return (
         <MainScreen
-          mainMovie = {mainMovie}
-          movies = {movies}
-          genres = {genres}
           onMovieCardClick = {(movie) => {
             this.setState({movie});
           }}
@@ -90,6 +74,12 @@ export default class App extends PureComponent {
 App.propTypes = {
   mainMovie: PropTypes.object.isRequired,
   movies: PropTypes.array.isRequired,
-  genres: PropTypes.array.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+  mainMovie: state.mainMovie
+});
+
+export {App};
+export default connect(mapStateToProps)(App);
