@@ -17,7 +17,7 @@ export default class VideoPlayer extends PureComponent {
   }
 
   render() {
-    const {src, poster} = this.props;
+    const {src, poster, muted} = this.props;
 
     return (
       <video
@@ -26,7 +26,7 @@ export default class VideoPlayer extends PureComponent {
         height = "175"
         src = {src}
         loop = {true}
-        muted = {true}
+        muted = {muted}
         poster = {poster}
       >
       </video>
@@ -37,5 +37,6 @@ export default class VideoPlayer extends PureComponent {
 VideoPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   src: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired
+  poster: PropTypes.string.isRequired,
+  muted: PropTypes.bool.isRequired,
 };

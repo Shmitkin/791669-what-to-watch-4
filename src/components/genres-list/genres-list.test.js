@@ -16,7 +16,9 @@ it(`Should GenresList render correctly`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <GenresList />
+          <GenresList
+            onClick ={()=>{}}
+            activeTab ={`someTab`} />
         </Provider>
     )
     .toJSON();
