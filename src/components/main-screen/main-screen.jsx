@@ -15,7 +15,7 @@ import withActiveTab from "../../hocs/with-active-tab.jsx";
 
 const GenresListWrapped = withActiveTab(GenresList, DEFAULT_GENRE);
 
-export class MainScreen extends React.PureComponent {
+class MainScreen extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -86,4 +86,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
+export {MainScreen};
 export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);

@@ -5,33 +5,47 @@ exports[`Should GenresList render correctly 1`] = `
   className="catalog__genres-list"
 >
   <li
-    className="catalog__genres-item"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
       href="#"
+      onClick={[Function]}
     >
-      First
+      All genres
     </a>
   </li>
   <li
-    className="catalog__genres-item"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
       href="#"
+      onClick={[Function]}
     >
-      Second
+      genre
     </a>
   </li>
   <li
-    className="catalog__genres-item"
+    className="catalog__genres-item "
   >
     <a
       className="catalog__genres-link"
       href="#"
+      onClick={[Function]}
     >
-      Third
+      anotherGenre
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item "
+  >
+    <a
+      className="catalog__genres-link"
+      href="#"
+      onClick={[Function]}
+    >
+      megaGenre
     </a>
   </li>
 </ul>
