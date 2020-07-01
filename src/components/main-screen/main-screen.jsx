@@ -10,7 +10,7 @@ import MovieBackground from "../movie-background/movie-background.jsx";
 import {getMoviesWithGenre} from "../../selectors.js";
 import {DEFAULT_GENRE} from "../../consts.js";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/reducer.js";
 import withActiveTab from "../../hocs/with-active-tab.jsx";
 
 const GenresListWrapped = withActiveTab(GenresList, DEFAULT_GENRE);

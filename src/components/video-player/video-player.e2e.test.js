@@ -7,7 +7,7 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Video should play when isPlaying = true`, () => {
+it(`Video should play and stop when flag isPlaying changing`, () => {
 
   const playMock = jest
   .spyOn(window.HTMLMediaElement.prototype, `play`)

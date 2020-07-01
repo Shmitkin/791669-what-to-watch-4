@@ -13,12 +13,9 @@ import MovieReviews from "../movie-reviews/movie-reviews.jsx";
 import {MovieInfoTabs} from "../../consts.js";
 import {getMoviesWithGenre} from "../../selectors.js";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
-import withActiveTab from "../../hocs/with-active-tab.jsx";
+import {ActionCreator} from "../../reducer/reducer.js";
 
 const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
-
-const MovieInfoNavWrapped = withActiveTab(MovieInfoNav, DEFAULT_MOVIE_INFO_TAB);
 
 class MovieInfo extends React.PureComponent {
   constructor(props) {
@@ -70,7 +67,8 @@ class MovieInfo extends React.PureComponent {
   _onMovieCardClick(movie) {
     const {onMovieCardClick} = this.props;
     this.setState({
-      similarMovies: this._getSimilarMovies(movie.title, movie.genre)
+      similarMovies: this._getSimilarMovies(movie.title, movie.genre),
+      activeTab: DEFAULT_MOVIE_INFO_TAB
     });
     onMovieCardClick(movie);
 
@@ -100,8 +98,9 @@ class MovieInfo extends React.PureComponent {
                 movie = {movie}
               />
               <div className="movie-card__desc">
-                <MovieInfoNavWrapped
+                <MovieInfoNav
                   onClick = {this._tabClickHandler}
+                  activeTab = {this.state.activeTab}
                 />
                 {this._getTabInfo()}
               </div>
