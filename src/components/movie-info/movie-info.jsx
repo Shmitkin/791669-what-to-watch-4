@@ -10,30 +10,41 @@ import MovieInfoNav from "../movie-info-nav/movie-info-nav.jsx";
 import MovieInfoPoster from "../movie-info-poster/movie-info-poster.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import MovieReviews from "../movie-reviews/movie-reviews.jsx";
-import {MovieInfoTitles} from "../../consts.js";
+import {MovieInfoTabs} from "../../consts.js";
+import {getMoviesWithGenre} from "../../selectors.js";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
+import withActiveTab from "../../hocs/with-active-tab.jsx";
 
-export default class MovieInfo extends React.PureComponent {
+const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
+
+const MovieInfoNavWrapped = withActiveTab(MovieInfoNav, DEFAULT_MOVIE_INFO_TAB);
+
+class MovieInfo extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeTab: MovieInfoTitles.OVERVIEW
+      activeTab: DEFAULT_MOVIE_INFO_TAB,
+      similarMovies: this._getSimilarMovies(this.props.movie.title, this.props.movie.genre)
     };
 
     this._tabClickHandler = this._tabClickHandler.bind(this);
+    this._onMovieCardClick = this._onMovieCardClick.bind(this);
   }
 
-  _getTabInfo(movie) {
+  _getTabInfo() {
+    const {movie} = this.props;
     switch (this.state.activeTab) {
-      case MovieInfoTitles.OVERVIEW:
+      case MovieInfoTabs.OVERVIEW:
         return <MovieOverview
           movie = {movie}
         />;
-      case MovieInfoTitles.DETAILS:
+      case MovieInfoTabs.DETAILS:
         return <MovieDetails
           movie = {movie}
         />;
-      case MovieInfoTitles.REVIEWS:
+      case MovieInfoTabs.REVIEWS:
         return <MovieReviews
           movie = {movie}
         />;
@@ -50,8 +61,23 @@ export default class MovieInfo extends React.PureComponent {
     });
   }
 
+  _getSimilarMovies(movieTitle, genre) {
+    const {getMovieByGenre} = this.props;
+    const moviesWithSameGenre = getMovieByGenre(genre);
+    return moviesWithSameGenre.filter((movie) => movie.title !== movieTitle);
+  }
+
+  _onMovieCardClick(movie) {
+    const {onMovieCardClick} = this.props;
+    this.setState({
+      similarMovies: this._getSimilarMovies(movie.title, movie.genre)
+    });
+    onMovieCardClick(movie);
+
+  }
+
   render() {
-    const {movie, similarMovies, onMovieCardClick} = this.props;
+    const {movie} = this.props;
     return (
       <React.Fragment>
         <section className="movie-card movie-card--full">
@@ -74,11 +100,10 @@ export default class MovieInfo extends React.PureComponent {
                 movie = {movie}
               />
               <div className="movie-card__desc">
-                <MovieInfoNav
+                <MovieInfoNavWrapped
                   onClick = {this._tabClickHandler}
-                  activeTab = {this.state.activeTab}
                 />
-                {this._getTabInfo(movie)}
+                {this._getTabInfo()}
               </div>
             </div>
           </div>
@@ -88,13 +113,8 @@ export default class MovieInfo extends React.PureComponent {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
             <MovieCardsList
-              movies = {similarMovies}
-              onMovieCardClick = {(activeMovie) => {
-                onMovieCardClick(activeMovie);
-                this.setState({
-                  activeTab: MovieInfoTitles.OVERVIEW
-                });
-              }}
+              onMovieCardClick = {this._onMovieCardClick}
+              movies = {this.state.similarMovies}
             />
           </section>
           <PageFooter />
@@ -105,8 +125,22 @@ export default class MovieInfo extends React.PureComponent {
 }
 
 MovieInfo.propTypes = {
-  similarMovies: PropTypes.array.isRequired,
+  getMovieByGenre: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   movie: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  getMovieByGenre: (genre) => (getMoviesWithGenre(state.movies, genre)),
+  movie: state.activeMovie,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onMovieCardClick(movie) {
+    dispatch(ActionCreator.setActiveMovie(movie));
+  }
+});
+
+
+export {MovieInfo};
+export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

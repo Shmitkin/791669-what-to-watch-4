@@ -3,55 +3,27 @@ import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainScreen from "../main-screen/main-screen.jsx";
 import MovieInfo from "../movie-info/movie-info.jsx";
-import {MovieInfoTitles} from "../../consts.js";
-import {ActionCreator} from "../../reducer.js";
 import {connect} from "react-redux";
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      movie: null,
-    };
   }
 
   _renderMainScreen() {
-    const {mainMovie, movies} = this.props;
+    const {activeMovie} = this.props;
 
-    if (this.state.movie === null) {
+    if (activeMovie === null) {
       return (
-        <MainScreen
-          onMovieCardClick = {(movie) => {
-            this.setState({movie});
-          }}
-        />
+        <MainScreen />
       );
-    } else if (this.state.movie !== null) {
+    } else if (activeMovie !== null) {
       return (
-        <MovieInfo
-          movie = {this.state.movie}
-          activeTab = {MovieInfoTitles.OVERVIEW}
-          onMovieCardClick = {(movie) => {
-            this.setState({movie});
-          }}
-          similarMovies = {this._getSimilarMovies()}
-        />
+        <MovieInfo />
       );
     } else {
       return null;
     }
-  }
-
-  _renderMovieDetails() {
-    const {movies} = this.props;
-    return (
-      <MovieInfo
-        movie = {movies[0]}
-        similarMovies = {movies.slice(0, 4)}
-        onMovieCardClick = {() => {}}
-      />
-    );
   }
 
   render() {
@@ -62,7 +34,7 @@ class App extends PureComponent {
             {this._renderMainScreen()}
           </Route>
           <Route exact path="/movie">
-            {this._renderMovieDetails()}
+            <MovieInfo />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -74,11 +46,13 @@ class App extends PureComponent {
 App.propTypes = {
   mainMovie: PropTypes.object.isRequired,
   movies: PropTypes.array.isRequired,
+  activeMovie: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
   movies: state.movies,
-  mainMovie: state.mainMovie
+  mainMovie: state.mainMovie,
+  activeMovie: state.activeMovie,
 });
 
 export {App};

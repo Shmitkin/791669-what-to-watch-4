@@ -1,5 +1,6 @@
 export const films = [
   {
+    id: 1,
     title: `Mindhunter`,
     videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     preview: `img/mindhunter.jpg`,
@@ -35,6 +36,7 @@ export const films = [
     ]
   },
   {
+    id: 2,
     title: `Orlando`,
     videoPrev: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
     preview: `img/orlando.jpg`,
@@ -70,6 +72,7 @@ export const films = [
     ]
   },
   {
+    id: 3,
     title: `Dardjeeling Limited`,
     preview: `img/dardjeeling-limited.jpg`,
     poster: `img/dardjeeling-limited.jpg`,
@@ -105,6 +108,7 @@ export const films = [
     ]
   },
   {
+    id: 4,
     title: `Midnight Special`,
     preview: `img/midnight-special.jpg`,
     poster: `img/midnight-special.jpg`,
@@ -140,6 +144,7 @@ export const films = [
     ]
   },
   {
+    id: 5,
     title: `Seven Years IN Tibet`,
     preview: `img/seven-years-in-tibet.jpg`,
     poster: `img/seven-years-in-tibet.jpg`,
@@ -175,6 +180,7 @@ export const films = [
     ]
   },
   {
+    id: 6,
     title: `Moonrise Kingdom`,
     preview: `img/moonrise-kingdom.jpg`,
     poster: `img/moonrise-kingdom.jpg`,
@@ -210,6 +216,7 @@ export const films = [
     ]
   },
   {
+    id: 7,
     title: `Snatch`,
     preview: `img/snatch.jpg`,
     poster: `img/snatch.jpg`,
@@ -245,6 +252,7 @@ export const films = [
     ]
   },
   {
+    id: 8,
     title: `Pulp Fiction`,
     preview: `img/pulp-fiction.jpg`,
     poster: `img/pulp-fiction.jpg`,

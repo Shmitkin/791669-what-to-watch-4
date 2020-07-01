@@ -3,22 +3,19 @@ const extend = (a, b) => {
 };
 
 const initialState = {
-  currentGenre: `All genres`,
   movies: [],
   mainMovie: {},
+  activeMovie: null,
+
 };
 
 const ActionType = {
-  SET_GENRE: `SET_GENRE`,
   SET_MOVIES: `SET_MOVIES`,
   SET_MAIN_MOVIE: `SET_MAIN_MOVIE`,
+  SET_ACTIVE_MOVIE: `SET_ACTIVE_MOVIE`,
 };
 
 export const ActionCreator = {
-  setGenre: (genre) => ({
-    type: ActionType.SET_GENRE,
-    payload: genre
-  }),
 
   setMovies: (movies) => ({
     type: ActionType.SET_MOVIES,
@@ -29,14 +26,16 @@ export const ActionCreator = {
     type: ActionType.SET_MAIN_MOVIE,
     payload: movie,
   }),
+
+  setActiveMovie: (movie) => ({
+    type: ActionType.SET_ACTIVE_MOVIE,
+    payload: movie,
+  })
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.SET_GENRE:
-      return extend(state, {
-        currentGenre: action.payload,
-      });
+
     case ActionType.SET_MOVIES:
       return extend(state, {
         movies: action.payload,
@@ -44,6 +43,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_MAIN_MOVIE:
       return extend(state, {
         mainMovie: action.payload,
+      });
+
+    case ActionType.SET_ACTIVE_MOVIE:
+      return extend(state, {
+        activeMovie: action.payload,
       });
   }
   return state;

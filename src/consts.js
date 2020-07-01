@@ -6,7 +6,7 @@ export const MOVIE_RATING_TITLES = [
   {rating: 0, title: `Bad`},
 ];
 
-export const MovieInfoTitles = {
+export const MovieInfoTabs = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,
   REVIEWS: `Reviews`

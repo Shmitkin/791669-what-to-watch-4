@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function GenreItem({genre, currentGenre, onClick}) {
+export default function GenreItem({genre, activeTab, onClick}) {
 
   const addActiveClass = () => {
-    return genre === currentGenre ? `catalog__genres-item--active` : ``;
+    return genre === activeTab ? `catalog__genres-item--active` : ``;
   };
 
   return (
@@ -23,6 +23,6 @@ export default function GenreItem({genre, currentGenre, onClick}) {
 
 GenreItem.propTypes = {
   genre: PropTypes.string.isRequired,
-  currentGenre: PropTypes.string.isRequired,
+  activeTab: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
