@@ -13,3 +13,5 @@ export const MovieInfoTabs = {
 };
 
 export const DEFAULT_GENRE = `All genres`;
+
+export const SHOW_MORE_COUNT = 8;

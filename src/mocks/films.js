@@ -287,6 +287,78 @@ export const films = [
       },
     ]
   },
+  {
+    id: 9,
+    title: `Pulp Fiction`,
+    preview: `img/pulp-fiction.jpg`,
+    poster: `img/pulp-fiction.jpg`,
+    background: `img/pulp-fiction.jpg`,
+    genre: `Drama`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci. Donec cursus lectus auctor quam tempus ultricies. Nullam at aliquam massa. Donec mollis quis urna eget condimentum. Mauris at dictum ante. Phasellus maximus massa augue, ut luctus dolor rutrum et. Aliquam faucibus turpis lectus, sed hendrerit dolor malesuada at.`,
+    rating: 2.3,
+    votes: 293,
+    director: `Best Director`,
+    starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+    duration: 87,
+    videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    release: 2020,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(),
+      },
+    ]
+  },
+  {
+    id: 10,
+    title: `Pulp Fiction`,
+    preview: `img/pulp-fiction.jpg`,
+    poster: `img/pulp-fiction.jpg`,
+    background: `img/pulp-fiction.jpg`,
+    genre: `Drama`,
+    description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci. Donec cursus lectus auctor quam tempus ultricies. Nullam at aliquam massa. Donec mollis quis urna eget condimentum. Mauris at dictum ante. Phasellus maximus massa augue, ut luctus dolor rutrum et. Aliquam faucibus turpis lectus, sed hendrerit dolor malesuada at.`,
+    rating: 2.3,
+    votes: 293,
+    director: `Best Director`,
+    starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+    duration: 87,
+    videoPrev: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    release: 2020,
+    reviews: [
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Olegsey`,
+        rating: 8.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Mihail`,
+        rating: 3.4,
+        date: new Date(),
+      },
+      {
+        text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent varius quis lorem id iaculis. Sed eget luctus orci.`,
+        author: `Yuliiiiiya`,
+        rating: 5.2,
+        date: new Date(),
+      },
+    ]
+  },
 ];
 
 export const mainFilm = {

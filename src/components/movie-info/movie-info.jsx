@@ -23,7 +23,7 @@ class MovieInfo extends React.PureComponent {
 
     this.state = {
       activeTab: DEFAULT_MOVIE_INFO_TAB,
-      similarMovies: this._getSimilarMovies(this.props.movie.title, this.props.movie.genre)
+      similarMovies: this._getSimilarMovies(this.props.movie.id, this.props.movie.genre)
     };
 
     this._tabClickHandler = this._tabClickHandler.bind(this);
@@ -58,16 +58,16 @@ class MovieInfo extends React.PureComponent {
     });
   }
 
-  _getSimilarMovies(movieTitle, genre) {
+  _getSimilarMovies(id, genre) {
     const {getMovieByGenre} = this.props;
     const moviesWithSameGenre = getMovieByGenre(genre);
-    return moviesWithSameGenre.filter((movie) => movie.title !== movieTitle);
+    return moviesWithSameGenre.filter((movie) => movie.id !== id);
   }
 
   _onMovieCardClick(movie) {
     const {onMovieCardClick} = this.props;
     this.setState({
-      similarMovies: this._getSimilarMovies(movie.title, movie.genre),
+      similarMovies: this._getSimilarMovies(movie.id, movie.genre),
       activeTab: DEFAULT_MOVIE_INFO_TAB
     });
     onMovieCardClick(movie);

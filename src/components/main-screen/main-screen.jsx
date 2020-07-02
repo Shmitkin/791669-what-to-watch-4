@@ -8,7 +8,7 @@ import HeaderMovieInfo from "../header-movie-info/header-movie-info.jsx";
 import PageHeader from "../page-header/page-header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 import {getMoviesWithGenre} from "../../selectors.js";
-import {DEFAULT_GENRE} from "../../consts.js";
+import {DEFAULT_GENRE, SHOW_MORE_COUNT} from "../../consts.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/reducer.js";
 import withActiveTab from "../../hocs/with-active-tab.jsx";
@@ -21,9 +21,14 @@ class MainScreen extends React.PureComponent {
 
     this.state = {
       movies: this.props.getMoviesByGenre(DEFAULT_GENRE),
+      showingMoviesCount: SHOW_MORE_COUNT,
     };
 
     this._onGenreClickHandler = this._onGenreClickHandler.bind(this);
+  }
+
+  _isShowMoreButtonRequired() {
+    return this.state.movies.length > this.state.showingMoviesCount;
   }
 
   _onGenreClickHandler(genre) {
@@ -58,9 +63,13 @@ class MainScreen extends React.PureComponent {
             />
             <MovieCardsList
               onMovieCardClick = {onMovieCardClick}
-              movies={this.state.movies}
+              movies={this.state.movies.slice(0, this.state.showingMoviesCount)}
             />
-            <ShowMoreButton />
+            {this._isShowMoreButtonRequired() ? <ShowMoreButton onClick = {()=>{
+              this.setState({
+                showingMoviesCount: this.state.showingMoviesCount + SHOW_MORE_COUNT
+              });
+            }}/> : null}
           </section>
           <PageFooter />
         </div>
