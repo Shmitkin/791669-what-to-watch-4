@@ -20,10 +20,6 @@ export default function HeaderMovieInfo({movie, isMovieDetails}) {
 
 
 HeaderMovieInfo.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    release: PropTypes.number.isRequired,
-  }).isRequired,
+  movie: PropTypes.object.isRequired,
   isMovieDetails: PropTypes.bool.isRequired,
 };

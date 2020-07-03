@@ -7,6 +7,8 @@ it(`Should GenreItem render correctly`, () => {
     .create(
         <GenreItem
           genre = {`Strange Genre`}
+          activeTab = {`someTab`}
+          onClick = {()=> {}}
         />
     )
     .toJSON();

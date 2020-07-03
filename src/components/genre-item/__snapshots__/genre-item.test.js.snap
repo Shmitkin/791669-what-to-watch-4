@@ -2,11 +2,12 @@
 
 exports[`Should GenreItem render correctly 1`] = `
 <li
-  className="catalog__genres-item"
+  className="catalog__genres-item "
 >
   <a
     className="catalog__genres-link"
     href="#"
+    onClick={[Function]}
   >
     Strange Genre
   </a>

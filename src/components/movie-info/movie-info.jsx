@@ -10,30 +10,38 @@ import MovieInfoNav from "../movie-info-nav/movie-info-nav.jsx";
 import MovieInfoPoster from "../movie-info-poster/movie-info-poster.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import MovieReviews from "../movie-reviews/movie-reviews.jsx";
-import {MovieInfoTitles} from "../../consts.js";
+import {MovieInfoTabs} from "../../consts.js";
+import {getMoviesWithGenre} from "../../selectors.js";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer/reducer.js";
 
-export default class MovieInfo extends React.PureComponent {
+const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
+
+class MovieInfo extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      activeTab: MovieInfoTitles.OVERVIEW
+      activeTab: DEFAULT_MOVIE_INFO_TAB,
+      similarMovies: this._getSimilarMovies(this.props.movie.id, this.props.movie.genre)
     };
 
     this._tabClickHandler = this._tabClickHandler.bind(this);
+    this._onMovieCardClick = this._onMovieCardClick.bind(this);
   }
 
-  _getTabInfo(movie) {
+  _getTabInfo() {
+    const {movie} = this.props;
     switch (this.state.activeTab) {
-      case MovieInfoTitles.OVERVIEW:
+      case MovieInfoTabs.OVERVIEW:
         return <MovieOverview
           movie = {movie}
         />;
-      case MovieInfoTitles.DETAILS:
+      case MovieInfoTabs.DETAILS:
         return <MovieDetails
           movie = {movie}
         />;
-      case MovieInfoTitles.REVIEWS:
+      case MovieInfoTabs.REVIEWS:
         return <MovieReviews
           movie = {movie}
         />;
@@ -50,8 +58,24 @@ export default class MovieInfo extends React.PureComponent {
     });
   }
 
+  _getSimilarMovies(id, genre) {
+    const {getMovieByGenre} = this.props;
+    const moviesWithSameGenre = getMovieByGenre(genre);
+    return moviesWithSameGenre.filter((movie) => movie.id !== id);
+  }
+
+  _onMovieCardClick(movie) {
+    const {onMovieCardClick} = this.props;
+    this.setState({
+      similarMovies: this._getSimilarMovies(movie.id, movie.genre),
+      activeTab: DEFAULT_MOVIE_INFO_TAB
+    });
+    onMovieCardClick(movie);
+
+  }
+
   render() {
-    const {movie, similarMovies, onMovieCardClick} = this.props;
+    const {movie} = this.props;
     return (
       <React.Fragment>
         <section className="movie-card movie-card--full">
@@ -78,7 +102,7 @@ export default class MovieInfo extends React.PureComponent {
                   onClick = {this._tabClickHandler}
                   activeTab = {this.state.activeTab}
                 />
-                {this._getTabInfo(movie)}
+                {this._getTabInfo()}
               </div>
             </div>
           </div>
@@ -88,13 +112,8 @@ export default class MovieInfo extends React.PureComponent {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
             <MovieCardsList
-              movies = {similarMovies}
-              onMovieCardClick = {(activeMovie) => {
-                onMovieCardClick(activeMovie);
-                this.setState({
-                  activeTab: MovieInfoTitles.OVERVIEW
-                });
-              }}
+              onMovieCardClick = {this._onMovieCardClick}
+              movies = {this.state.similarMovies}
             />
           </section>
           <PageFooter />
@@ -105,8 +124,22 @@ export default class MovieInfo extends React.PureComponent {
 }
 
 MovieInfo.propTypes = {
-  similarMovies: PropTypes.array.isRequired,
+  getMovieByGenre: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   movie: PropTypes.object.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  getMovieByGenre: (genre) => (getMoviesWithGenre(state.movies, genre)),
+  movie: state.activeMovie,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onMovieCardClick(movie) {
+    dispatch(ActionCreator.setActiveMovie(movie));
+  }
+});
+
+
+export {MovieInfo};
+export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

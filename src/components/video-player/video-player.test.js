@@ -9,6 +9,7 @@ it(`Should VideoPlayer render correctly`, () => {
           src = {`src/src/src`}
           poster = {`img/someimage`}
           isPlaying = {true}
+          muted = {true}
         />
     )
     .toJSON();

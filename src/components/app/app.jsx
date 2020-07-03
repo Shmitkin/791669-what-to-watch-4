@@ -3,71 +3,27 @@ import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import MainScreen from "../main-screen/main-screen.jsx";
 import MovieInfo from "../movie-info/movie-info.jsx";
-import {MovieInfoTitles} from "../../consts.js";
+import {connect} from "react-redux";
 
-export default class App extends PureComponent {
+class App extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      movie: null
-    };
-  }
-
-  _getSimilarMovies() {
-    const {genre, title} = this.state.movie;
-
-    const {movies} = this.props;
-    return movies.reduce((similarMovies, movie) => {
-      if (movie.title === title) {
-        return similarMovies;
-      }
-      if (movie.genre === genre) {
-        similarMovies.push(movie);
-      }
-      return similarMovies;
-    }, []);
   }
 
   _renderMainScreen() {
-    const {mainMovie, movies, genres} = this.props;
+    const {activeMovie} = this.props;
 
-    if (this.state.movie === null) {
+    if (activeMovie === null) {
       return (
-        <MainScreen
-          mainMovie = {mainMovie}
-          movies = {movies}
-          genres = {genres}
-          onMovieCardClick = {(movie) => {
-            this.setState({movie});
-          }}
-        />
+        <MainScreen />
       );
-    } else if (this.state.movie !== null) {
+    } else if (activeMovie !== null) {
       return (
-        <MovieInfo
-          movie = {this.state.movie}
-          activeTab = {MovieInfoTitles.OVERVIEW}
-          onMovieCardClick = {(movie) => {
-            this.setState({movie});
-          }}
-          similarMovies = {this._getSimilarMovies()}
-        />
+        <MovieInfo />
       );
     } else {
       return null;
     }
-  }
-
-  _renderMovieDetails() {
-    const {movies} = this.props;
-    return (
-      <MovieInfo
-        movie = {movies[0]}
-        similarMovies = {movies.slice(0, 4)}
-        onMovieCardClick = {() => {}}
-      />
-    );
   }
 
   render() {
@@ -78,7 +34,7 @@ export default class App extends PureComponent {
             {this._renderMainScreen()}
           </Route>
           <Route exact path="/movie">
-            {this._renderMovieDetails()}
+            <MovieInfo />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -90,6 +46,14 @@ export default class App extends PureComponent {
 App.propTypes = {
   mainMovie: PropTypes.object.isRequired,
   movies: PropTypes.array.isRequired,
-  genres: PropTypes.array.isRequired,
+  activeMovie: PropTypes.object,
 };
 
+const mapStateToProps = (state) => ({
+  movies: state.movies,
+  mainMovie: state.mainMovie,
+  activeMovie: state.activeMovie,
+});
+
+export {App};
+export default connect(mapStateToProps)(App);

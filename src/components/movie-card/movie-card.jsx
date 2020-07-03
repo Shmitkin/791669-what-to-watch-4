@@ -26,6 +26,7 @@ export default class MovieCard extends React.PureComponent {
             src = {videoPrev}
             poster = {preview}
             isPlaying = {isPlaying}
+            muted = {true}
           />
 
         </div>

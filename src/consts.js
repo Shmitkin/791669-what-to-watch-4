@@ -6,8 +6,12 @@ export const MOVIE_RATING_TITLES = [
   {rating: 0, title: `Bad`},
 ];
 
-export const MovieInfoTitles = {
+export const MovieInfoTabs = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,
   REVIEWS: `Reviews`
 };
+
+export const DEFAULT_GENRE = `All genres`;
+
+export const SHOW_MORE_COUNT = 8;

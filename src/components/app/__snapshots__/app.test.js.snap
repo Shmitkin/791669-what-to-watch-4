@@ -154,53 +154,47 @@ Array [
         className="catalog__genres-list"
       >
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item catalog__genres-item--active"
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
-            First
+            All genres
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
-            Second
+            Family
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
-            Third
+            Horror
           </a>
         </li>
         <li
-          className="catalog__genres-item"
+          className="catalog__genres-item "
         >
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
-            Fourth
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-          >
-            Fifth
+            Comedy
           </a>
         </li>
       </ul>
@@ -294,16 +288,6 @@ Array [
             </a>
           </h3>
         </article>
-      </div>
-      <div
-        className="catalog__more"
-      >
-        <button
-          className="catalog__button"
-          type="button"
-        >
-          Show more
-        </button>
       </div>
     </section>
     <footer
