@@ -7,7 +7,7 @@ exports[`Should MovieInfoPoster render correctly 1`] = `
   <img
     alt="Pulp Fiction poster"
     height="327"
-    src="img/pulp-fiction.jpg"
+    src="../img/pulp-fiction.jpg"
     width="218"
   />
 </div>

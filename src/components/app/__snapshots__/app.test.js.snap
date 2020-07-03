@@ -10,7 +10,7 @@ Array [
     >
       <img
         alt="Pulp Fiction"
-        src="img/pulp-fiction.jpg"
+        src="../img/pulp-fiction.jpg"
       />
     </div>
     <h1
@@ -26,6 +26,8 @@ Array [
       >
         <a
           className="logo__link"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -47,16 +49,13 @@ Array [
       <div
         className="user-block"
       >
-        <div
-          className="user-block__avatar"
+        <a
+          className="user-block__link"
+          href="/login"
+          onClick={[Function]}
         >
-          <img
-            alt="User avatar"
-            height="63"
-            src="img/avatar.jpg"
-            width="63"
-          />
-        </div>
+          Sign in
+        </a>
       </div>
     </header>
     <div
@@ -203,90 +202,90 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            className="small-movie-card__link"
+            href="/films/2323"
+            onClick={[Function]}
           >
-            <video
-              height="175"
-              loop={true}
-              muted={true}
-              poster="img/seven-years-in-tibet.jpg"
-              src="img/seven-years-in-tibet.mp4"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                loop={true}
+                muted={true}
+                poster="img/seven-years-in-tibet.jpg"
+                src="img/seven-years-in-tibet.mp4"
+                width="280"
+              />
+            </div>
+            <h3
+              className="small-movie-card__title"
             >
               Seven Years IN Tibet
-            </a>
-          </h3>
+            </h3>
+          </a>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            className="small-movie-card__link"
+            href="/films/2341"
+            onClick={[Function]}
           >
-            <video
-              height="175"
-              loop={true}
-              muted={true}
-              poster="img/moonrise-kingdom.jpg"
-              src="img/seven-years-in-tibet.mp4"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                loop={true}
+                muted={true}
+                poster="img/moonrise-kingdom.jpg"
+                src="img/seven-years-in-tibet.mp4"
+                width="280"
+              />
+            </div>
+            <h3
+              className="small-movie-card__title"
             >
               Moonrise Kingdom
-            </a>
-          </h3>
+            </h3>
+          </a>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          <div
-            className="small-movie-card__image"
+          <a
+            className="small-movie-card__link"
+            href="/films/2233"
+            onClick={[Function]}
           >
-            <video
-              height="175"
-              loop={true}
-              muted={true}
-              poster="img/snatch.jpg"
-              src="img/seven-years-in-tibet.mp4"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                loop={true}
+                muted={true}
+                poster="img/snatch.jpg"
+                src="img/seven-years-in-tibet.mp4"
+                width="280"
+              />
+            </div>
+            <h3
+              className="small-movie-card__title"
             >
               Snatch
-            </a>
-          </h3>
+            </h3>
+          </a>
         </article>
       </div>
     </section>

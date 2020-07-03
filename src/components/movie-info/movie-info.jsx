@@ -14,6 +14,7 @@ import {MovieInfoTabs} from "../../consts.js";
 import {getMoviesWithGenre} from "../../selectors.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/reducer.js";
+import UserBlock from "../user-block/user-block.jsx";
 
 const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
 
@@ -84,7 +85,9 @@ class MovieInfo extends React.PureComponent {
               movie = {movie}
             />
             <h1 className="visually-hidden">WTW</h1>
-            <PageHeader />
+            <PageHeader extraClass={`movie-card__head`}>
+              <UserBlock />
+            </PageHeader>
             <div className="movie-card__wrap">
               <MovieDescription
                 movie = {movie}

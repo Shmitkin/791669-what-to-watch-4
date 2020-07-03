@@ -14,6 +14,7 @@ it(`Should App render correctly`, () => {
     activeMovie: null,
     movies,
     mainMovie: movie,
+    isUserAuth: false,
   });
 
   const tree = renderer

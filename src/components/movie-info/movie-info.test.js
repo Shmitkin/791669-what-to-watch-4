@@ -4,6 +4,7 @@ import MovieInfo from "./movie-info.jsx";
 import {movies, movie} from "../../test-state.js";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
+import {BrowserRouter as Router} from 'react-router-dom';
 
 const mockStore = configureStore([]);
 
@@ -11,14 +12,18 @@ it(`Should MovieInfo render correctly`, () => {
 
   const store = mockStore({
     activeMovie: movie,
-    movies
+    movies,
+    isUserAuth: true,
   });
 
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <MovieInfo />
-        </Provider>
+        <Router>
+          <Provider store={store}>
+            <MovieInfo />
+          </Provider>
+        </Router>
+
     )
     .toJSON();
 

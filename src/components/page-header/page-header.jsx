@@ -1,11 +1,11 @@
 import React from "react";
-import UserBlock from "../user-block/user-block.jsx";
+import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
-export default function PageHeader() {
-
+export default function PageHeader(props) {
+  const {children, extraClass} = props;
   return (
-    <header className="page-header movie-card__head">
+    <header className={`page-header ${extraClass}`}>
       <div className="logo">
         <Link to="/" className="logo__link">
           <span className="logo__letter logo__letter--1">W</span>
@@ -13,8 +13,12 @@ export default function PageHeader() {
           <span className="logo__letter logo__letter--3">W</span>
         </Link>
       </div>
-      <UserBlock />
+      {children}
     </header>
   );
 }
 
+PageHeader.propTypes = {
+  children: PropTypes.node,
+  extraClass: PropTypes.string,
+};
