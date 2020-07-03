@@ -6,7 +6,6 @@ const initialState = {
   movies: [],
   mainMovie: {},
   activeMovie: null,
-
 };
 
 const ActionType = {

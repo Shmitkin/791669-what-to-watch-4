@@ -35,6 +35,7 @@ class MainScreen extends React.PureComponent {
     const {getMoviesByGenre} = this.props;
     this.setState({
       movies: getMoviesByGenre(genre),
+      showingMoviesCount: SHOW_MORE_COUNT,
     });
   }
 
