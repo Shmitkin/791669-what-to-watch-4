@@ -6,6 +6,7 @@ const initialState = {
   movies: [],
   mainMovie: {},
   activeMovie: null,
+  isUserAuth: false,
 };
 
 const ActionType = {
