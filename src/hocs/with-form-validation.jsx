@@ -3,6 +3,17 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../reducer/reducer";
 
+const InputType = {
+  EMAIL: `email`,
+  PASSWORD: `password`,
+};
+
+const ErrorMessage = {
+  ALL: `Please enter a valid email address and your password`,
+  EMAIL: `Please enter a valid email address`,
+  PASSWORD: `Please enter your password`,
+};
+
 export default function withFormValidation(Component) {
   class WithFormValidation extends PureComponent {
     constructor(props) {
@@ -38,19 +49,19 @@ export default function withFormValidation(Component) {
     _checkValidity(emailValidity, passValidity) {
       if (!emailValidity && !passValidity) {
         this.setState({
-          errorMessage: `Please enter a valid email address and your password`,
+          errorMessage: ErrorMessage.ALL,
           emailValidity: false,
           passValidity: false,
         });
       } else if (!emailValidity) {
         this.setState({
-          errorMessage: `Please enter a valid email address`,
+          errorMessage: ErrorMessage.EMAIL,
           emailValidity: false,
           passValidity: true,
         });
       } else if (!passValidity) {
         this.setState({
-          errorMessage: `Please enter your password`,
+          errorMessage: ErrorMessage.PASSWORD,
           emailValidity: true,
           passValidity: false,
         });
@@ -65,10 +76,10 @@ export default function withFormValidation(Component) {
 
     _onFormChange(target) {
       switch (target.type) {
-        case `email`:
+        case InputType.EMAIL:
           this._email = target.value;
           break;
-        case `password`:
+        case InputType.PASSWORD:
           this._pass = target.value;
           break;
       }
@@ -76,20 +87,18 @@ export default function withFormValidation(Component) {
 
     _onInputFocus(target) {
       switch (target.type) {
-        case `email`:
+        case InputType.EMAIL:
           this.setState({
             emailValidity: true
           });
           break;
-        case `password`:
+        case InputType.PASSWORD:
           this.setState({
             passValidity: true
           });
           break;
       }
-
     }
-
 
     _onFormSubmit(evt) {
       evt.preventDefault();
@@ -126,6 +135,4 @@ export default function withFormValidation(Component) {
   });
 
   return connect(null, mapDispatchToProps)(WithFormValidation);
-
-
 }
