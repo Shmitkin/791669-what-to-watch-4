@@ -5,7 +5,7 @@ export default function MovieInfoPoster({movie}) {
 
   return (
     <div className="movie-card__poster movie-card__poster--big">
-      <img src = {movie.poster} alt = {`${movie.title} poster`} width="218" height="327" />
+      <img src = {`../${movie.poster}`} alt = {`${movie.title} poster`} width="218" height="327" />
     </div>
   );
 }

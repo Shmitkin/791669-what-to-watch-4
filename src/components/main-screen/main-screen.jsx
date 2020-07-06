@@ -12,6 +12,7 @@ import {DEFAULT_GENRE, SHOW_MORE_COUNT} from "../../consts.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/reducer.js";
 import withActiveTab from "../../hocs/with-active-tab.jsx";
+import UserBlock from "../user-block/user-block.jsx";
 
 const GenresListWrapped = withActiveTab(GenresList, DEFAULT_GENRE);
 
@@ -48,7 +49,10 @@ class MainScreen extends React.PureComponent {
             movie = {mainMovie}
           />
           <h1 className="visually-hidden">WTW</h1>
-          <PageHeader />
+          <PageHeader extraClass={`movie-card__head`}>
+            <UserBlock />
+          </PageHeader>
+
           <div className="movie-card__wrap">
             <HeaderMovieInfo
               movie = {mainMovie}

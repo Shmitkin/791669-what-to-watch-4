@@ -6,12 +6,14 @@ const initialState = {
   movies: [],
   mainMovie: {},
   activeMovie: null,
+  isUserAuth: false,
 };
 
 const ActionType = {
   SET_MOVIES: `SET_MOVIES`,
   SET_MAIN_MOVIE: `SET_MAIN_MOVIE`,
   SET_ACTIVE_MOVIE: `SET_ACTIVE_MOVIE`,
+  SET_USER_AUTH: `SET_USER_AUTH`,
 };
 
 export const ActionCreator = {
@@ -29,7 +31,12 @@ export const ActionCreator = {
   setActiveMovie: (movie) => ({
     type: ActionType.SET_ACTIVE_MOVIE,
     payload: movie,
-  })
+  }),
+
+  setUserAuth: () => ({
+    type: ActionType.SET_USER_AUTH,
+    payload: true,
+  }),
 };
 
 const reducer = (state = initialState, action) => {
@@ -43,10 +50,13 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         mainMovie: action.payload,
       });
-
     case ActionType.SET_ACTIVE_MOVIE:
       return extend(state, {
         activeMovie: action.payload,
+      });
+    case ActionType.SET_USER_AUTH:
+      return extend(state, {
+        isUserAuth: action.payload
       });
   }
   return state;

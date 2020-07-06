@@ -13,7 +13,7 @@ Array [
       >
         <img
           alt="Pulp Fiction"
-          src="img/pulp-fiction.jpg"
+          src="../img/pulp-fiction.jpg"
         />
       </div>
       <h1
@@ -29,6 +29,8 @@ Array [
         >
           <a
             className="logo__link"
+            href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -146,7 +148,7 @@ Array [
           <img
             alt="Pulp Fiction poster"
             height="327"
-            src="img/pulp-fiction.jpg"
+            src="../img/pulp-fiction.jpg"
             width="218"
           />
         </div>

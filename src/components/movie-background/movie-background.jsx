@@ -6,7 +6,7 @@ export default function MovieBackground({movie}) {
 
   return (
     <div className="movie-card__bg">
-      <img src={movie.background} alt={movie.title} />
+      <img src={`../${movie.background}`} alt={movie.title} />
     </div>
   );
 }
