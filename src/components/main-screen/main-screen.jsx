@@ -40,7 +40,7 @@ class MainScreen extends React.PureComponent {
   }
 
   render() {
-    const {mainMovie, onMovieCardClick, activeTab} = this.props;
+    const {mainMovie, activeTab} = this.props;
     const movies = this._getMovies();
     return (
       <React.Fragment>
@@ -68,7 +68,6 @@ class MainScreen extends React.PureComponent {
               onTabClick={this._onGenreClickHandler}
             />
             <MovieCardsList
-              onMovieCardClick = {onMovieCardClick}
               movies={movies}
             />
             {this._renderShowMoreButton()}
@@ -83,7 +82,6 @@ class MainScreen extends React.PureComponent {
 MainScreen.propTypes = {
   mainMovie: PropTypes.object.isRequired,
   getMoviesByGenre: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired,
   showingMoviesCount: PropTypes.number.isRequired,
@@ -98,9 +96,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onMovieCardClick(movie) {
-    dispatch(ActionCreator.setActiveMovie(movie));
-  },
   onGenreClick() {
     dispatch(ActionCreator.resetMoviesShowingCount());
   },

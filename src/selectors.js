@@ -16,3 +16,8 @@ export const getMoviesWithGenre = (movies, genre) => {
   }
 };
 
+export const getMovieById = (movies, id) => {
+  const [movieById] = movies.filter((movie) => movie.id.toString() === id);
+  return movieById;
+};
+

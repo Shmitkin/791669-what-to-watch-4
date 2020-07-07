@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 // import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, BrowserRouter, withRouter} from "react-router-dom";
 import MainScreen from "../main-screen/main-screen.jsx";
 import MovieInfo from "../movie-info/movie-info.jsx";
 // import {connect} from "react-redux";
@@ -26,7 +26,7 @@ class App extends PureComponent {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={MainScreenWrapped} />
-          <Route exact path="/films/:id" component={MovieInfoWrapped} />
+          <Route exact path="/films/:id" component={withRouter(MovieInfoWrapped)} />
           <Route exact path="/login" component={SignInPage} />
         </Switch>
       </BrowserRouter>

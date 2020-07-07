@@ -11,9 +11,8 @@ import MovieInfoPoster from "../movie-info-poster/movie-info-poster.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import MovieReviews from "../movie-reviews/movie-reviews.jsx";
 import {MovieInfoTabs} from "../../consts.js";
-import {getMoviesWithGenre} from "../../selectors.js";
+import {getMoviesWithGenre, getMovieById} from "../../selectors.js";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/reducer.js";
 import UserBlock from "../user-block/user-block.jsx";
 
 
@@ -23,7 +22,8 @@ class MovieInfo extends React.PureComponent {
   }
 
   _getTabInfo() {
-    const {movie, activeTab} = this.props;
+    const {activeTab, getMovie, match} = this.props;
+    const movie = getMovie(match.params.id);
     switch (activeTab) {
       case MovieInfoTabs.OVERVIEW:
         return <MovieOverview
@@ -45,13 +45,14 @@ class MovieInfo extends React.PureComponent {
   }
 
   _getSimilarMovies(id, genre) {
-    const {getMovieByGenre} = this.props;
-    const moviesWithSameGenre = getMovieByGenre(genre);
+    const {getMoviesByGenre} = this.props;
+    const moviesWithSameGenre = getMoviesByGenre(genre);
     return moviesWithSameGenre.filter((movie) => movie.id !== id);
   }
 
   render() {
-    const {movie, onTabClick, activeTab, onMovieCardClick} = this.props;
+    const {getMovie, onTabClick, activeTab, match} = this.props;
+    const movie = getMovie(match.params.id);
     return (
       <React.Fragment>
         <section className="movie-card movie-card--full">
@@ -90,7 +91,6 @@ class MovieInfo extends React.PureComponent {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
             <MovieCardsList
-              onMovieCardClick = {onMovieCardClick}
               movies = {this._getSimilarMovies(movie.id, movie.genre)}
             />
           </section>
@@ -102,24 +102,18 @@ class MovieInfo extends React.PureComponent {
 }
 
 MovieInfo.propTypes = {
-  getMovieByGenre: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
-  movie: PropTypes.object.isRequired,
+  getMoviesByGenre: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired,
+  getMovie: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  getMovieByGenre: (genre) => (getMoviesWithGenre(state.movies, genre)),
+  getMoviesByGenre: (genre) => (getMoviesWithGenre(state.movies, genre)),
   movie: state.activeMovie,
+  getMovie: (id) => (getMovieById(state.movies, id)),
 });
-
-const mapDispatchToProps = (dispatch) => ({
-  onMovieCardClick(movie) {
-    dispatch(ActionCreator.setActiveMovie(movie));
-  }
-});
-
 
 export {MovieInfo};
-export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);
+export default connect(mapStateToProps)(MovieInfo);
