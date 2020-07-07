@@ -17,14 +17,13 @@ export default function withActiveTab(Component, activeTab) {
       this.setState({
         activeTab: tabTitle
       });
-      this.props.onClick(tabTitle);
     }
 
     render() {
       return (
         <Component
           {...this.props}
-          onClick = {this._onTabClick}
+          onTabClick = {this._onTabClick}
           activeTab = {this.state.activeTab}
         />
       );
@@ -32,7 +31,7 @@ export default function withActiveTab(Component, activeTab) {
   }
 
   WithActiveTab.propTypes = {
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
   };
 
   return WithActiveTab;

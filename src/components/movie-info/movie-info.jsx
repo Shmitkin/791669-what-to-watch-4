@@ -16,24 +16,15 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/reducer.js";
 import UserBlock from "../user-block/user-block.jsx";
 
-const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
 
 class MovieInfo extends React.PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      activeTab: DEFAULT_MOVIE_INFO_TAB,
-      similarMovies: this._getSimilarMovies(this.props.movie.id, this.props.movie.genre)
-    };
-
-    this._tabClickHandler = this._tabClickHandler.bind(this);
-    this._onMovieCardClick = this._onMovieCardClick.bind(this);
   }
 
   _getTabInfo() {
-    const {movie} = this.props;
-    switch (this.state.activeTab) {
+    const {movie, activeTab} = this.props;
+    switch (activeTab) {
       case MovieInfoTabs.OVERVIEW:
         return <MovieOverview
           movie = {movie}
@@ -53,30 +44,14 @@ class MovieInfo extends React.PureComponent {
     }
   }
 
-  _tabClickHandler(activeTab) {
-    this.setState({
-      activeTab
-    });
-  }
-
   _getSimilarMovies(id, genre) {
     const {getMovieByGenre} = this.props;
     const moviesWithSameGenre = getMovieByGenre(genre);
     return moviesWithSameGenre.filter((movie) => movie.id !== id);
   }
 
-  _onMovieCardClick(movie) {
-    const {onMovieCardClick} = this.props;
-    this.setState({
-      similarMovies: this._getSimilarMovies(movie.id, movie.genre),
-      activeTab: DEFAULT_MOVIE_INFO_TAB
-    });
-    onMovieCardClick(movie);
-
-  }
-
   render() {
-    const {movie} = this.props;
+    const {movie, onTabClick, activeTab, onMovieCardClick} = this.props;
     return (
       <React.Fragment>
         <section className="movie-card movie-card--full">
@@ -102,8 +77,8 @@ class MovieInfo extends React.PureComponent {
               />
               <div className="movie-card__desc">
                 <MovieInfoNav
-                  onClick = {this._tabClickHandler}
-                  activeTab = {this.state.activeTab}
+                  onClick = {onTabClick}
+                  activeTab = {activeTab}
                 />
                 {this._getTabInfo()}
               </div>
@@ -115,8 +90,8 @@ class MovieInfo extends React.PureComponent {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
             <MovieCardsList
-              onMovieCardClick = {this._onMovieCardClick}
-              movies = {this.state.similarMovies}
+              onMovieCardClick = {onMovieCardClick}
+              movies = {this._getSimilarMovies(movie.id, movie.genre)}
             />
           </section>
           <PageFooter />
@@ -130,6 +105,8 @@ MovieInfo.propTypes = {
   getMovieByGenre: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   movie: PropTypes.object.isRequired,
+  activeTab: PropTypes.string.isRequired,
+  onTabClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
