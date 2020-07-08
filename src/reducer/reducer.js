@@ -1,3 +1,5 @@
+import MovieModel from "../models/movie.js";
+
 const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
@@ -47,6 +49,15 @@ export const ActionCreator = {
   }),
 };
 
+const Operation = {
+  loadMovies: () => (dispatch, getState, api) => {
+    return api.get(`/films`)
+      .then((response) => {
+        dispatch(ActionCreator.setMovies(MovieModel.parseMovies(response.data)));
+      });
+  },
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
 
@@ -75,4 +86,4 @@ const reducer = (state = initialState, action) => {
 };
 
 
-export {reducer, ActionType};
+export {reducer, ActionType, Operation};
