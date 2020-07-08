@@ -9,16 +9,14 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
-it(`Movie Card should call every handler for 1 time when it hovered, unhovered and clicked`, () => {
+it(`Movie Card should call every handler for 1 time when it hovered and unhovered`, () => {
 
   const testState = {
     movie,
     title: `Stranger Things`,
     preview: `img/stranger-thisngs.jpg`,
-    emptyString: ``,
     hoverHandler: jest.fn(() => {}),
     unhoverHandler: jest.fn(() => {}),
-    clickHandler: jest.fn(() => {}),
   };
 
   const movieCard = mount(
@@ -28,7 +26,6 @@ it(`Movie Card should call every handler for 1 time when it hovered, unhovered a
           movie = {testState.movie}
           onHover = {testState.hoverHandler}
           onUnhover = {testState.unhoverHandler}
-          onClick = {testState.clickHandler}
         />
       </Router>
   );
@@ -36,9 +33,7 @@ it(`Movie Card should call every handler for 1 time when it hovered, unhovered a
 
   movieCard.simulate(`mouseenter`);
   movieCard.simulate(`mouseleave`);
-  movieCard.find(`.small-movie-card__link`).at(0).simulate(`click`);
 
   expect(testState.hoverHandler.mock.calls.length).toBe(1);
   expect(testState.unhoverHandler.mock.calls.length).toBe(1);
-  expect(testState.clickHandler.mock.calls.length).toBe(1);
 });

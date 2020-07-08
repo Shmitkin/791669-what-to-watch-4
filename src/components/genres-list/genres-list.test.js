@@ -17,7 +17,7 @@ it(`Should GenresList render correctly`, () => {
     .create(
         <Provider store={store}>
           <GenresList
-            onClick ={()=>{}}
+            onTabClick ={()=>{}}
             activeTab ={`someTab`} />
         </Provider>
     )

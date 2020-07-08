@@ -11,7 +11,7 @@ const mockStore = configureStore([]);
 it(`Should App render correctly`, () => {
 
   const store = mockStore({
-    activeMovie: null,
+    showingMoviesCount: 8,
     movies,
     mainMovie: movie,
     isUserAuth: false,

@@ -10,17 +10,20 @@ const mockStore = configureStore([]);
 
 it(`Should MainScreen render correctly`, () => {
   const store = mockStore({
-    activeMovie: movie,
     movies,
     mainMovie: movie,
     isUserAuth: true,
+    showingMoviesCount: 8,
   });
 
   const tree = renderer
     .create(
         <Router>
           <Provider store = {store}>
-            <MainScreen />
+            <MainScreen
+              activeTab={`tabActive`}
+              onTabClick={()=>{}}
+            />
           </Provider>
         </Router>
 
