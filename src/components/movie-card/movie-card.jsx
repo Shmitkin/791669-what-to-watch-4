@@ -9,7 +9,7 @@ export default class MovieCard extends React.PureComponent {
   }
 
   render() {
-    const {onHover, onUnhover, onClick, isPlaying, movie} = this.props;
+    const {onHover, onUnhover, isPlaying, movie} = this.props;
     const {title, preview, videoPrev, id} = movie;
     return (
       <article
@@ -19,9 +19,6 @@ export default class MovieCard extends React.PureComponent {
       >
         <Link to={`/films/${id}`}
           className="small-movie-card__link"
-          onClick = {() => {
-            onClick(movie);
-          }}
         >
           <div className="small-movie-card__image">
 
@@ -49,6 +46,5 @@ MovieCard.propTypes = {
   }).isRequired,
   onHover: PropTypes.func.isRequired,
   onUnhover: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
   isPlaying: PropTypes.bool.isRequired,
 };

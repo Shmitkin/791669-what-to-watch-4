@@ -4,7 +4,7 @@ import GenreItem from "../genre-item/genre-item.jsx";
 import {connect} from "react-redux";
 import {getGenres} from "../../selectors.js";
 
-function GenresList({genres, activeTab, onClick}) {
+function GenresList({genres, activeTab, onTabClick}) {
 
   return (
     <ul className="catalog__genres-list">
@@ -12,7 +12,7 @@ function GenresList({genres, activeTab, onClick}) {
         <GenreItem
           key = {`${index}-${genre}`}
           genre = {genre}
-          onClick = {onClick}
+          onClick = {onTabClick}
           activeTab = {activeTab}
         />
       )}
@@ -23,7 +23,7 @@ function GenresList({genres, activeTab, onClick}) {
 
 GenresList.propTypes = {
   genres: PropTypes.array.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onTabClick: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
 };
 

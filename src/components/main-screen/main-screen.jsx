@@ -8,40 +8,40 @@ import HeaderMovieInfo from "../header-movie-info/header-movie-info.jsx";
 import PageHeader from "../page-header/page-header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 import {getMoviesWithGenre} from "../../selectors.js";
-import {DEFAULT_GENRE, SHOW_MORE_COUNT} from "../../consts.js";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/reducer.js";
-import withActiveTab from "../../hocs/with-active-tab.jsx";
 import UserBlock from "../user-block/user-block.jsx";
 
-const GenresListWrapped = withActiveTab(GenresList, DEFAULT_GENRE);
 
 class MainScreen extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.state = {
-      movies: this.props.getMoviesByGenre(DEFAULT_GENRE),
-      showingMoviesCount: SHOW_MORE_COUNT,
-    };
-
     this._onGenreClickHandler = this._onGenreClickHandler.bind(this);
   }
 
-  _isShowMoreButtonRequired() {
-    return this.state.movies.length > this.state.showingMoviesCount;
+  _onGenreClickHandler(genre) {
+    const {onGenreClick, onTabClick} = this.props;
+    onGenreClick();
+    onTabClick(genre);
   }
 
-  _onGenreClickHandler(genre) {
-    const {getMoviesByGenre} = this.props;
-    this.setState({
-      movies: getMoviesByGenre(genre),
-      showingMoviesCount: SHOW_MORE_COUNT,
-    });
+  _getMovies() {
+    const {getMoviesByGenre, showingMoviesCount, activeTab} = this.props;
+    return getMoviesByGenre(activeTab).slice(0, showingMoviesCount);
+  }
+
+  _renderShowMoreButton() {
+    const {showingMoviesCount, onShowMoreButtonCLick} = this.props;
+    const movies = this._getMovies();
+
+    return movies.length >= showingMoviesCount ?
+      <ShowMoreButton onClick = {onShowMoreButtonCLick}/> : null;
   }
 
   render() {
-    const {mainMovie, onMovieCardClick} = this.props;
+    const {mainMovie, activeTab} = this.props;
+    const movies = this._getMovies();
     return (
       <React.Fragment>
         <section className="movie-card">
@@ -63,18 +63,14 @@ class MainScreen extends React.PureComponent {
         <div className="page-content">
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
-            <GenresListWrapped
-              onClick = {this._onGenreClickHandler}
+            <GenresList
+              activeTab={activeTab}
+              onTabClick={this._onGenreClickHandler}
             />
             <MovieCardsList
-              onMovieCardClick = {onMovieCardClick}
-              movies={this.state.movies.slice(0, this.state.showingMoviesCount)}
+              movies={movies}
             />
-            {this._isShowMoreButtonRequired() ? <ShowMoreButton onClick = {()=>{
-              this.setState({
-                showingMoviesCount: this.state.showingMoviesCount + SHOW_MORE_COUNT
-              });
-            }}/> : null}
+            {this._renderShowMoreButton()}
           </section>
           <PageFooter />
         </div>
@@ -86,17 +82,25 @@ class MainScreen extends React.PureComponent {
 MainScreen.propTypes = {
   mainMovie: PropTypes.object.isRequired,
   getMoviesByGenre: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
+  activeTab: PropTypes.string.isRequired,
+  onTabClick: PropTypes.func.isRequired,
+  showingMoviesCount: PropTypes.number.isRequired,
+  onShowMoreButtonCLick: PropTypes.func.isRequired,
+  onGenreClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   mainMovie: state.mainMovie,
-  getMoviesByGenre: (genre) => (getMoviesWithGenre(state.movies, genre))
+  getMoviesByGenre: (genre) => (getMoviesWithGenre(state.movies, genre)),
+  showingMoviesCount: state.showingMoviesCount,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onMovieCardClick(movie) {
-    dispatch(ActionCreator.setActiveMovie(movie));
+  onGenreClick() {
+    dispatch(ActionCreator.resetMoviesShowingCount());
+  },
+  onShowMoreButtonCLick() {
+    dispatch(ActionCreator.increaseMoviesShowingCount());
   }
 });
 

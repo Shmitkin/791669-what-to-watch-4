@@ -14,4 +14,7 @@ export const MovieInfoTabs = {
 
 export const DEFAULT_GENRE = `All genres`;
 
-export const SHOW_MORE_COUNT = 8;
+export const Movies = {
+  SHOW_MORE_COUNT: 8,
+  DEFAULT_SHOW_COUNT: 8
+};

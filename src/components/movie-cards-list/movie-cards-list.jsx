@@ -5,14 +5,13 @@ import withCardHover from "../../hocs/with-card-hover.jsx";
 
 const MovieCardWrapped = withCardHover(MovieCard);
 
-export default function MovieCardsList({movies, onMovieCardClick}) {
+export default function MovieCardsList({movies}) {
   return (
     <div className="catalog__movies-list">
       {movies.map((movie, index) =>
         <MovieCardWrapped
           movie = {movie}
           key = {`${index}-${movie.title}`}
-          onClick = {onMovieCardClick}
         />
       )}
     </div>
@@ -20,7 +19,6 @@ export default function MovieCardsList({movies, onMovieCardClick}) {
 }
 
 MovieCardsList.propTypes = {
-  onMovieCardClick: PropTypes.func.isRequired,
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
