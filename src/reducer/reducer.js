@@ -7,7 +7,6 @@ import {Movies} from "../consts.js";
 const initialState = {
   movies: [],
   mainMovie: {},
-  // activeMovie: null, // убрать, выбирать в компоненте селектором по id
   isUserAuth: false,
   showingMoviesCount: Movies.DEFAULT_SHOW_COUNT,
 };
@@ -15,7 +14,6 @@ const initialState = {
 const ActionType = {
   SET_MOVIES: `SET_MOVIES`,
   SET_MAIN_MOVIE: `SET_MAIN_MOVIE`,
-  // SET_ACTIVE_MOVIE: `SET_ACTIVE_MOVIE`,
   SET_USER_AUTH: `SET_USER_AUTH`,
   INCREASE_MOVIES_SHOWING_COUNT: `INCREASE_MOVIES_SHOWING_COUNT`,
   RESET_MOVIES_SHOWING_COUNT: `RESET_MOVIES_SHOWING_COUNT`,
@@ -33,12 +31,6 @@ export const ActionCreator = {
     type: ActionType.SET_MAIN_MOVIE,
     payload: movie,
   }),
-
-  //  setActiveMovie: (movie) => ({
-  //    type: ActionType.SET_ACTIVE_MOVIE,
-  //    payload: movie,
-  //  }),
-
   setUserAuth: () => ({
     type: ActionType.SET_USER_AUTH,
     payload: true,
@@ -66,10 +58,6 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         mainMovie: action.payload,
       });
-      //    case ActionType.SET_ACTIVE_MOVIE:
-      //      return extend(state, {
-      //        activeMovie: action.payload,
-      //      });
     case ActionType.SET_USER_AUTH:
       return extend(state, {
         isUserAuth: action.payload

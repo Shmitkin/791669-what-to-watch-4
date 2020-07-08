@@ -44,3 +44,37 @@ it(`Reducer should set mainMovie when data received`, () => {
   });
 });
 
+it(`Reducer should increase showingCount by SHOW MORE COUNT`, () => {
+  expect(reducer({
+    movies: [],
+    mainMovie: {},
+    isUserAuth: false,
+    showingMoviesCount: 8,
+  }, {
+    type: ActionType.INCREASE_MOVIES_SHOWING_COUNT,
+    payload: 5,
+  })).toEqual({
+    movies: [],
+    mainMovie: {},
+    isUserAuth: false,
+    showingMoviesCount: 13,
+  });
+});
+
+it(`Reducer should set ShowingCount to default`, () => {
+  expect(reducer({
+    movies: [],
+    mainMovie: {},
+    isUserAuth: false,
+    showingMoviesCount: 34,
+  }, {
+    type: ActionType.RESET_MOVIES_SHOWING_COUNT,
+    payload: 6
+  })). toEqual({
+    movies: [],
+    mainMovie: {},
+    isUserAuth: false,
+    showingMoviesCount: 6,
+  });
+});
+
