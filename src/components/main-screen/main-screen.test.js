@@ -11,7 +11,7 @@ const mockStore = configureStore([]);
 it(`Should MainScreen render correctly`, () => {
   const store = mockStore({
     movies,
-    mainMovie: movie,
+    promoMovie: movie,
     isUserAuth: true,
     showingMoviesCount: 8,
   });

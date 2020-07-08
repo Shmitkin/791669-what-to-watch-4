@@ -40,13 +40,13 @@ class MainScreen extends React.PureComponent {
   }
 
   render() {
-    const {mainMovie, activeTab} = this.props;
+    const {promoMovie, activeTab} = this.props;
     const movies = this._getMovies();
     return (
       <React.Fragment>
         <section className="movie-card">
           <MovieBackground
-            movie = {mainMovie}
+            movie = {promoMovie}
           />
           <h1 className="visually-hidden">WTW</h1>
           <PageHeader extraClass={`movie-card__head`}>
@@ -55,7 +55,7 @@ class MainScreen extends React.PureComponent {
 
           <div className="movie-card__wrap">
             <HeaderMovieInfo
-              movie = {mainMovie}
+              movie = {promoMovie}
               isMovieDetails = {false}
             />
           </div>
@@ -80,7 +80,7 @@ class MainScreen extends React.PureComponent {
 }
 
 MainScreen.propTypes = {
-  mainMovie: PropTypes.object.isRequired,
+  promoMovie: PropTypes.object.isRequired,
   getMoviesByGenre: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired,
@@ -90,7 +90,7 @@ MainScreen.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  mainMovie: state.mainMovie,
+  promoMovie: state.promoMovie,
   getMoviesByGenre: (genre) => (getMoviesWithGenre(state.movies, genre)),
   showingMoviesCount: state.showingMoviesCount,
 });

@@ -8,14 +8,14 @@ import {Movies} from "../consts.js";
 
 const initialState = {
   movies: [],
-  mainMovie: {},
+  promoMovie: {},
   isUserAuth: false,
   showingMoviesCount: Movies.DEFAULT_SHOW_COUNT,
 };
 
 const ActionType = {
   SET_MOVIES: `SET_MOVIES`,
-  SET_MAIN_MOVIE: `SET_MAIN_MOVIE`,
+  SET_PROMO_MOVIE: `SET_PROMO_MOVIE`,
   SET_USER_AUTH: `SET_USER_AUTH`,
   INCREASE_MOVIES_SHOWING_COUNT: `INCREASE_MOVIES_SHOWING_COUNT`,
   RESET_MOVIES_SHOWING_COUNT: `RESET_MOVIES_SHOWING_COUNT`,
@@ -29,8 +29,8 @@ export const ActionCreator = {
     payload: movies,
   }),
 
-  setMainMovie: (movie) => ({
-    type: ActionType.SET_MAIN_MOVIE,
+  setPromoMovie: (movie) => ({
+    type: ActionType.SET_PROMO_MOVIE,
     payload: movie,
   }),
   setUserAuth: () => ({
@@ -56,6 +56,13 @@ const Operation = {
         dispatch(ActionCreator.setMovies(MovieModel.parseMovies(response.data)));
       });
   },
+
+  loadPromoMovie: () => (dispatch, getState, api) => {
+    return api.get(`/films/promo`)
+    .then((response) => {
+      dispatch(ActionCreator.setPromoMovie(MovieModel.parseMovie(response.data)));
+    });
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -65,9 +72,9 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         movies: action.payload,
       });
-    case ActionType.SET_MAIN_MOVIE:
+    case ActionType.SET_PROMO_MOVIE:
       return extend(state, {
-        mainMovie: action.payload,
+        promoMovie: action.payload,
       });
     case ActionType.SET_USER_AUTH:
       return extend(state, {

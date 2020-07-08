@@ -4,7 +4,7 @@ import {movies, movie} from "../test-state.js";
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
     movies: [],
-    mainMovie: {},
+    promoMovie: {},
     isUserAuth: false,
     showingMoviesCount: 8,
   });
@@ -13,7 +13,7 @@ it(`Reducer without additional parameters should return initial state`, () => {
 it(`Reducer should set movies when data received`, () => {
   expect(reducer({
     movies: [],
-    mainMovie: {},
+    promoMovie: {},
     isUserAuth: false,
     showingMoviesCount: 8,
   }, {
@@ -21,24 +21,24 @@ it(`Reducer should set movies when data received`, () => {
     payload: movies,
   })).toEqual({
     movies,
-    mainMovie: {},
+    promoMovie: {},
     isUserAuth: false,
     showingMoviesCount: 8,
   });
 });
 
-it(`Reducer should set mainMovie when data received`, () => {
+it(`Reducer should set promoMovie when data received`, () => {
   expect(reducer({
     movies: [],
-    mainMovie: {},
+    promoMovie: {},
     isUserAuth: false,
     showingMoviesCount: 8,
   }, {
-    type: ActionType.SET_MAIN_MOVIE,
+    type: ActionType.SET_PROMO_MOVIE,
     payload: movie,
   })).toEqual({
     movies: [],
-    mainMovie: movie,
+    promoMovie: movie,
     isUserAuth: false,
     showingMoviesCount: 8,
   });
@@ -47,7 +47,7 @@ it(`Reducer should set mainMovie when data received`, () => {
 it(`Reducer should increase showingCount by SHOW MORE COUNT`, () => {
   expect(reducer({
     movies: [],
-    mainMovie: {},
+    promoMovie: {},
     isUserAuth: false,
     showingMoviesCount: 8,
   }, {
@@ -55,7 +55,7 @@ it(`Reducer should increase showingCount by SHOW MORE COUNT`, () => {
     payload: 5,
   })).toEqual({
     movies: [],
-    mainMovie: {},
+    promoMovie: {},
     isUserAuth: false,
     showingMoviesCount: 13,
   });
@@ -64,7 +64,7 @@ it(`Reducer should increase showingCount by SHOW MORE COUNT`, () => {
 it(`Reducer should set ShowingCount to default`, () => {
   expect(reducer({
     movies: [],
-    mainMovie: {},
+    promoMovie: {},
     isUserAuth: false,
     showingMoviesCount: 34,
   }, {
@@ -72,7 +72,7 @@ it(`Reducer should set ShowingCount to default`, () => {
     payload: 6
   })). toEqual({
     movies: [],
-    mainMovie: {},
+    promoMovie: {},
     isUserAuth: false,
     showingMoviesCount: 6,
   });

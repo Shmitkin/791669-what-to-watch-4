@@ -13,7 +13,7 @@ it(`Should App render correctly`, () => {
   const store = mockStore({
     showingMoviesCount: 8,
     movies,
-    mainMovie: movie,
+    promoMovie: movie,
     isUserAuth: false,
   });
 
