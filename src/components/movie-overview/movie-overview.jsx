@@ -21,7 +21,7 @@ export default function MovieOverview({movie}) {
 
         <p className="movie-card__director"><strong>Director: {movie.director}</strong></p>
 
-        <p className="movie-card__starring"><strong>Starring: {movie.starring}</strong></p>
+        <p className="movie-card__starring"><strong>Starring: {movie.starring.join(`, `)}</strong></p>
       </div>
     </React.Fragment>
   );
@@ -38,6 +38,8 @@ MovieOverview.propTypes = {
     votes: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired,
     director: PropTypes.string.isRequired,
-    starring: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(
+        PropTypes.string.isRequired
+    ).isRequired,
   }).isRequired,
 };

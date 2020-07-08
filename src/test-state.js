@@ -10,7 +10,7 @@ export const movie = {
   rating: 2.3,
   votes: 293,
   director: `Best Director`,
-  starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+  starring: [`Nicola Cage`, `Cara Delvin`, `Joseph Moser`],
   duration: 87,
   release: 2020,
   reviews: [
@@ -48,7 +48,7 @@ export const movies = [
     rating: 5.0,
     votes: 1255,
     director: `Best Director`,
-    starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+    starring: [`Nicola Cage`, `Cara Delvin`, `Joseph Moser`],
     duration: 24,
     release: 2005,
     reviews: [
@@ -84,7 +84,7 @@ export const movies = [
     rating: 4.8,
     votes: 213,
     director: `Best Director`,
-    starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+    starring: [`Nicola Cage`, `Cara Delvin`, `Joseph Moser`],
     duration: 79,
     release: 2012,
     reviews: [
@@ -120,7 +120,7 @@ export const movies = [
     rating: 3.0,
     votes: 22,
     director: `Best Director`,
-    starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+    starring: [`Nicola Cage`, `Cara Delvin`, `Joseph Moser`],
     duration: 210,
     release: 1998,
     reviews: [

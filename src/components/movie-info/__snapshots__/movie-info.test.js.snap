@@ -13,7 +13,7 @@ Array [
       >
         <img
           alt="Seven Years IN Tibet"
-          src="../img/seven-years-in-tibet.jpg"
+          src="img/seven-years-in-tibet.jpg"
         />
       </div>
       <h1
@@ -148,7 +148,7 @@ Array [
           <img
             alt="Seven Years IN Tibet poster"
             height="327"
-            src="../img/seven-years-in-tibet.jpg"
+            src="img/seven-years-in-tibet.jpg"
             width="218"
           />
         </div>
