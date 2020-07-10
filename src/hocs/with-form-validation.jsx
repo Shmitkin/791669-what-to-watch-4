@@ -104,7 +104,8 @@ export default function withFormValidation(Component) {
       evt.preventDefault();
       this._checkValidity(this._isEmailCorrect(), this._isPasswordTyped());
       if (this._isEmailCorrect() && this._isPasswordTyped()) {
-        this.props.loginUser();
+        //
+        // this.props.loginUser();
       }
     }
 

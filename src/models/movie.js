@@ -1,6 +1,6 @@
 export default class MovieModel {
   constructor(movie) {
-    this.id = movie[`id`];
+    this.id = movie[`id`].toString();
     this.title = movie[`name`];
     this.videoPrev = movie[`preview_video_link`];
     this.videoFull = movie[`video_link`];
