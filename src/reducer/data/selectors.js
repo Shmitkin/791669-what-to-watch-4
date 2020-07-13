@@ -14,7 +14,6 @@ export const getPromoMovie = (state) => {
   return state[NAME_SPACE].promoMovie;
 };
 
-
 export const getGenres = createSelector(
     getMovies,
     (movies) => {

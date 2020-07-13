@@ -21,3 +21,10 @@ export const Movies = {
 };
 
 export const MAX_SIMILAR_MOVIES = 4;
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+export const BASE_URL = `https://htmlacademy-react-3.appspot.com/wtw`;

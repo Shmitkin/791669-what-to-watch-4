@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../reducer/reducer";
+import {Operation as UserOperation} from "../reducer/user/user.js";
 
 const InputType = {
   EMAIL: `email`,
@@ -104,8 +104,10 @@ export default function withFormValidation(Component) {
       evt.preventDefault();
       this._checkValidity(this._isEmailCorrect(), this._isPasswordTyped());
       if (this._isEmailCorrect() && this._isPasswordTyped()) {
-        //
-        // this.props.loginUser();
+        this.props.loginUser({
+          email: this._email,
+          password: this._pass,
+        });
       }
     }
 
@@ -130,8 +132,8 @@ export default function withFormValidation(Component) {
   };
 
   const mapDispatchToProps = (dispatch) => ({
-    loginUser() {
-      dispatch(ActionCreator.setUserAuth());
+    loginUser(authData) {
+      dispatch(UserOperation.login(authData));
     }
   });
 
