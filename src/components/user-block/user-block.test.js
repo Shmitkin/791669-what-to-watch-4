@@ -4,13 +4,16 @@ import UserBlock from "./user-block.jsx";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import {BrowserRouter as Router} from 'react-router-dom';
+import {AuthorizationStatus} from "../../consts.js";
 
 const mockStore = configureStore([]);
 
 it(`Should UserBlock render correctly`, () => {
 
   const store = mockStore({
-    isUserAuth: false
+    USER: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH
+    }
   });
 
   const tree = renderer

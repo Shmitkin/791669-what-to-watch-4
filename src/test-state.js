@@ -1,5 +1,5 @@
 export const movie = {
-  id: 23,
+  id: `23`,
   title: `Pulp Fiction`,
   videoPrev: `img/seven-years-in-tibet.mp4`,
   preview: `img/pulp-fiction.jpg`,
@@ -37,7 +37,7 @@ export const movie = {
 
 export const movies = [
   {
-    id: 2323,
+    id: `2323`,
     title: `Seven Years IN Tibet`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
     preview: `img/seven-years-in-tibet.jpg`,
@@ -73,7 +73,7 @@ export const movies = [
     ]
   },
   {
-    id: 2341,
+    id: `2341`,
     title: `Moonrise Kingdom`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
     preview: `img/moonrise-kingdom.jpg`,
@@ -109,7 +109,7 @@ export const movies = [
     ]
   },
   {
-    id: 2233,
+    id: `2233`,
     title: `Snatch`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
     preview: `img/snatch.jpg`,

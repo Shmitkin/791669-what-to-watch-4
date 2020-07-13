@@ -1,18 +1,28 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieInfo from "./movie-info.jsx";
-import {movies} from "../../test-state.js";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
+import thunk from "redux-thunk";
 import {MemoryRouter, Route, withRouter} from 'react-router-dom';
 
-const mockStore = configureStore([]);
+import MovieInfo from "./movie-info.jsx";
+import {movies} from "../../test-state.js";
+import {AuthorizationStatus} from "../../consts.js";
+
+const mockStore = configureStore([thunk]);
+
 it(`Should MovieInfo render correctly`, () => {
 
   const store = mockStore({
-    movies,
-    isUserAuth: true,
+    DATA: {
+      movies,
+      comments: {}
+    },
+    USER: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH
+    },
   });
+
 
   const MovieInfoWrapped = withRouter(MovieInfo);
 

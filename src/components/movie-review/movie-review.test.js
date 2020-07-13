@@ -1,13 +1,19 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MovieReview from "./movie-review.jsx";
-import {movie} from "../../test-state.js";
+
+const review = {
+  text: `review text`,
+  author: `author`,
+  date: `date string`,
+  rating: 0.5,
+};
 
 it(`Should MovieReview render correctly`, () => {
   const tree = renderer
     .create(
         <MovieReview
-          review = {movie.reviews[0]}
+          review = {review}
         />
     )
     .toJSON();
