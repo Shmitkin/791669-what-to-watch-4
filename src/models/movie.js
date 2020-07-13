@@ -16,7 +16,6 @@ export default class MovieModel {
     this.duration = movie[`run_time`];
     this.release = movie[`released`];
     this.isFavotite = movie[`is_favorite`];
-    this.reviews = [];
     this.backgroundColor = movie[`background_color`];
   }
 

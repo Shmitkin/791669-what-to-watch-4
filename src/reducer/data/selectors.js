@@ -54,4 +54,6 @@ export const getSimilarMovies = createSelector(
     }
 );
 
-
+export const getComments = (state) => {
+  return state[NAME_SPACE].comments;
+};

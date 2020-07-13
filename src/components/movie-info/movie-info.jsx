@@ -15,7 +15,8 @@ import MovieReviews from "../movie-reviews/movie-reviews.jsx";
 import UserBlock from "../user-block/user-block.jsx";
 
 import {MovieInfoTabs} from "../../consts.js";
-import {getSimilarMovies, getMovieById} from "../../reducer/data/selectors.js";
+import {getSimilarMovies, getMovieById, getComments} from "../../reducer/data/selectors.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 class MovieInfo extends React.PureComponent {
   constructor(props) {
@@ -23,29 +24,35 @@ class MovieInfo extends React.PureComponent {
   }
 
   _renderInfo() {
-    const {activeTab, movie} = this.props;
+    const {activeTab, movie, reviews} = this.props;
+
     switch (activeTab) {
       case MovieInfoTabs.OVERVIEW:
-        return <MovieOverview
-          movie = {movie}
-        />;
+        return <MovieOverview movie = {movie} />;
       case MovieInfoTabs.DETAILS:
-        return <MovieDetails
-          movie = {movie}
-        />;
+        return <MovieDetails movie = {movie} />;
       case MovieInfoTabs.REVIEWS:
-        return <MovieReviews
-          movie = {movie}
-        />;
+        return <MovieReviews reviews = {reviews} />;
       default:
-        return <MovieOverview
-          movie = {movie}
-        />;
+        return <MovieOverview movie = {movie} />;
+    }
+  }
+
+  componentDidMount() {
+    const {loadReviews, movie} = this.props;
+    loadReviews(movie.id);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {loadReviews, movie} = this.props;
+    if (prevProps.movie.id !== movie.id) {
+      loadReviews(movie.id);
     }
   }
 
   render() {
     const {onTabClick, activeTab, movie, similarMovies} = this.props;
+
     return (
       <React.Fragment>
         <section className="movie-card movie-card--full">
@@ -97,13 +104,22 @@ MovieInfo.propTypes = {
   activeTab: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired,
   movie: PropTypes.object.isRequired,
+  reviews: PropTypes.array.isRequired,
   similarMovies: PropTypes.array.isRequired,
+  loadReviews: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
   similarMovies: getSimilarMovies(state, ownProps),
   movie: getMovieById(state, ownProps),
+  reviews: getComments(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadReviews: (movieId) => {
+    dispatch(DataOperation.loadComments(movieId));
+  }
 });
 
 export {MovieInfo};
-export default connect(mapStateToProps)(MovieInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

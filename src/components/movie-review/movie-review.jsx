@@ -5,8 +5,6 @@ export default function MovieReview(props) {
   const {review} = props;
   const {text, author, date, rating} = review;
 
-  const normalizedDate = date.toDateString();
-
   return (
     <div className="review">
       <blockquote className="review__quote">
@@ -17,8 +15,8 @@ export default function MovieReview(props) {
         <footer className="review__details">
           <cite className="review__author">{author}</cite>
           <time className="review__date"
-            dateTime={normalizedDate}>
-            {normalizedDate}
+            dateTime={date}>
+            {date}
           </time>
         </footer>
       </blockquote>
@@ -33,6 +31,6 @@ MovieReview.propTypes = {
     text: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     author: PropTypes.string.isRequired,
-    date: PropTypes.instanceOf(Date),
+    date: PropTypes.string.isRequired,
   }).isRequired,
 };

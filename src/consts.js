@@ -27,4 +27,4 @@ export const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 
-export const BASE_URL = `https://htmlacademy-react-3.appspot.com/wtw`;
+export const BASE_URL = `https://4.react.pages.academy/wtw`;

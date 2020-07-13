@@ -8,10 +8,10 @@ const MovieCardWrapped = withCardHover(MovieCard);
 export default function MovieCardsList({movies}) {
   return (
     <div className="catalog__movies-list">
-      {movies.map((movie, index) =>
+      {movies.map((movie) =>
         <MovieCardWrapped
           movie = {movie}
-          key = {`${index}-${movie.title}`}
+          key = {movie.id}
         />
       )}
     </div>

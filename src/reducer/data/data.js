@@ -1,5 +1,6 @@
 import {extend} from "../../utils.js";
 import MovieModel from "../../models/movie.js";
+import CommentModel from "../../models/comment.js";
 
 const initialState = {
   movies: [],
@@ -18,7 +19,6 @@ export const ActionCreator = {
     type: ActionType.SET_MOVIES,
     payload: movies,
   }),
-
   setPromoMovie: (movie) => ({
     type: ActionType.SET_PROMO_MOVIE,
     payload: movie,
@@ -41,6 +41,13 @@ const Operation = {
     return api.get(`/films/promo`)
     .then((response) => {
       dispatch(ActionCreator.setPromoMovie(MovieModel.parseMovie(response.data)));
+    });
+  },
+
+  loadComments: (filmId) => (dispatch, getState, api) => {
+    return api.get(`comments/${filmId}`)
+    .then((response) => {
+      dispatch(ActionCreator.setComments(CommentModel.parseComments(response.data)));
     });
   }
 };
