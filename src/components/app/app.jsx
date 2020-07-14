@@ -31,7 +31,6 @@ class App extends PureComponent {
         </Switch>
       </BrowserRouter>
     );
-
   }
 }
 
