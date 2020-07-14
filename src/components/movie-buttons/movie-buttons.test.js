@@ -5,7 +5,7 @@ import MovieButtons from "./movie-buttons.jsx";
 it(`Should MovieButtons render correctly`, () => {
   const tree = renderer
     .create(
-        <MovieButtons isMovieDetails = {false} />
+        <MovieButtons isMovieDetails = {false} isFavorite = {false}/>
     )
     .toJSON();
 

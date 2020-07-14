@@ -5,7 +5,7 @@ import MyListButton from "./my-list-button.jsx";
 it(`Should MyListButton render correctly`, () => {
   const tree = renderer
     .create(
-        <MyListButton />
+        <MyListButton isFavorite = {false}/>
     )
     .toJSON();
 

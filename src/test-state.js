@@ -1,4 +1,5 @@
 export const movie = {
+  isFavorite: false,
   id: `23`,
   title: `Pulp Fiction`,
   videoPrev: `img/seven-years-in-tibet.mp4`,
@@ -37,6 +38,7 @@ export const movie = {
 
 export const movies = [
   {
+    isFavorite: false,
     id: `2323`,
     title: `Seven Years IN Tibet`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
@@ -73,6 +75,7 @@ export const movies = [
     ]
   },
   {
+    isFavorite: false,
     id: `2341`,
     title: `Moonrise Kingdom`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
@@ -109,6 +112,7 @@ export const movies = [
     ]
   },
   {
+    isFavorite: false,
     id: `2233`,
     title: `Snatch`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
