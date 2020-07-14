@@ -8,11 +8,11 @@ import SignInPage from "../sign-in-page/sign-in-page.jsx";
 import {MovieInfoTabs, DEFAULT_GENRE} from "../../consts.js";
 import withActiveTab from "../../hocs/with-active-tab.jsx";
 
+
 const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
 
 const MovieInfoWrapped = withActiveTab(MovieInfo, DEFAULT_MOVIE_INFO_TAB);
 const MainScreenWrapped = withActiveTab(MainScreen, DEFAULT_GENRE);
-
 
 class App extends PureComponent {
   constructor(props) {
