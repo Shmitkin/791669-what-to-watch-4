@@ -3,6 +3,7 @@ import {AuthorizationStatus} from "../../consts.js";
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api";
 import UserModel from "../../models/user.js";
+import MovieModel from "../../models/movie.js";
 
 describe(`Reducer should work correctly`, () => {
 
@@ -10,6 +11,7 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer(void 0, {})).toEqual({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       profile: {},
+      favoriteMovies: [],
     });
   });
 
@@ -17,12 +19,14 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       profile: {},
+      favoriteMovies: [],
     }, {
       type: ActionType.SET_AUTHORIZATION,
       payload: AuthorizationStatus.AUTH,
     })).toEqual({
       authorizationStatus: AuthorizationStatus.AUTH,
       profile: {},
+      favoriteMovies: [],
     });
   });
 
@@ -30,12 +34,29 @@ describe(`Reducer should work correctly`, () => {
     expect(reducer({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       profile: {},
+      favoriteMovies: [],
     }, {
       type: ActionType.SET_USER_PROFILE,
       payload: {name: `user name`},
     })).toEqual({
       authorizationStatus: AuthorizationStatus.NO_AUTH,
       profile: {name: `user name`},
+      favoriteMovies: [],
+    });
+  });
+
+  it(`Reducer should set user favorite movies`, () => {
+    expect(reducer({
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      profile: {},
+      favoriteMovies: [],
+    }, {
+      type: ActionType.SET_USER_FAVORITE_MOVIES,
+      payload: [{id: 131}, {id: `movieId`}]
+    })).toEqual({
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      profile: {},
+      favoriteMovies: [{id: 131}, {id: `movieId`}],
     });
   });
 
@@ -78,7 +99,7 @@ describe(`Operations should work correctly`, () => {
     .onPost(`/login`)
     .reply(200, mockUser);
 
-    loginSetter(dispatch, () => {}, api)
+    return loginSetter(dispatch, () => {}, api)
     .then(() => {
       expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
@@ -88,6 +109,26 @@ describe(`Operations should work correctly`, () => {
       expect(dispatch).toHaveBeenNthCalledWith(2, {
         type: ActionType.SET_USER_PROFILE,
         payload: expectedUserProfileInStore
+      });
+    });
+  });
+
+  it(`Should make a correct API call to /favorites`, () => {
+    const favoriteMovieLoader = Operation.loadFavoriteMovies();
+    const dispatch = jest.fn();
+    const mockMovies = [{id: 123}, {id: 43}];
+    const expectedMoviesInStore = MovieModel.parseMovies(mockMovies);
+
+    apiMock
+    .onGet(`/favorite`)
+    .reply(200, mockMovies);
+
+    return favoriteMovieLoader(dispatch, () => {}, api)
+    .then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.SET_USER_FAVORITE_MOVIES,
+        payload: expectedMoviesInStore,
       });
     });
   });

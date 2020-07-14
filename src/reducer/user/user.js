@@ -1,15 +1,18 @@
 import {extend} from "../../utils.js";
 import {AuthorizationStatus} from "../../consts.js";
 import UserModel from "../../models/user.js";
+import MovieModel from "../../models/movie.js";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   profile: {},
+  favoriteMovies: [],
 };
 
 const ActionType = {
   SET_AUTHORIZATION: `SET_AUTHORIZATION`,
   SET_USER_PROFILE: `SET_USER_PROFILE`,
+  SET_USER_FAVORITE_MOVIES: `SET_USER_FAVORITE_MOVIES`,
 };
 
 const ActionCreator = {
@@ -24,6 +27,12 @@ const ActionCreator = {
       type: ActionType.SET_USER_PROFILE,
       payload: profile
     };
+  },
+  setUserFavoriteMovies: (movies) => {
+    return {
+      type: ActionType.SET_USER_FAVORITE_MOVIES,
+      payload: movies,
+    };
   }
 };
 
@@ -36,6 +45,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_USER_PROFILE:
       return extend(state, {
         profile: action.payload,
+      });
+    case ActionType.SET_USER_FAVORITE_MOVIES:
+      return extend(state, {
+        favoriteMovies: action.payload
       });
   }
   return state;
@@ -60,6 +73,13 @@ const Operation = {
         dispatch(ActionCreator.setUserProfile(UserModel.parseUser(data)));
       });
   },
+
+  loadFavoriteMovies: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+      .then(({data}) => {
+        dispatch(ActionCreator.setUserFavoriteMovies(MovieModel.parseMovies(data)));
+      });
+  }
 };
 
 
