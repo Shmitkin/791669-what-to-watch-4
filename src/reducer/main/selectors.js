@@ -14,6 +14,3 @@ export const getShowingMovieCount = (state) => {
   return state[NAME_SPACE].showingMoviesCount;
 };
 
-export const getActiveInfoTab = (state) => {
-  return state[NAME_SPACE].activeInfoTab;
-};

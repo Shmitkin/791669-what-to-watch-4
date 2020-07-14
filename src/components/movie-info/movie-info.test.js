@@ -16,7 +16,7 @@ it(`Should MovieInfo render correctly`, () => {
   const store = mockStore({
     DATA: {
       movies,
-      comments: {}
+      comments: [{}]
     },
     USER: {
       authorizationStatus: AuthorizationStatus.NO_AUTH

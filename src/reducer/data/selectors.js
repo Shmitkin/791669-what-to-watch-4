@@ -6,12 +6,16 @@ import {getActiveGenre, getActiveMovieId} from "../main/selectors.js";
 
 const NAME_SPACE = NameSpace.DATA;
 
-const getMovies = (state) => {
+export const getMovies = (state) => {
   return state[NAME_SPACE].movies;
 };
 
 export const getPromoMovie = (state) => {
   return state[NAME_SPACE].promoMovie;
+};
+
+export const getComments = (state) => {
+  return state[NAME_SPACE].comments;
 };
 
 export const getGenres = createSelector(
@@ -53,7 +57,3 @@ export const getSimilarMovies = createSelector(
       return movies.filter((movie) => movie.genre === genre && movie.id !== id).slice(0, MAX_SIMILAR_MOVIES);
     }
 );
-
-export const getComments = (state) => {
-  return state[NAME_SPACE].comments;
-};
