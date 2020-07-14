@@ -8,14 +8,14 @@ const initialState = {
 };
 
 const ActionType = {
-  CHECK_AUTHORIZATION: `CHECK_AUTHORIZATION`,
+  SET_AUTHORIZATION: `SET_AUTHORIZATION`,
   SET_USER_PROFILE: `SET_USER_PROFILE`,
 };
 
 const ActionCreator = {
-  checkAuthorization: (status) => {
+  setAuthorization: (status) => {
     return {
-      type: ActionType.CHECK_AUTHORIZATION,
+      type: ActionType.SET_AUTHORIZATION,
       payload: status,
     };
   },
@@ -29,7 +29,7 @@ const ActionCreator = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.CHECK_AUTHORIZATION:
+    case ActionType.SET_AUTHORIZATION:
       return extend(state, {
         authorizationStatus: action.payload,
       });
@@ -45,7 +45,7 @@ const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)
       .then(({data}) => {
-        dispatch(ActionCreator.checkAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.setAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setUserProfile(UserModel.parseUser(data)));
       })
       .catch((err) => {
@@ -56,7 +56,7 @@ const Operation = {
   login: (authData) => (dispatch, getState, api) => {
     return api.post(`/login`, UserModel.parseLogin(authData))
       .then(({data}) => {
-        dispatch(ActionCreator.checkAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.setAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setUserProfile(UserModel.parseUser(data)));
       });
   },
