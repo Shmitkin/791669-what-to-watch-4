@@ -10,6 +10,3 @@ export const getUserProfile = (state) => {
   return state[NAME_SPACE].profile;
 };
 
-export const getUserFavoriteMovies = (state) => {
-  return state[NAME_SPACE].favoriteMovies;
-};

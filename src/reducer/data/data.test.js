@@ -11,6 +11,7 @@ describe(`Reducer works correctly`, () => {
       movies: [],
       promoMovie: {},
       comments: [],
+      favoriteMovies: [],
     });
   });
 
@@ -19,6 +20,7 @@ describe(`Reducer works correctly`, () => {
       movies: [],
       promoMovie: {},
       comments: [],
+      favoriteMovies: [],
     }, {
       type: ActionType.SET_MOVIES,
       payload: [{title: `first movie`}, {title: `second movie`}],
@@ -26,11 +28,13 @@ describe(`Reducer works correctly`, () => {
       movies: [{title: `first movie`}, {title: `second movie`}],
       promoMovie: {},
       comments: [],
+      favoriteMovies: [],
     });
   });
 
   it(`Reducer should set promo movie when data received`, () => {
     expect(reducer({
+      favoriteMovies: [],
       movies: [],
       promoMovie: {},
       comments: [],
@@ -38,6 +42,7 @@ describe(`Reducer works correctly`, () => {
       type: ActionType.SET_PROMO_MOVIE,
       payload: {title: `promoMovie`},
     })).toEqual({
+      favoriteMovies: [],
       movies: [],
       promoMovie: {title: `promoMovie`},
       comments: [],
@@ -46,6 +51,7 @@ describe(`Reducer works correctly`, () => {
 
   it(`Reducer should set comments when data received`, () => {
     expect(reducer({
+      favoriteMovies: [],
       movies: [],
       promoMovie: {},
       comments: [],
@@ -53,9 +59,27 @@ describe(`Reducer works correctly`, () => {
       type: ActionType.SET_COMMENTS,
       payload: [{title: `first comment`}, {title: `second comment`}],
     })).toEqual({
+      favoriteMovies: [],
       movies: [],
       promoMovie: {},
       comments: [{title: `first comment`}, {title: `second comment`}],
+    });
+  });
+
+  it(`Reducer should set user favorite movies`, () => {
+    expect(reducer({
+      movies: [],
+      promoMovie: {},
+      comments: [],
+      favoriteMovies: [],
+    }, {
+      type: ActionType.SET_USER_FAVORITE_MOVIES,
+      payload: [{id: 131}, {id: `movieId`}]
+    })).toEqual({
+      movies: [],
+      promoMovie: {},
+      comments: [],
+      favoriteMovies: [{id: 131}, {id: `movieId`}],
     });
   });
 });
@@ -127,6 +151,25 @@ describe(`Operations work correctly`, () => {
         payload: expectedCommentsInStore,
       });
     });
+  });
 
+  it(`Should make a correct API call to /favorites`, () => {
+    const favoriteMovieLoader = Operation.loadFavoriteMovies();
+    const dispatch = jest.fn();
+    const mockMovies = [{id: 123}, {id: 43}];
+    const expectedMoviesInStore = MovieModel.parseMovies(mockMovies);
+
+    apiMock
+    .onGet(`/favorite`)
+    .reply(200, mockMovies);
+
+    return favoriteMovieLoader(dispatch, () => {}, api)
+    .then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.SET_USER_FAVORITE_MOVIES,
+        payload: expectedMoviesInStore,
+      });
+    });
   });
 });

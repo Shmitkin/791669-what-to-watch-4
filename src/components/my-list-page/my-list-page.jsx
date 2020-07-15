@@ -7,8 +7,8 @@ import PageFooter from "../page-footer/page-footer.jsx";
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import UserBlock from "../user-block/user-block.jsx";
 
-import {getUserFavoriteMovies} from "../../reducer/user/selectors.js";
-import {Operation as UserOperation} from "../../reducer/user/user.js";
+import {getUserFavoriteMovies} from "../../reducer/data/selectors.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 
 class MyListPage extends React.PureComponent {
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   loadUserFavoriteMovies: () => {
-    dispatch(UserOperation.loadFavoriteMovies());
+    dispatch(DataOperation.loadFavoriteMovies());
   }
 });
 

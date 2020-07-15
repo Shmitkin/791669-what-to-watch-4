@@ -6,12 +6,14 @@ const initialState = {
   movies: [],
   promoMovie: {},
   comments: [],
+  favoriteMovies: [],
 };
 
 const ActionType = {
   SET_MOVIES: `SET_MOVIES`,
   SET_PROMO_MOVIE: `SET_PROMO_MOVIE`,
   SET_COMMENTS: `SET_COMMENTS`,
+  SET_USER_FAVORITE_MOVIES: `SET_USER_FAVORITE_MOVIES`,
 };
 
 export const ActionCreator = {
@@ -26,7 +28,14 @@ export const ActionCreator = {
   setComments: (comments) => ({
     type: ActionType.SET_COMMENTS,
     payload: comments,
-  })
+  }),
+  setUserFavoriteMovies: (movies) => {
+    return {
+      type: ActionType.SET_USER_FAVORITE_MOVIES,
+      payload: movies,
+    };
+  }
+
 };
 
 const Operation = {
@@ -49,6 +58,13 @@ const Operation = {
     .then((response) => {
       dispatch(ActionCreator.setComments(CommentModel.parseComments(response.data)));
     });
+  },
+
+  loadFavoriteMovies: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+      .then(({data}) => {
+        dispatch(ActionCreator.setUserFavoriteMovies(MovieModel.parseMovies(data)));
+      });
   }
 };
 
@@ -65,6 +81,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_COMMENTS:
       return extend(state, {
         comments: action.payload,
+      });
+    case ActionType.SET_USER_FAVORITE_MOVIES:
+      return extend(state, {
+        favoriteMovies: action.payload
       });
   }
   return state;

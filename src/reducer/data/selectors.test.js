@@ -1,4 +1,4 @@
-import {getMovies, getPromoMovie, getComments, getGenres, getMoviesByGenre, getMovieById, getSimilarMovies} from "./selectors.js";
+import {getMovies, getPromoMovie, getComments, getGenres, getMoviesByGenre, getMovieById, getSimilarMovies, getUserFavoriteMovies} from "./selectors.js";
 import {DEFAULT_GENRE} from "../../consts.js";
 
 const MOCK_FILM_ID = `77`;
@@ -24,6 +24,7 @@ const mockState = {
     movies: mockMovies,
     promoMovie: mockPromoMovie,
     comments: mockComments,
+    favoriteMovies: [{id: `f44`}]
   }
 };
 
@@ -39,6 +40,10 @@ describe(`Simple Selectors will return a value from state`, () => {
 
   it(`getComments will return comments from state`, () => {
     expect(getComments(mockState)).toEqual(mockComments);
+  });
+
+  it(`getUserFavoriteMovies will return a value from state`, () => {
+    expect(getUserFavoriteMovies(mockState)).toEqual(mockState.DATA.favoriteMovies);
   });
 });
 

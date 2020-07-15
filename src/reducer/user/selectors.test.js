@@ -1,10 +1,9 @@
-import {getAuthorizationStatus, getUserProfile, getUserFavoriteMovies} from "./selectors.js";
+import {getAuthorizationStatus, getUserProfile} from "./selectors.js";
 
 const mockState = {
   USER: {
     authorizationStatus: `NO_AUTH`,
     profile: {name: `userName`},
-    favoriteMovies: [{id: `f44`}]
   }
 };
 
@@ -16,9 +15,5 @@ describe(`Simple Selectors will return a value from state`, () => {
 
   it(`getUserProfile will return a value from state`, () => {
     expect(getUserProfile(mockState)).toEqual(mockState.USER.profile);
-  });
-
-  it(`getUserFavoriteMovies will return a value from state`, () => {
-    expect(getUserFavoriteMovies(mockState)).toEqual(mockState.USER.favoriteMovies);
   });
 });

@@ -17,6 +17,10 @@ export const getComments = (state) => {
   return state[NAME_SPACE].comments;
 };
 
+export const getUserFavoriteMovies = (state) => {
+  return state[NAME_SPACE].favoriteMovies;
+};
+
 export const getGenres = createSelector(
     getMovies,
     (movies) => {
