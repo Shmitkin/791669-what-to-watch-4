@@ -6,7 +6,7 @@ import MovieButtons from "../movie-buttons/movie-buttons.jsx";
 
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 
-export function MovieDescription({movie, isMovieDetails, changeFavoriteStatus}) {
+function MovieDescription({movie, isMovieDetails, changeFavoriteStatus}) {
 
   const {title, genre, release, isFavorite} = movie;
 
@@ -22,7 +22,8 @@ export function MovieDescription({movie, isMovieDetails, changeFavoriteStatus}) 
         isFavorite={isFavorite}
         onMyListButtonClickHandler={() => {
           changeFavoriteStatus(movie);
-        }}/>
+        }}
+      />
     </div>
   );
 }
@@ -45,4 +46,5 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
+export {MovieDescription};
 export default connect(null, mapDispatchToProps)(MovieDescription);

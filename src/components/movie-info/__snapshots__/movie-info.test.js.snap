@@ -12,8 +12,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="Seven Years IN Tibet"
-          src="img/seven-years-in-tibet.jpg"
+          alt="Pulp Fiction"
+          src="img/pulp-fiction.jpg"
         />
       </div>
       <h1
@@ -52,16 +52,13 @@ Array [
         <div
           className="user-block"
         >
-          <div
-            className="user-block__avatar"
+          <a
+            className="user-block__link"
+            href="/login"
+            onClick={[Function]}
           >
-            <img
-              alt="User avatar"
-              height="63"
-              src="img/avatar.jpg"
-              width="63"
-            />
-          </div>
+            Sign in
+          </a>
         </div>
       </header>
       <div
@@ -73,7 +70,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Seven Years IN Tibet
+            Pulp Fiction
           </h2>
           <p
             className="movie-card__meta"
@@ -81,12 +78,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Family
+              Drama
             </span>
             <span
               className="movie-card__year"
             >
-              2005
+              2020
             </span>
           </p>
           <div
@@ -111,6 +108,7 @@ Array [
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -146,9 +144,9 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Seven Years IN Tibet poster"
+            alt="Pulp Fiction poster"
             height="327"
-            src="img/seven-years-in-tibet.jpg"
+            src="img/pulp-fiction.jpg"
             width="218"
           />
         </div>
@@ -202,7 +200,7 @@ Array [
             <div
               className="movie-rating__score"
             >
-              5
+              2.3
             </div>
             <p
               className="movie-rating__meta"
@@ -210,12 +208,12 @@ Array [
               <span
                 className="movie-rating__level"
               >
-                Good
+                Bad
               </span>
               <span
                 className="movie-rating__count"
               >
-                1255
+                293
                  ratings
               </span>
             </p>

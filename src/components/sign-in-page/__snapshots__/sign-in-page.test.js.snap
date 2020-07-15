@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should UserBlock render correctly 1`] = `
+exports[`Should SignInPage render correctly when AuthorizationStatus NO_AUTH 1`] = `
 <div
   className="user-page"
 >

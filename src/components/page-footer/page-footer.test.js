@@ -1,7 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import PageFooter from "./page-footer.jsx";
 import {BrowserRouter as Router} from 'react-router-dom';
+
+import PageFooter from "./page-footer.jsx";
+
 
 it(`Should PageFooter render correctly`, () => {
   const tree = renderer
@@ -9,7 +11,6 @@ it(`Should PageFooter render correctly`, () => {
         <Router>
           <PageFooter />
         </Router>
-
     )
     .toJSON();
 
