@@ -21,13 +21,6 @@ class MyListPage extends React.PureComponent {
     loadUserFavoriteMovies();
   }
 
-  componentDidUpdate(prevProps) {
-    const {loadUserFavoriteMovies, userFavoriteMovies} = this.props;
-    if (prevProps.userFavoriteMovies !== userFavoriteMovies) {
-      loadUserFavoriteMovies();
-    }
-  }
-
   render() {
     const {userFavoriteMovies} = this.props;
 
