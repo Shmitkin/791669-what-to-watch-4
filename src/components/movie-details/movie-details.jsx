@@ -16,7 +16,7 @@ export default function MovieDetails(props) {
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Starring</strong>
             <span className="movie-card__details-value">
-              {starring}
+              {starring.map((name, i) => <React.Fragment key={`${name}-${i}`}>{`${name},`}<br /></React.Fragment>)}
             </span>
           </p>
         </div>
@@ -44,7 +44,9 @@ MovieDetails.propTypes = {
   movie: PropTypes.shape({
     director: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    starring: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(
+        PropTypes.string.isRequired
+    ).isRequired,
     release: PropTypes.number.isRequired,
     duration: PropTypes.number.isRequired,
   }).isRequired,

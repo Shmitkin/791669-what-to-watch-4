@@ -2,15 +2,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
+import {AuthorizationStatus} from "../../consts.js";
+import {getAuthorizationStatus, getUserProfile} from "../../reducer/user/selectors.js";
+
 
 function UserBlock(props) {
-  const {isAuth} = props;
+  const {authStatus, user} = props;
 
-  const checkAuth = () => {
-    if (isAuth) {
+  const renderUserBlock = () => {
+    if (authStatus === AuthorizationStatus.AUTH) {
+      const {avatarUrl} = user;
       return (
         <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+          <img src={avatarUrl} alt="User avatar" width="63" height="63" />
         </div>);
     } else {
       return <Link to="/login" className="user-block__link">Sign in</Link>;
@@ -19,18 +23,22 @@ function UserBlock(props) {
 
   return (
     <div className="user-block">
-      {checkAuth()}
+      {renderUserBlock()}
     </div>
   );
 }
 
 UserBlock.propTypes = {
-  isAuth: PropTypes.bool.isRequired,
+  authStatus: PropTypes.string.isRequired,
+  user: PropTypes.shape({
+    avatarUrl: PropTypes.string.isRequired,
+  })
 };
 
 
 const mapStateToProps = (state) => ({
-  isAuth: state.isUserAuth
+  authStatus: getAuthorizationStatus(state),
+  user: getUserProfile(state),
 });
 
 export default connect(mapStateToProps)(UserBlock);

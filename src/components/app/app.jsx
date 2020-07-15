@@ -1,16 +1,14 @@
 import React, {PureComponent} from "react";
-// import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter, withRouter} from "react-router-dom";
+
 import MainScreen from "../main-screen/main-screen.jsx";
 import MovieInfo from "../movie-info/movie-info.jsx";
-// import {connect} from "react-redux";
 import SignInPage from "../sign-in-page/sign-in-page.jsx";
-import {MovieInfoTabs} from "../../consts.js";
+
+import {MovieInfoTabs, DEFAULT_GENRE} from "../../consts.js";
 import withActiveTab from "../../hocs/with-active-tab.jsx";
-import {DEFAULT_GENRE} from "../../consts.js";
 
 const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
-
 
 const MovieInfoWrapped = withActiveTab(MovieInfo, DEFAULT_MOVIE_INFO_TAB);
 const MainScreenWrapped = withActiveTab(MainScreen, DEFAULT_GENRE);

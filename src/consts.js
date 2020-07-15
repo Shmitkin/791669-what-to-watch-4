@@ -13,8 +13,18 @@ export const MovieInfoTabs = {
 };
 
 export const DEFAULT_GENRE = `All genres`;
+export const NAV_MAX_GENRES = 10;
 
 export const Movies = {
   SHOW_MORE_COUNT: 8,
   DEFAULT_SHOW_COUNT: 8
 };
+
+export const MAX_SIMILAR_MOVIES = 4;
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+export const BASE_URL = `https://4.react.pages.academy/wtw`;

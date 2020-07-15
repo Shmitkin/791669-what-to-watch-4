@@ -4,8 +4,7 @@ import MovieReview from "../movie-review/movie-review.jsx";
 
 
 export default function MovieReviews(props) {
-  const {movie} = props;
-  const {reviews} = movie;
+  const {reviews} = props;
 
   const reviewsCols = reviews.reduce((accumulator, currentReview, index) => {
     if (index % 2 === 0) {
@@ -19,17 +18,17 @@ export default function MovieReviews(props) {
   return (
     <div className="movie-card__reviews movie-card__row">
       <div className="movie-card__reviews-col">
-        {reviewsCols.left.map((review, index) =>
+        {reviewsCols.left.map((review) =>
           <MovieReview
-            key = {`${index}-${review.date.toDateString()}`}
+            key = {review.id}
             review = {review}
           />
         )}
       </div>
       <div className="movie-card__reviews-col">
-        {reviewsCols.right.map((review, index) =>
+        {reviewsCols.right.map((review) =>
           <MovieReview
-            key = {`${index}-${review.date.toDateString()}`}
+            key = {review.id}
             review = {review}
           />
         )}
@@ -39,7 +38,5 @@ export default function MovieReviews(props) {
 }
 
 MovieReviews.propTypes = {
-  movie: PropTypes.shape({
-    reviews: PropTypes.array.isRequired,
-  }).isRequired,
+  reviews: PropTypes.array.isRequired,
 };

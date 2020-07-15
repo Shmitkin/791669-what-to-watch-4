@@ -1,5 +1,5 @@
 export const movie = {
-  id: 23,
+  id: `23`,
   title: `Pulp Fiction`,
   videoPrev: `img/seven-years-in-tibet.mp4`,
   preview: `img/pulp-fiction.jpg`,
@@ -10,7 +10,7 @@ export const movie = {
   rating: 2.3,
   votes: 293,
   director: `Best Director`,
-  starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+  starring: [`Nicola Cage`, `Cara Delvin`, `Joseph Moser`],
   duration: 87,
   release: 2020,
   reviews: [
@@ -37,7 +37,7 @@ export const movie = {
 
 export const movies = [
   {
-    id: 2323,
+    id: `2323`,
     title: `Seven Years IN Tibet`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
     preview: `img/seven-years-in-tibet.jpg`,
@@ -48,7 +48,7 @@ export const movies = [
     rating: 5.0,
     votes: 1255,
     director: `Best Director`,
-    starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+    starring: [`Nicola Cage`, `Cara Delvin`, `Joseph Moser`],
     duration: 24,
     release: 2005,
     reviews: [
@@ -73,7 +73,7 @@ export const movies = [
     ]
   },
   {
-    id: 2341,
+    id: `2341`,
     title: `Moonrise Kingdom`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
     preview: `img/moonrise-kingdom.jpg`,
@@ -84,7 +84,7 @@ export const movies = [
     rating: 4.8,
     votes: 213,
     director: `Best Director`,
-    starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+    starring: [`Nicola Cage`, `Cara Delvin`, `Joseph Moser`],
     duration: 79,
     release: 2012,
     reviews: [
@@ -109,7 +109,7 @@ export const movies = [
     ]
   },
   {
-    id: 2233,
+    id: `2233`,
     title: `Snatch`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
     preview: `img/snatch.jpg`,
@@ -120,7 +120,7 @@ export const movies = [
     rating: 3.0,
     votes: 22,
     director: `Best Director`,
-    starring: `Nicola Cage, Cara Delvin, Joseph Moser`,
+    starring: [`Nicola Cage`, `Cara Delvin`, `Joseph Moser`],
     duration: 210,
     release: 1998,
     reviews: [

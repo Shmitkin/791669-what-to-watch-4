@@ -12,7 +12,7 @@ exports[`Should GenresList render correctly 1`] = `
       href="#"
       onClick={[Function]}
     >
-      All genres
+      first
     </a>
   </li>
   <li
@@ -23,7 +23,7 @@ exports[`Should GenresList render correctly 1`] = `
       href="#"
       onClick={[Function]}
     >
-      genre
+      second
     </a>
   </li>
   <li
@@ -34,18 +34,7 @@ exports[`Should GenresList render correctly 1`] = `
       href="#"
       onClick={[Function]}
     >
-      anotherGenre
-    </a>
-  </li>
-  <li
-    className="catalog__genres-item "
-  >
-    <a
-      className="catalog__genres-link"
-      href="#"
-      onClick={[Function]}
-    >
-      megaGenre
+      third
     </a>
   </li>
 </ul>

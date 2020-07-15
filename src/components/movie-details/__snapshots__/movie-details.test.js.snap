@@ -32,7 +32,12 @@ exports[`Should MovieDetails render correctly 1`] = `
       <span
         className="movie-card__details-value"
       >
-        Nicola Cage, Cara Delvin, Joseph Moser
+        Nicola Cage,
+        <br />
+        Cara Delvin,
+        <br />
+        Joseph Moser,
+        <br />
       </span>
     </p>
   </div>
