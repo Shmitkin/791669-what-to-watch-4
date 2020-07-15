@@ -102,8 +102,12 @@ const reducer = (state = initialState, action) => {
         favoriteMovies: action.payload
       });
     case ActionType.CHANGE_MOVIE_FAVORITE_STATUS:
+      const movieIndex = state.movies.findIndex((movie) => movie.id === action.payload.id);
+      const movies = state.movies.slice(0, movieIndex).concat(action.payload, state.movies.slice(movieIndex + 1));
+      const promoMovie = state.promoMovie.id === action.payload.id ? action.payload : state.promoMovie;
       return extend(state, {
-        movies: state.movies.filter((movie) => movie.id !== action.payload.id).push(action.payload)
+        movies,
+        promoMovie
       });
   }
   return state;

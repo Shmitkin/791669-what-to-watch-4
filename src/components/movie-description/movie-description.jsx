@@ -1,9 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 import MovieButtons from "../movie-buttons/movie-buttons.jsx";
 
-export default function MovieDescription({movie, isMovieDetails}) {
+import {Operation as DataOperation} from "../../reducer/data/data.js";
+
+export function MovieDescription({movie, isMovieDetails, changeFavoriteStatus}) {
 
   const {title, genre, release, isFavorite} = movie;
 
@@ -14,7 +17,12 @@ export default function MovieDescription({movie, isMovieDetails}) {
         <span className="movie-card__genre">{genre}</span>
         <span className="movie-card__year">{release}</span>
       </p>
-      <MovieButtons isMovieDetails = {isMovieDetails} isFavorite= {isFavorite}/>
+      <MovieButtons
+        isMovieDetails={isMovieDetails}
+        isFavorite={isFavorite}
+        onMyListButtonClickHandler={() => {
+          changeFavoriteStatus(movie);
+        }}/>
     </div>
   );
 }
@@ -28,5 +36,13 @@ MovieDescription.propTypes = {
     isFavorite: PropTypes.bool.isRequired,
   }).isRequired,
   isMovieDetails: PropTypes.bool.isRequired,
+  changeFavoriteStatus: PropTypes.func.isRequired,
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  changeFavoriteStatus: (movie) => {
+    dispatch(DataOperation.changeMovieFavoriteStatus(movie));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(MovieDescription);

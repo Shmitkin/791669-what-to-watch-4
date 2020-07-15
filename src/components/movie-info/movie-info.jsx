@@ -67,7 +67,7 @@ class MovieInfo extends React.PureComponent {
             </PageHeader>
 
             <div className="movie-card__wrap">
-              <MovieDescription movie = {movie} isMovieDetails = {true} />
+              <MovieDescription movie = {movie} isMovieDetails = {true}/>
             </div>
 
           </div>
