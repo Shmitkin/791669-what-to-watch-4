@@ -109,9 +109,9 @@ MovieInfo.propTypes = {
   loadReviews: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  similarMovies: getSimilarMovies(state, ownProps),
-  movie: getMovieById(state, ownProps),
+const mapStateToProps = (state, props) => ({
+  similarMovies: getSimilarMovies(state, props.match.params.id),
+  movie: getMovieById(state, props.match.params.id),
   reviews: getComments(state),
 });
 
