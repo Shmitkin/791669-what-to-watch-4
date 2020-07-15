@@ -9,7 +9,7 @@ import UserBlock from "../user-block/user-block.jsx";
 
 import {getUserFavoriteMovies} from "../../reducer/data/selectors.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
-
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 
 class MyListPage extends React.PureComponent {
   constructor(props) {
@@ -46,7 +46,8 @@ MyListPage.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  userFavoriteMovies: getUserFavoriteMovies(state)
+  userFavoriteMovies: getUserFavoriteMovies(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -14,7 +14,6 @@ import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 const WrappedSignInForm = withFormValidation(SignInForm);
 
 export function SignInPage({authorizationStatus}) {
-
   switch (authorizationStatus) {
     case AuthorizationStatus.AUTH:
       return <Redirect from="/login" to="/" />;

@@ -19,6 +19,28 @@ export default class MovieModel {
     this.backgroundColor = movie[`background_color`];
   }
 
+  toRAW() {
+    return {
+      "id": parseInt(this.id, 10),
+      "name": this.title,
+      "preview_video_link": this.videoPrev,
+      "video_link": this.videoFull,
+      "preview_image": this.preview,
+      "poster_image": this.poster,
+      "background_image": this.background,
+      "genre": this.genre,
+      "description": this.description,
+      "rating": this.rating,
+      "scores_count": this.votes,
+      "director": this.director,
+      "starring": this.starring,
+      "run_time": this.duration,
+      "released": this.release,
+      "is_favorite": this.isFavotite,
+      "background_color": this.backgroundColor,
+    };
+  }
+
   static parseMovie(movie) {
     return new MovieModel(movie);
   }

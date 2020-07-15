@@ -14,6 +14,7 @@ const ActionType = {
   SET_PROMO_MOVIE: `SET_PROMO_MOVIE`,
   SET_COMMENTS: `SET_COMMENTS`,
   SET_USER_FAVORITE_MOVIES: `SET_USER_FAVORITE_MOVIES`,
+  CHANGE_MOVIE_FAVORITE_STATUS: `CHANGE_MOVIE_FAVORITE_STATUS`,
 };
 
 export const ActionCreator = {
@@ -33,6 +34,12 @@ export const ActionCreator = {
     return {
       type: ActionType.SET_USER_FAVORITE_MOVIES,
       payload: movies,
+    };
+  },
+  changeMovieFavoriteStatus: (movie) => {
+    return {
+      type: ActionType.CHANGE_MOVIE_FAVORITE_STATUS,
+      payload: movie,
     };
   }
 
@@ -65,7 +72,15 @@ const Operation = {
       .then(({data}) => {
         dispatch(ActionCreator.setUserFavoriteMovies(MovieModel.parseMovies(data)));
       });
+  },
+
+  changeMovieFavoriteStatus: (movie) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${movie.id}/${movie.isFavorite ? 0 : 1}`)
+    .then(({data})=>{
+      dispatch(ActionCreator.changeMovieFavoriteStatus(MovieModel.parseMovie(data)));
+    });
   }
+
 };
 
 const reducer = (state = initialState, action) => {
@@ -85,6 +100,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_USER_FAVORITE_MOVIES:
       return extend(state, {
         favoriteMovies: action.payload
+      });
+    case ActionType.CHANGE_MOVIE_FAVORITE_STATUS:
+      return extend(state, {
+        movies: state.movies.filter((movie) => movie.id !== action.payload.id).push(action.payload)
       });
   }
   return state;
