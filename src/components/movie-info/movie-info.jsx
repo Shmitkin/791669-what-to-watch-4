@@ -9,7 +9,7 @@ import PageHeader from "../page-header/page-header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 import MovieOverview from "../movie-overview/movie-overview.jsx";
 import MovieInfoNav from "../movie-info-nav/movie-info-nav.jsx";
-import MovieInfoPoster from "../movie-info-poster/movie-info-poster.jsx";
+import MoviePoster from "../movie-poster/movie-poster.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import MovieReviews from "../movie-reviews/movie-reviews.jsx";
 import UserBlock from "../user-block/user-block.jsx";
@@ -40,13 +40,13 @@ class MovieInfo extends React.PureComponent {
 
     switch (activeTab) {
       case MovieInfoTabs.OVERVIEW:
-        return <MovieOverview movie = {movie} />;
+        return <MovieOverview movie={movie} />;
       case MovieInfoTabs.DETAILS:
-        return <MovieDetails movie = {movie} />;
+        return <MovieDetails movie={movie} />;
       case MovieInfoTabs.REVIEWS:
-        return <MovieReviews reviews = {reviews} />;
+        return <MovieReviews reviews={reviews} />;
       default:
-        return <MovieOverview movie = {movie} />;
+        return <MovieOverview movie={movie} />;
     }
   }
 
@@ -58,7 +58,7 @@ class MovieInfo extends React.PureComponent {
         <section className="movie-card movie-card--full">
           <div className="movie-card__hero">
 
-            <MovieBackground movie = {movie} />
+            <MovieBackground movie={movie} />
 
             <h1 className="visually-hidden">WTW</h1>
 
@@ -67,18 +67,18 @@ class MovieInfo extends React.PureComponent {
             </PageHeader>
 
             <div className="movie-card__wrap">
-              <MovieDescription movie = {movie} isMovieDetails = {true}/>
+              <MovieDescription movie={movie} isMovieDetails={true}/>
             </div>
 
           </div>
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
 
-              <MovieInfoPoster movie = {movie} />
+              <MoviePoster movie={movie} isMovieDetails={true}/>
 
               <div className="movie-card__desc">
 
-                <MovieInfoNav onClick = {onTabClick} activeTab = {activeTab} />
+                <MovieInfoNav onClick={onTabClick} activeTab={activeTab} />
 
                 {this._renderInfo()}
 
@@ -90,7 +90,7 @@ class MovieInfo extends React.PureComponent {
           <section className="catalog catalog--like-this">
             <h2 className="catalog__title">More like this</h2>
 
-            <MovieCardsList movies = {similarMovies} />
+            <MovieCardsList movies={similarMovies} />
 
           </section>
           <PageFooter />

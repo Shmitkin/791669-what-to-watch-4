@@ -1,15 +1,15 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import MovieMainPoster from "./movie-main-poster.jsx";
+import MoviePoster from "./movie-poster.jsx";
 import {movie} from "../../test-state.js";
 
 
-it(`Should MovieMainPoster render correctly`, () => {
+it(`Should MoviePoster render correctly`, () => {
 
   const tree = renderer
     .create(
-        <MovieMainPoster movie = {movie} />
+        <MoviePoster movie={movie} isMovieDetails={false}/>
     )
     .toJSON();
 
