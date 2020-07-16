@@ -16,7 +16,11 @@ export default function MovieDetails(props) {
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Starring</strong>
             <span className="movie-card__details-value">
-              {starring.map((name, i) => <React.Fragment key={`${name}-${i}`}>{`${name},`}<br /></React.Fragment>)}
+              {starring.map((name, i) =>
+                (i === starring.length - 1)
+                  ? <React.Fragment key={`${name}-${i}`}> {`${name}`} </React.Fragment>
+                  : <React.Fragment key={`${name}-${i}`}> {`${name},`} <br /></React.Fragment>
+              )}
             </span>
           </p>
         </div>
