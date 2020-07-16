@@ -23,6 +23,18 @@ class MovieInfo extends React.PureComponent {
     super(props);
   }
 
+  componentDidMount() {
+    const {loadReviews, movie} = this.props;
+    loadReviews(movie.id);
+  }
+
+  componentDidUpdate(prevProps) {
+    const {loadReviews, movie} = this.props;
+    if (prevProps.movie.id !== movie.id) {
+      loadReviews(movie.id);
+    }
+  }
+
   _renderInfo() {
     const {activeTab, movie, reviews} = this.props;
 
@@ -35,18 +47,6 @@ class MovieInfo extends React.PureComponent {
         return <MovieReviews reviews = {reviews} />;
       default:
         return <MovieOverview movie = {movie} />;
-    }
-  }
-
-  componentDidMount() {
-    const {loadReviews, movie} = this.props;
-    loadReviews(movie.id);
-  }
-
-  componentDidUpdate(prevProps) {
-    const {loadReviews, movie} = this.props;
-    if (prevProps.movie.id !== movie.id) {
-      loadReviews(movie.id);
     }
   }
 
@@ -67,7 +67,7 @@ class MovieInfo extends React.PureComponent {
             </PageHeader>
 
             <div className="movie-card__wrap">
-              <MovieDescription movie = {movie} isMovieDetails = {true} />
+              <MovieDescription movie = {movie} isMovieDetails = {true}/>
             </div>
 
           </div>
@@ -109,9 +109,9 @@ MovieInfo.propTypes = {
   loadReviews: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  similarMovies: getSimilarMovies(state, ownProps),
-  movie: getMovieById(state, ownProps),
+const mapStateToProps = (state, props) => ({
+  similarMovies: getSimilarMovies(state, props.match.params.id),
+  movie: getMovieById(state, props.match.params.id),
   reviews: getComments(state),
 });
 

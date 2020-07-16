@@ -2,42 +2,29 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import thunk from "redux-thunk";
-import {MemoryRouter, Route, withRouter} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 
-import MovieInfo from "./movie-info.jsx";
-import {movies} from "../../test-state.js";
-import {AuthorizationStatus} from "../../consts.js";
-
-const mockStore = configureStore([thunk]);
+import {MovieInfo} from "./movie-info.jsx";
+import {mockStore, movie, comments} from "../../test-state.js";
 
 it(`Should MovieInfo render correctly`, () => {
-
-  const store = mockStore({
-    DATA: {
-      movies,
-      comments: [{}]
-    },
-    USER: {
-      authorizationStatus: AuthorizationStatus.NO_AUTH
-    },
-  });
-
-
-  const MovieInfoWrapped = withRouter(MovieInfo);
+  const testStore = configureStore();
+  const store = testStore(mockStore);
 
   const tree = renderer
     .create(
-        <MemoryRouter initialEntries={[`/films/2323`]}>
+        <BrowserRouter>
           <Provider store={store}>
-            <Route path="/films/:id">
-              <MovieInfoWrapped
-                onTabClick ={()=>{}}
-                activeTab={`active`}
-              />
-            </Route>
+            <MovieInfo
+              onTabClick ={()=>{}}
+              activeTab={`active`}
+              movie={movie}
+              reviews={comments}
+              similarMovies={[]}
+              loadReviews={() => {}}
+            />
           </Provider>
-        </MemoryRouter>
+        </BrowserRouter>
     )
     .toJSON();
   expect(tree).toMatchSnapshot();

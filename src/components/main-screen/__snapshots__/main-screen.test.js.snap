@@ -118,6 +118,7 @@ Array [
             </button>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -160,7 +161,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            All genres
+            First
           </a>
         </li>
         <li
@@ -171,7 +172,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Family
+            Second
           </a>
         </li>
         <li
@@ -182,7 +183,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Horror
+            Third
           </a>
         </li>
         <li
@@ -193,13 +194,112 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Comedy
+            Fourth
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item "
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            Fifth
           </a>
         </li>
       </ul>
       <div
         className="catalog__movies-list"
-      />
+      >
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/2323"
+            onClick={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                loop={true}
+                muted={true}
+                poster="img/seven-years-in-tibet.jpg"
+                src="img/seven-years-in-tibet.mp4"
+                width="280"
+              />
+            </div>
+            <h3
+              className="small-movie-card__title"
+            >
+              Seven Years IN Tibet
+            </h3>
+          </a>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/2341"
+            onClick={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                loop={true}
+                muted={true}
+                poster="img/moonrise-kingdom.jpg"
+                src="img/seven-years-in-tibet.mp4"
+                width="280"
+              />
+            </div>
+            <h3
+              className="small-movie-card__title"
+            >
+              Moonrise Kingdom
+            </h3>
+          </a>
+        </article>
+        <article
+          className="small-movie-card catalog__movies-card"
+          onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
+        >
+          <a
+            className="small-movie-card__link"
+            href="/films/2233"
+            onClick={[Function]}
+          >
+            <div
+              className="small-movie-card__image"
+            >
+              <video
+                height="175"
+                loop={true}
+                muted={true}
+                poster="img/snatch.jpg"
+                src="img/seven-years-in-tibet.mp4"
+                width="280"
+              />
+            </div>
+            <h3
+              className="small-movie-card__title"
+            >
+              Snatch
+            </h3>
+          </a>
+        </article>
+      </div>
     </section>
     <footer
       className="page-footer"

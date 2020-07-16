@@ -1,4 +1,8 @@
+import {AuthorizationStatus} from "./consts.js";
+import NameSpace from "./reducer/name-space.js";
+
 export const movie = {
+  isFavorite: false,
   id: `23`,
   title: `Pulp Fiction`,
   videoPrev: `img/seven-years-in-tibet.mp4`,
@@ -37,6 +41,7 @@ export const movie = {
 
 export const movies = [
   {
+    isFavorite: false,
     id: `2323`,
     title: `Seven Years IN Tibet`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
@@ -73,6 +78,7 @@ export const movies = [
     ]
   },
   {
+    isFavorite: false,
     id: `2341`,
     title: `Moonrise Kingdom`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
@@ -109,6 +115,7 @@ export const movies = [
     ]
   },
   {
+    isFavorite: false,
     id: `2233`,
     title: `Snatch`,
     videoPrev: `img/seven-years-in-tibet.mp4`,
@@ -153,3 +160,38 @@ export const genres = [
   `Fourth`,
   `Fifth`
 ];
+
+export const comments = [
+  {
+    id: 1,
+    text: `comment text`,
+    author: `author1`,
+    authorId: 16,
+    rating: 7,
+    date: `2020-06-16T10:54:44.818Z`,
+  },
+  {
+    id: 3,
+    text: `comment text2`,
+    author: `author2`,
+    authorId: 126,
+    rating: 9,
+    date: `2020-06-16T11:54:44.818Z`,
+  },
+];
+
+export const mockStore = {
+  [NameSpace.DATA]: {
+    movies,
+    promoMovie: movie,
+    favoriteMovies: [movies[0], movies[1]],
+    comments,
+  },
+  [NameSpace.MAIN]: {
+    showingMoviesCount: 8,
+  },
+  [NameSpace.USER]: {
+    authorizationStatus: AuthorizationStatus.NO_AUTH
+  }
+
+};

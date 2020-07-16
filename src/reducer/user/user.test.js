@@ -38,7 +38,6 @@ describe(`Reducer should work correctly`, () => {
       profile: {name: `user name`},
     });
   });
-
 });
 
 describe(`Operations should work correctly`, () => {
@@ -78,7 +77,7 @@ describe(`Operations should work correctly`, () => {
     .onPost(`/login`)
     .reply(200, mockUser);
 
-    loginSetter(dispatch, () => {}, api)
+    return loginSetter(dispatch, () => {}, api)
     .then(() => {
       expect(dispatch).toHaveBeenCalledTimes(2);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
@@ -91,5 +90,4 @@ describe(`Operations should work correctly`, () => {
       });
     });
   });
-
 });

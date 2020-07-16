@@ -1,8 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import {BrowserRouter as Router} from 'react-router-dom';
+
 import MovieCardsList from "./movie-cards-list.jsx";
 import {movies} from "../../test-state.js";
-import {BrowserRouter as Router} from 'react-router-dom';
+
 
 it(`Should MovieCardsList render correctly`, () => {
   const tree = renderer
@@ -13,7 +15,6 @@ it(`Should MovieCardsList render correctly`, () => {
             onMovieCardClick = {() => {}}
           />
         </Router>
-
     )
     .toJSON();
 

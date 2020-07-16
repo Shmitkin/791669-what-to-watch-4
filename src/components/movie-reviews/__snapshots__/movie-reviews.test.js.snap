@@ -16,7 +16,7 @@ exports[`Should MovieReview render correctly 1`] = `
         <p
           className="review__text"
         >
-          reviewText
+          comment text
         </p>
         <footer
           className="review__details"
@@ -24,20 +24,20 @@ exports[`Should MovieReview render correctly 1`] = `
           <cite
             className="review__author"
           >
-            author
+            author1
           </cite>
           <time
             className="review__date"
-            dateTime="date string"
+            dateTime="2020-06-16T10:54:44.818Z"
           >
-            date string
+            2020-06-16T10:54:44.818Z
           </time>
         </footer>
       </blockquote>
       <div
         className="review__rating"
       >
-        8.4
+        7
       </div>
     </div>
   </div>
@@ -53,7 +53,7 @@ exports[`Should MovieReview render correctly 1`] = `
         <p
           className="review__text"
         >
-          review text
+          comment text2
         </p>
         <footer
           className="review__details"
@@ -61,20 +61,20 @@ exports[`Should MovieReview render correctly 1`] = `
           <cite
             className="review__author"
           >
-            author
+            author2
           </cite>
           <time
             className="review__date"
-            dateTime="date string"
+            dateTime="2020-06-16T11:54:44.818Z"
           >
-            date string
+            2020-06-16T11:54:44.818Z
           </time>
         </footer>
       </blockquote>
       <div
         className="review__rating"
       >
-        8.4
+        9
       </div>
     </div>
   </div>

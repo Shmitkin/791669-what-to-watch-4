@@ -14,7 +14,9 @@ function UserBlock(props) {
       const {avatarUrl} = user;
       return (
         <div className="user-block__avatar">
-          <img src={avatarUrl} alt="User avatar" width="63" height="63" />
+          <Link to="/mylist">
+            <img src={avatarUrl} alt="User avatar" width="63" height="63" />
+          </Link>
         </div>);
     } else {
       return <Link to="/login" className="user-block__link">Sign in</Link>;
@@ -41,5 +43,6 @@ const mapStateToProps = (state) => ({
   user: getUserProfile(state),
 });
 
+export {UserBlock};
 export default connect(mapStateToProps)(UserBlock);
 

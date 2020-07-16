@@ -1,28 +1,15 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
-import {movie, movies} from "../../test-state.js";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {AuthorizationStatus} from "../../consts.js";
 
-const mockStore = configureStore([]);
+import App from "./app.jsx";
+import {mockStore} from "../../test-state.js";
 
 
 it(`Should App render correctly`, () => {
-
-  const store = mockStore({
-    DATA: {
-      movies,
-      promoMovie: movie,
-    },
-    MAIN: {
-      showingMoviesCount: 8,
-    },
-    USER: {
-      authorizationStatus: AuthorizationStatus.NO_AUTH
-    }
-  });
+  const testStore = configureStore();
+  const store = testStore(mockStore);
 
   const tree = renderer
     .create(

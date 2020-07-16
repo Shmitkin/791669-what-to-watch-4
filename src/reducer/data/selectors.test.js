@@ -1,4 +1,4 @@
-import {getMovies, getPromoMovie, getComments, getGenres, getMoviesByGenre, getMovieById, getSimilarMovies} from "./selectors.js";
+import {getMovies, getPromoMovie, getComments, getGenres, getMoviesByGenre, getMovieById, getSimilarMovies, getUserFavoriteMovies} from "./selectors.js";
 import {DEFAULT_GENRE} from "../../consts.js";
 
 const MOCK_FILM_ID = `77`;
@@ -24,6 +24,7 @@ const mockState = {
     movies: mockMovies,
     promoMovie: mockPromoMovie,
     comments: mockComments,
+    favoriteMovies: [{id: `f44`}]
   }
 };
 
@@ -39,6 +40,10 @@ describe(`Simple Selectors will return a value from state`, () => {
 
   it(`getComments will return comments from state`, () => {
     expect(getComments(mockState)).toEqual(mockComments);
+  });
+
+  it(`getUserFavoriteMovies will return a value from state`, () => {
+    expect(getUserFavoriteMovies(mockState)).toEqual(mockState.DATA.favoriteMovies);
   });
 });
 
@@ -56,23 +61,23 @@ describe(`getGenres will return`, () => {
 
 describe(`getMoviesByGenre will return`, () => {
   it(`getMoviesByGenre will return an array with movies without changing when genre is DEFAULT_GENRE`, () => {
-    expect(getMoviesByGenre(mockState, {activeTab: DEFAULT_GENRE}))
+    expect(getMoviesByGenre(mockState, DEFAULT_GENRE))
       .toEqual(mockMovies);
   });
 
   it(`getMoviesByGenre will return an array with movies, which genre is MOCK_GENRE`, () => {
-    expect(getMoviesByGenre(mockState, {activeTab: MOCK_GENRE}))
+    expect(getMoviesByGenre(mockState, MOCK_GENRE))
       .toHaveLength(2);
   });
 });
 
 it(`getMovieById will return a movie with MOCK_ID`, () => {
-  expect(getMovieById(mockState, {match: {params: {id: MOCK_FILM_ID}}}))
+  expect(getMovieById(mockState, MOCK_FILM_ID))
   .toEqual(mockMovies[0]);
 });
 
 it(`getSimilarMovies will return an array of movies with same genre that active movie, but without active movie`, () => {
-  expect(getSimilarMovies(mockState, {match: {params: {id: MOCK_FILM_ID}}}))
+  expect(getSimilarMovies(mockState, MOCK_FILM_ID))
   .toHaveLength(1);
 });
 

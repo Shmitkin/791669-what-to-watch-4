@@ -2,7 +2,6 @@ import {createSelector} from "reselect";
 
 import {DEFAULT_GENRE, NAV_MAX_GENRES, MAX_SIMILAR_MOVIES} from "../../consts.js";
 import NameSpace from "../name-space.js";
-import {getActiveGenre, getActiveMovieId} from "../main/selectors.js";
 
 const NAME_SPACE = NameSpace.DATA;
 
@@ -18,6 +17,10 @@ export const getComments = (state) => {
   return state[NAME_SPACE].comments;
 };
 
+export const getUserFavoriteMovies = (state) => {
+  return state[NAME_SPACE].favoriteMovies;
+};
+
 export const getGenres = createSelector(
     getMovies,
     (movies) => {
@@ -28,32 +31,26 @@ export const getGenres = createSelector(
     }
 );
 
-export const getMoviesByGenre = createSelector(
-    getMovies,
-    getActiveGenre,
-    (movies, genre) => {
-      if (genre === DEFAULT_GENRE) {
-        return movies;
-      } else {
-        return movies.filter((movie) => movie.genre === genre);
-      }
-    }
-);
+export const getMoviesByGenre = (state, genre) => {
+  const movies = getMovies(state);
+  if (genre === DEFAULT_GENRE) {
+    return movies;
+  } else {
+    return movies.filter((movie) => movie.genre === genre);
+  }
+};
 
-export const getMovieById = createSelector(
-    getMovies,
-    getActiveMovieId,
-    (movies, id) => {
-      const [movieById] = movies.filter((movie) => movie.id === id);
-      return movieById;
-    }
-);
+export const getMovieById = (state, id) => {
+  const movies = getMovies(state);
+  const [movieById] = movies.filter((movie) => movie.id === id);
+  return movieById;
+};
 
-export const getSimilarMovies = createSelector(
-    getMovies,
-    getMovieById,
-    (movies, currentMovie) => {
-      const {id, genre} = currentMovie;
-      return movies.filter((movie) => movie.genre === genre && movie.id !== id).slice(0, MAX_SIMILAR_MOVIES);
-    }
-);
+export const getSimilarMovies = (state, movieId) => {
+  const movies = getMovies(state);
+  const activeMovie = getMovieById(state, movieId);
+  const {id, genre} = activeMovie;
+  return movies.filter((movie) => movie.genre === genre && movie.id !== id).slice(0, MAX_SIMILAR_MOVIES);
+};
+
+

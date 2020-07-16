@@ -24,7 +24,7 @@ const ActionCreator = {
       type: ActionType.SET_USER_PROFILE,
       payload: profile
     };
-  }
+  },
 };
 
 const reducer = (state = initialState, action) => {

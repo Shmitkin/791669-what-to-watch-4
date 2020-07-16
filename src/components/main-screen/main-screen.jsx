@@ -79,9 +79,9 @@ MainScreen.propTypes = {
   genres: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state, props) => ({
   promoMovie: getPromoMovie(state),
-  movies: getMoviesByGenre(state, ownProps),
+  movies: getMoviesByGenre(state, props.activeTab),
   showingMoviesCount: getShowingMovieCount(state),
   genres: getGenres(state),
 });
