@@ -1,6 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+const formatStarring = (starring) => {
+  return starring.map((name, i) =>
+    (i === starring.length - 1)
+      ? <React.Fragment key={`${name}-${i}`}> {`${name}`} </React.Fragment>
+      : <React.Fragment key={`${name}-${i}`}> {`${name},`} <br /></React.Fragment>
+  );
+};
+
 export default function MovieDetails(props) {
   const {movie} = props;
   const {director, starring, duration, genre, release} = movie;
@@ -15,13 +23,7 @@ export default function MovieDetails(props) {
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Starring</strong>
-            <span className="movie-card__details-value">
-              {starring.map((name, i) =>
-                (i === starring.length - 1)
-                  ? <React.Fragment key={`${name}-${i}`}> {`${name}`} </React.Fragment>
-                  : <React.Fragment key={`${name}-${i}`}> {`${name},`} <br /></React.Fragment>
-              )}
-            </span>
+            <span className="movie-card__details-value">{formatStarring(starring)}</span>
           </p>
         </div>
 
