@@ -13,7 +13,7 @@ import {MoviePosterSize} from "../../consts.js";
 import {getMovieById} from "../../reducer/data/selectors.js";
 
 
-export function AddReviewPage({movie}) {
+function AddReviewPage({movie}) {
 
   return (
     <section className="movie-card movie-card--full">
@@ -45,5 +45,6 @@ const mapStateToProps = (state, props) => ({
   movie: getMovieById(state, props.match.params.id),
 });
 
+export {AddReviewPage};
 export default connect(mapStateToProps)(AddReviewPage);
 
