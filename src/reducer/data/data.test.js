@@ -82,6 +82,23 @@ describe(`Reducer works correctly`, () => {
       favoriteMovies: [{id: 131}, {id: `movieId`}],
     });
   });
+
+  it(`Reducer should change movie status in movies array`, () => {
+    expect(reducer({
+      movies: [{id: 1, isFavorite: false}, {id: 2, isFavorite: false}],
+      promoMovie: {},
+      comments: [],
+      favoriteMovies: [],
+    }, {
+      type: ActionType.CHANGE_MOVIE_FAVORITE_STATUS,
+      payload: {id: 2, isFavorite: true}
+    })).toEqual({
+      movies: [{id: 1, isFavorite: false}, {id: 2, isFavorite: true}],
+      promoMovie: {},
+      comments: [],
+      favoriteMovies: [],
+    });
+  });
 });
 
 
@@ -169,6 +186,25 @@ describe(`Operations work correctly`, () => {
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.SET_USER_FAVORITE_MOVIES,
         payload: expectedMoviesInStore,
+      });
+    });
+  });
+
+  it(`Should make a correct POST API call to /favorites/:movieId/:favoriteStatus`, () => {
+    const mockMovie = {id: 22, isFavorite: false};
+    const favoriteMovieStatusChanger = Operation.changeMovieFavoriteStatus(mockMovie);
+    const dispatch = jest.fn();
+
+    apiMock
+    .onPost(`/favorite/${mockMovie.id}/1`)
+    .reply(200, {id: 22, isFavorite: true});
+
+    return favoriteMovieStatusChanger(dispatch, () => {}, api)
+    .then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.CHANGE_MOVIE_FAVORITE_STATUS,
+        payload: MovieModel.parseMovie({id: 22, isFavorite: true}),
       });
     });
   });
