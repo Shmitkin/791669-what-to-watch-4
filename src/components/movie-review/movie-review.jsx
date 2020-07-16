@@ -1,6 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+const MONTHS = [
+  `January`,
+  `February`,
+  `March`,
+  `April`,
+  `May`,
+  `June`,
+  `July`,
+  `August`,
+  `September`,
+  `October`,
+  `November`,
+  `December`,
+];
+
+const formatCommentDate = (dateString) => {
+  const date = new Date(Date.parse(dateString));
+  return `${MONTHS[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+};
+
 export default function MovieReview(props) {
   const {review} = props;
   const {text, author, date, rating} = review;
@@ -8,15 +28,12 @@ export default function MovieReview(props) {
   return (
     <div className="review">
       <blockquote className="review__quote">
-        <p className="review__text">
-          {text}
-        </p>
+        <p className="review__text">{text}</p>
 
         <footer className="review__details">
           <cite className="review__author">{author}</cite>
-          <time className="review__date"
-            dateTime={date}>
-            {date}
+          <time className="review__date" dateTime={date}>
+            {formatCommentDate(date)}
           </time>
         </footer>
       </blockquote>
