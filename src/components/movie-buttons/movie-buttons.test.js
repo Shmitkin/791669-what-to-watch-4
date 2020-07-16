@@ -10,6 +10,7 @@ it(`Should MovieButtons render correctly`, () => {
           isMovieDetails={false}
           isFavorite={false}
           onMyListButtonClickHandler={()=>{}}
+          movieId={`id`}
         />
     )
     .toJSON();

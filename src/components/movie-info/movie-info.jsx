@@ -14,7 +14,7 @@ import MovieDetails from "../movie-details/movie-details.jsx";
 import MovieReviews from "../movie-reviews/movie-reviews.jsx";
 import UserBlock from "../user-block/user-block.jsx";
 
-import {MovieInfoTabs} from "../../consts.js";
+import {MovieInfoTabs, MoviePosterSize} from "../../consts.js";
 import {getSimilarMovies, getMovieById, getComments} from "../../reducer/data/selectors.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 
@@ -74,7 +74,7 @@ class MovieInfo extends React.PureComponent {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
 
-              <MoviePoster movie={movie} isMovieDetails={true}/>
+              <MoviePoster movie={movie} posterSize={MoviePosterSize.BIG}/>
 
               <div className="movie-card__desc">
 

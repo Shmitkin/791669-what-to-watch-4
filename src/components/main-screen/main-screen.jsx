@@ -14,6 +14,7 @@ import UserBlock from "../user-block/user-block.jsx";
 import {getMoviesByGenre, getPromoMovie, getGenres} from "../../reducer/data/selectors.js";
 import {getShowingMovieCount} from "../../reducer/main/selectors.js";
 import {ActionCreator} from "../../reducer/main/main.js";
+import {MoviePosterSize} from "../../consts.js";
 
 
 class MainScreen extends React.PureComponent {
@@ -44,7 +45,7 @@ class MainScreen extends React.PureComponent {
           </PageHeader>
 
           <div className="movie-card__wrap">
-            <HeaderMovieInfo movie={promoMovie} isMovieDetails={false} />
+            <HeaderMovieInfo movie={promoMovie} isMovieDetails={false} posterSize={MoviePosterSize.DEFAULT} />
           </div>
 
         </section>

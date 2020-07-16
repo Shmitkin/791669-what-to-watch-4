@@ -8,7 +8,7 @@ import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 function MovieDescription({movie, isMovieDetails, changeFavoriteStatus}) {
 
-  const {title, genre, release, isFavorite} = movie;
+  const {title, genre, release, isFavorite, id} = movie;
 
   return (
     <div className="movie-card__desc">
@@ -23,6 +23,7 @@ function MovieDescription({movie, isMovieDetails, changeFavoriteStatus}) {
         onMyListButtonClickHandler={() => {
           changeFavoriteStatus(movie);
         }}
+        movieId={id}
       />
     </div>
   );
@@ -35,6 +36,7 @@ MovieDescription.propTypes = {
     genre: PropTypes.string.isRequired,
     release: PropTypes.number.isRequired,
     isFavorite: PropTypes.bool.isRequired,
+    id: PropTypes.string.isRequired,
   }).isRequired,
   isMovieDetails: PropTypes.bool.isRequired,
   changeFavoriteStatus: PropTypes.func.isRequired,

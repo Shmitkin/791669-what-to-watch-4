@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function MovieBackground({movie}) {
+  const {background, title} = movie;
   return (
     <div className="movie-card__bg">
-      <img src={movie.background} alt={movie.title} />
+      <img src={background} alt={title} />
     </div>
   );
 }

@@ -27,4 +27,24 @@ export const AuthorizationStatus = {
   NO_AUTH: `NO_AUTH`,
 };
 
+export const MoviePosterSize = {
+  DEFAULT: `DEFAULT`,
+  SMALL: `SMALL`,
+  BIG: `BIG`,
+};
+
+export const ReviewFormStars = {
+  COUNT: 5,
+  DEFAULT_CHECKED: 3,
+};
+
+export const AppRoute = {
+  ROOT: `/`,
+  FILMS: `/films`,
+  LOGIN: `/login`,
+  REVIEW: `/review`,
+  MY_LIST: `/mylist`,
+
+};
+
 export const BASE_URL = `https://4.react.pages.academy/wtw`;
