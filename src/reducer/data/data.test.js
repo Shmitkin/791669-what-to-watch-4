@@ -1,6 +1,6 @@
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api";
-import {reducer, ActionType, Operation} from "./data";
+import {reducer, ActionType, Operation, ActionCreator} from "./data";
 import MovieModel from "../../models/movie.js";
 import CommentModel from "../../models/comment.js";
 
@@ -205,6 +205,27 @@ describe(`Operations work correctly`, () => {
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.CHANGE_MOVIE_FAVORITE_STATUS,
         payload: MovieModel.parseMovie({id: 22, isFavorite: true}),
+      });
+    });
+  });
+
+  it(`Should make a correct POST API call to /comments:movieId`, () => {
+    const mockMovieId = 23;
+    const mockComment = {rating: 5, text: `comment over 50 symbols`};
+    const commentSender = Operation.sendNewComment(mockMovieId, mockComment);
+    const dispatch = jest.fn();
+    const mockResponseData = [{id: 3, user: {name: `UserName`, id: `32x`}, comment: `comment over 50 symbols`, rating: 5}];
+
+    apiMock
+    .onPost(`/comments/${mockMovieId}`, CommentModel.parseNewComment(mockComment))
+    .reply(200, mockResponseData);
+
+    return commentSender(dispatch, () => {}, api)
+    .then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.SET_COMMENTS,
+        payload: CommentModel.parseComments(mockResponseData)
       });
     });
   });

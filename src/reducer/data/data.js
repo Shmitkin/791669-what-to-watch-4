@@ -79,6 +79,13 @@ const Operation = {
     .then(({data})=>{
       dispatch(ActionCreator.changeMovieFavoriteStatus(MovieModel.parseMovie(data)));
     });
+  },
+
+  sendNewComment: (movieId, commentData) => (dispatch, getState, api) => {
+    return api.post(`/comments/${movieId}`, CommentModel.parseNewComment(commentData))
+    .then(({data})=> {
+      dispatch(ActionCreator.setComments(CommentModel.parseComments(data)));
+    });
   }
 
 };
