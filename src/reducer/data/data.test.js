@@ -108,7 +108,7 @@ describe(`Operations work correctly`, () => {
 
   it(`Should make a correct API call to /films`, function () {
     const dispatch = jest.fn();
-    const moviesLoader = Operation.loadMovies();
+    const moviesLoader = Operation.loadMovies(()=>{});
 
     const mockFilms = [{id: 34}, {id: 31}, {id: 88}];
     const expectedMoviesInStore = MovieModel.parseMovies(mockFilms);
@@ -129,7 +129,7 @@ describe(`Operations work correctly`, () => {
 
   it(`Should make a correct API call to /films/promo`, function () {
     const dispatch = jest.fn();
-    const promoMovieLoader = Operation.loadPromoMovie();
+    const promoMovieLoader = Operation.loadPromoMovie(()=>{});
 
     const mockFilm = {id: 34, title: `promo movie`};
     const expectedPromoMovieInStore = MovieModel.parseMovie(mockFilm);
