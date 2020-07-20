@@ -12,6 +12,7 @@ it(`Should AddReviewForm render correctly`, () => {
           onFormSubmit={()=>{}}
           isPostButtonDisabled={true}
           errorMessages={[]}
+          isFormDisabled={false}
         />
     )
     .toJSON();

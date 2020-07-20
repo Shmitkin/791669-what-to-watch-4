@@ -36,6 +36,7 @@ export default function withAddReviewFormValidation(Component) {
         isPostButtonDisabled: true,
         rating: null,
         text: ``,
+        isFormDisabled: false,
       };
 
       this._onFormSubmit = this._onFormSubmit.bind(this);
@@ -114,6 +115,9 @@ export default function withAddReviewFormValidation(Component) {
           this._onSuccessHandler,
           this._onErrorHandler
       );
+      this.setState({
+        isFormDisabled: true,
+      });
     }
 
     _onSuccessHandler() {
@@ -122,7 +126,8 @@ export default function withAddReviewFormValidation(Component) {
 
     _onErrorHandler() {
       this.setState({
-        errorMessages: [ErrorMessage.SERVER]
+        errorMessages: [ErrorMessage.SERVER],
+        isFormDisabled: false,
       });
     }
 
@@ -134,6 +139,7 @@ export default function withAddReviewFormValidation(Component) {
           onFormChange = {this._onFormChange}
           isPostButtonDisabled = {this.state.isPostButtonDisabled}
           errorMessages = {this.state.errorMessages}
+          isFormDisabled = {this.state.isFormDisabled}
         />
       );
     }

@@ -5,6 +5,7 @@ Array [
   <input
     className="rating__input"
     defaultChecked={true}
+    disabled={false}
     id="star-3"
     name="rating"
     type="radio"

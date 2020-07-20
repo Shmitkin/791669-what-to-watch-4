@@ -7,7 +7,7 @@ import AddReviewFormStars from "./add-review-form-rating.jsx";
 it(`Should AddReviewFormStar render correctly`, () => {
   const tree = renderer
     .create(
-        <AddReviewFormStars starsCount={5} defaultChecked={3}/>
+        <AddReviewFormStars starsCount={5} defaultChecked={3} disabled={false}/>
     )
     .toJSON();
 
