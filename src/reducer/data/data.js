@@ -41,22 +41,23 @@ export const ActionCreator = {
       type: ActionType.CHANGE_MOVIE_FAVORITE_STATUS,
       payload: movie,
     };
-  }
-
+  },
 };
 
 const Operation = {
-  loadMovies: () => (dispatch, getState, api) => {
+  loadMovies: (onSuccess) => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
         dispatch(ActionCreator.setMovies(MovieModel.parseMovies(response.data)));
+        onSuccess();
       });
   },
 
-  loadPromoMovie: () => (dispatch, getState, api) => {
+  loadPromoMovie: (onSuccess) => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
     .then((response) => {
       dispatch(ActionCreator.setPromoMovie(MovieModel.parseMovie(response.data)));
+      onSuccess();
     });
   },
 

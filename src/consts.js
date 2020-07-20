@@ -13,6 +13,7 @@ export const MovieInfoTabs = {
 };
 
 export const DEFAULT_GENRE = `All genres`;
+
 export const NAV_MAX_GENRES = 10;
 
 export const Movies = {

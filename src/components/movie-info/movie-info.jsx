@@ -118,7 +118,7 @@ MovieInfo.propTypes = {
   reviews: PropTypes.array.isRequired,
   similarMovies: PropTypes.array.isRequired,
   loadReviews: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state, props) => ({
