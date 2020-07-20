@@ -121,6 +121,9 @@ export default function withAddReviewFormValidation(Component) {
     }
 
     _onSuccessHandler() {
+      this.setState({
+        isFormDisabled: false,
+      });
       return history.push(`${AppRoute.FILMS}/${this._movieId}`);
     }
 

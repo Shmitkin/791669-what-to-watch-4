@@ -6,7 +6,7 @@ import MovieButtons from "../movie-buttons/movie-buttons.jsx";
 
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 
-function MovieDescription({movie, isMovieDetails, changeFavoriteStatus}) {
+function MovieDescription({movie, isAddReviewButton, changeFavoriteStatus}) {
 
   const {title, genre, release, isFavorite, id} = movie;
 
@@ -18,7 +18,7 @@ function MovieDescription({movie, isMovieDetails, changeFavoriteStatus}) {
         <span className="movie-card__year">{release}</span>
       </p>
       <MovieButtons
-        isMovieDetails={isMovieDetails}
+        isAddReviewButton={isAddReviewButton}
         isFavorite={isFavorite}
         onMyListButtonClickHandler={() => {
           changeFavoriteStatus(movie);
@@ -38,7 +38,7 @@ MovieDescription.propTypes = {
     isFavorite: PropTypes.bool.isRequired,
     id: PropTypes.string.isRequired,
   }).isRequired,
-  isMovieDetails: PropTypes.bool.isRequired,
+  isAddReviewButton: PropTypes.bool.isRequired,
   changeFavoriteStatus: PropTypes.func.isRequired,
 };
 

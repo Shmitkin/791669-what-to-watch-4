@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import MovieDescription from "../movie-description/movie-description.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 
-export default function HeaderMovieInfo({movie, isMovieDetails, posterSize}) {
+export default function HeaderMovieInfo({movie, isAddReviewButton, posterSize}) {
 
   return (
     <div className="movie-card__info">
       <MoviePoster movie={movie} posterSize={posterSize}/>
-      <MovieDescription movie={movie} isMovieDetails={isMovieDetails}/>
+      <MovieDescription movie={movie} isAddReviewButton={isAddReviewButton}/>
     </div>
   );
 }
@@ -17,6 +17,6 @@ export default function HeaderMovieInfo({movie, isMovieDetails, posterSize}) {
 
 HeaderMovieInfo.propTypes = {
   movie: PropTypes.object.isRequired,
-  isMovieDetails: PropTypes.bool.isRequired,
+  isAddReviewButton: PropTypes.bool.isRequired,
   posterSize: PropTypes.string.isRequired,
 };

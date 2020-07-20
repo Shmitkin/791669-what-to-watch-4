@@ -22,6 +22,7 @@ it(`Should MovieInfo render correctly`, () => {
               reviews={comments}
               similarMovies={[]}
               loadReviews={() => {}}
+              authorizationStatus={true}
             />
           </Provider>
         </BrowserRouter>

@@ -45,7 +45,7 @@ class MainScreen extends React.PureComponent {
           </PageHeader>
 
           <div className="movie-card__wrap">
-            <HeaderMovieInfo movie={promoMovie} isMovieDetails={false} posterSize={MoviePosterSize.DEFAULT} />
+            <HeaderMovieInfo movie={promoMovie} isAddReviewButton={false} posterSize={MoviePosterSize.DEFAULT} />
           </div>
 
         </section>

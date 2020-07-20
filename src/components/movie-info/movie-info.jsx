@@ -17,6 +17,8 @@ import UserBlock from "../user-block/user-block.jsx";
 import {MovieInfoTabs, MoviePosterSize} from "../../consts.js";
 import {getSimilarMovies, getMovieById, getComments} from "../../reducer/data/selectors.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {AuthorizationStatus} from "../../consts.js";
 
 class MovieInfo extends React.PureComponent {
   constructor(props) {
@@ -50,6 +52,15 @@ class MovieInfo extends React.PureComponent {
     }
   }
 
+  _checkAuthorizationStatus() {
+    const {authorizationStatus} = this.props;
+    if (authorizationStatus === AuthorizationStatus.AUTH) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() {
     const {onTabClick, activeTab, movie, similarMovies} = this.props;
 
@@ -67,7 +78,7 @@ class MovieInfo extends React.PureComponent {
             </PageHeader>
 
             <div className="movie-card__wrap">
-              <MovieDescription movie={movie} isMovieDetails={true}/>
+              <MovieDescription movie={movie} isAddReviewButton={this._checkAuthorizationStatus()}/>
             </div>
 
           </div>
@@ -106,13 +117,15 @@ MovieInfo.propTypes = {
   movie: PropTypes.object.isRequired,
   reviews: PropTypes.array.isRequired,
   similarMovies: PropTypes.array.isRequired,
-  loadReviews: PropTypes.func.isRequired
+  loadReviews: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state, props) => ({
   similarMovies: getSimilarMovies(state, props.match.params.id),
   movie: getMovieById(state, props.match.params.id),
   reviews: getComments(state),
+  authorizationStatus: getAuthorizationStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

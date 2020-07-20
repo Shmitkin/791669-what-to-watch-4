@@ -16,7 +16,7 @@ it(`Should HeaderMovieInfo render correctly`, () => {
         <Provider store={store}>
           <HeaderMovieInfo
             movie = {movie}
-            isMovieDetails = {false}
+            isAddReviewButton = {false}
             posterSize={MoviePosterSize.DEFAULT}
           />
         </Provider>

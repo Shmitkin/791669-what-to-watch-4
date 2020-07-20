@@ -9,7 +9,7 @@ it(`Should MovieDescription render correctly`, () => {
     .create(
         <MovieDescription
           movie={movie}
-          isMovieDetails={false}
+          isAddReviewButton={false}
           onMyListButtonClickHandler={()=>{}}
           changeFavoriteStatus={()=>{}}
         />

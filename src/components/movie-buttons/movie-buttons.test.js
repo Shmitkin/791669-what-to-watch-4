@@ -7,7 +7,7 @@ it(`Should MovieButtons render correctly`, () => {
   const tree = renderer
     .create(
         <MovieButtons
-          isMovieDetails={false}
+          isAddReviewButton={false}
           isFavorite={false}
           onMyListButtonClickHandler={()=>{}}
           movieId={`id`}
