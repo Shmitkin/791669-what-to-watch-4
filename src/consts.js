@@ -35,7 +35,7 @@ export const MoviePosterSize = {
 
 export const ReviewFormStars = {
   COUNT: 5,
-  DEFAULT_CHECKED: 3,
+  DEFAULT_CHECKED: 0,
 };
 
 export const AppRoute = {

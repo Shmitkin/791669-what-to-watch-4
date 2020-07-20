@@ -1095,10 +1095,13 @@ main {
 
 .rating__input {
   display: none; }
-  .rating__input:checked ~ .rating__label::after {
-    color: rgba(56, 44, 42, 0.36); }
-  .rating__input:checked + .rating__label::after {
-    color: rgba(56, 44, 42, 0.7); }
+  .rating__input:checked ~ .rating__label::after,
+  .rating__input:checked + .rating__label::after,
+  .rating__label:hover::after,
+  .rating__label:hover ~ .rating__label::after
+   {
+    color: rgba(56, 44, 42, 0.7); 
+  }
 
 .rating__label {
   font-size: 0;
@@ -1106,16 +1109,17 @@ main {
   display: block;
   padding-right: 10px;
   cursor: pointer; }
-  .rating__label:last-child {
+  .rating__label:first-child {
     padding-right: 0; }
   .rating__label::after {
     content: '★';
     display: block;
     font-size: 32px;
     line-height: 36px;
-    color: rgba(56, 44, 42, 0.7);
+    color: rgba(56, 44, 42, 0.36);
     -webkit-transition: color 0.2s;
     transition: color 0.2s; }
+    
 
 .review {
   border-bottom: 2px solid #E8C3C4;

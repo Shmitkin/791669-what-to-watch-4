@@ -12,51 +12,22 @@ exports[`Should AddReviewForm render correctly 1`] = `
   >
     <div
       className="rating__stars"
+      dir="rtl"
     >
       <input
         className="rating__input"
         defaultChecked={false}
-        id="star-1"
+        id="star-5"
         name="rating"
         type="radio"
-        value={1}
+        value={5}
       />
       <label
         className="rating__label"
-        htmlFor="star-1"
+        htmlFor="star-5"
       >
         Rating 
-        1
-      </label>
-      <input
-        className="rating__input"
-        defaultChecked={false}
-        id="star-2"
-        name="rating"
-        type="radio"
-        value={2}
-      />
-      <label
-        className="rating__label"
-        htmlFor="star-2"
-      >
-        Rating 
-        2
-      </label>
-      <input
-        className="rating__input"
-        defaultChecked={true}
-        id="star-3"
-        name="rating"
-        type="radio"
-        value={3}
-      />
-      <label
-        className="rating__label"
-        htmlFor="star-3"
-      >
-        Rating 
-        3
+        5
       </label>
       <input
         className="rating__input"
@@ -76,17 +47,47 @@ exports[`Should AddReviewForm render correctly 1`] = `
       <input
         className="rating__input"
         defaultChecked={false}
-        id="star-5"
+        id="star-3"
         name="rating"
         type="radio"
-        value={5}
+        value={3}
       />
       <label
         className="rating__label"
-        htmlFor="star-5"
+        htmlFor="star-3"
       >
         Rating 
-        5
+        3
+      </label>
+      <input
+        className="rating__input"
+        defaultChecked={false}
+        id="star-2"
+        name="rating"
+        type="radio"
+        value={2}
+      />
+      <label
+        className="rating__label"
+        htmlFor="star-2"
+      >
+        Rating 
+        2
+      </label>
+      <input
+        className="rating__input"
+        defaultChecked={false}
+        id="star-1"
+        name="rating"
+        type="radio"
+        value={1}
+      />
+      <label
+        className="rating__label"
+        htmlFor="star-1"
+      >
+        Rating 
+        1
       </label>
     </div>
   </div>
@@ -96,7 +97,6 @@ exports[`Should AddReviewForm render correctly 1`] = `
     <textarea
       className="add-review__textarea"
       id="review-text"
-      minLength={50}
       name="review-text"
       placeholder="Review text"
     />
@@ -105,11 +105,15 @@ exports[`Should AddReviewForm render correctly 1`] = `
     >
       <button
         className="add-review__btn"
+        disabled={true}
         type="submit"
       >
         Post
       </button>
     </div>
   </div>
+  <div
+    className="sign-in__message"
+  />
 </form>
 `;

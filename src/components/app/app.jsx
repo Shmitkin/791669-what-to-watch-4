@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Switch, Route, BrowserRouter, withRouter} from "react-router-dom";
+import {Switch, Route, Router, withRouter} from "react-router-dom";
 
 import MainScreen from "../main-screen/main-screen.jsx";
 import MovieInfo from "../movie-info/movie-info.jsx";
@@ -9,6 +9,7 @@ import AddReviewPage from "../add-review-page/add-review-page.jsx";
 
 import {MovieInfoTabs, DEFAULT_GENRE, AppRoute} from "../../consts.js";
 import withActiveTab from "../../hocs/with-active-tab.jsx";
+import history from "../../history.js";
 
 const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
 
@@ -22,7 +23,7 @@ class App extends PureComponent {
 
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
           <Route exact path={AppRoute.ROOT} component={MainScreenWrapped} />
           <Route exact path={`${AppRoute.FILMS}/:id`} component={withRouter(MovieInfoWrapped)} />
@@ -30,7 +31,7 @@ class App extends PureComponent {
           <Route exact path={AppRoute.MY_LIST} component={MyListPage} />
           <Route exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`} component={withRouter(AddReviewPage)} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

@@ -81,11 +81,16 @@ const Operation = {
     });
   },
 
-  sendNewComment: (movieId, commentData) => (dispatch, getState, api) => {
+  sendNewComment: (movieId, commentData, onSuccess, onError) => (dispatch, getState, api) => {
     return api.post(`/comments/${movieId}`, CommentModel.parseNewComment(commentData))
-    .then(({data})=> {
-      dispatch(ActionCreator.setComments(CommentModel.parseComments(data)));
+    .then((response)=> {
+      dispatch(ActionCreator.setComments(CommentModel.parseComments(response.data)));
+      onSuccess();
+    })
+    .catch((error) => {
+      onError(error);
     });
+
   }
 
 };

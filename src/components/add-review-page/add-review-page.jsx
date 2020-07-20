@@ -8,9 +8,12 @@ import MoviePoster from "../movie-poster/movie-poster.jsx";
 import AddReviewBreadcrumps from "../add-review-breadcrumbs/add-review-breadcrumbs.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 import AddReviewForm from "../add-review-form/add-review-form.jsx";
+import withAddReviewFormValidation from "../../hocs/with-add-review-form-validation.jsx";
 
 import {MoviePosterSize} from "../../consts.js";
 import {getMovieById} from "../../reducer/data/selectors.js";
+
+const WrappedAddReviewFrom = withAddReviewFormValidation(AddReviewForm);
 
 
 function AddReviewPage({movie}) {
@@ -30,7 +33,7 @@ function AddReviewPage({movie}) {
       </div>
 
       <div className="add-review">
-        <AddReviewForm onFormChange={()=>{}} onFormSubmit={()=>{}}/>
+        <WrappedAddReviewFrom movieId={movie.id} />
       </div>
 
     </section>

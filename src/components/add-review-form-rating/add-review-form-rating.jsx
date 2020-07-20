@@ -8,10 +8,11 @@ export default function AddReviewFormRating({starsCount, defaultChecked}) {
   for (let i = 1; i <= starsCount; i++) {
     stars.push(<AddReviewFormStar key={i} id={i} checked={i === defaultChecked} />);
   }
+  stars.reverse();
 
   return (
     <div className="rating">
-      <div className="rating__stars">
+      <div className="rating__stars" dir="rtl">
         {stars}
       </div>
     </div>
