@@ -48,8 +48,8 @@ const Operation = {
         dispatch(ActionCreator.setAuthorization(AuthorizationStatus.AUTH));
         dispatch(ActionCreator.setUserProfile(UserModel.parseUser(data)));
       })
-      .catch((err) => {
-        throw err;
+      .catch(() => {
+        dispatch(ActionCreator.setAuthorization(AuthorizationStatus.NO_AUTH));
       });
   },
 

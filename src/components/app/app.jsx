@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import {Switch, Route, Router, withRouter} from "react-router-dom";
+import history from "../../history.js";
 
 import MainScreen from "../main-screen/main-screen.jsx";
 import MovieInfo from "../movie-info/movie-info.jsx";
@@ -9,7 +10,7 @@ import AddReviewPage from "../add-review-page/add-review-page.jsx";
 
 import {MovieInfoTabs, DEFAULT_GENRE, AppRoute} from "../../consts.js";
 import withActiveTab from "../../hocs/with-active-tab.jsx";
-import history from "../../history.js";
+import withPrivateRoute from "../../hocs/with-private-route.jsx";
 
 const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
 
@@ -28,8 +29,8 @@ class App extends PureComponent {
           <Route exact path={AppRoute.ROOT} component={MainScreenWrapped} />
           <Route exact path={`${AppRoute.FILMS}/:id`} component={withRouter(MovieInfoWrapped)} />
           <Route exact path={AppRoute.LOGIN} component={SignInPage} />
-          <Route exact path={AppRoute.MY_LIST} component={MyListPage} />
-          <Route exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`} component={withRouter(AddReviewPage)} />
+          <Route exact path={AppRoute.MY_LIST} component={withPrivateRoute(MyListPage)} />
+          <Route exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`} component={withPrivateRoute(AddReviewPage)} />
         </Switch>
       </Router>
     );

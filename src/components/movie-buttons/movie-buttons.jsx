@@ -4,6 +4,7 @@ import MyListButton from "../my-list-button/my-list-button.jsx";
 import PlayButton from "../play-button/play-button.jsx";
 import AddReviewButton from "../add-review-button/add-review-button.jsx";
 
+
 export default function MovieButtons({isAddReviewButton, isFavorite, onMyListButtonClickHandler, movieId}) {
 
   return (
