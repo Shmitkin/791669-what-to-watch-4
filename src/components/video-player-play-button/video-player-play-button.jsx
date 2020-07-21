@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function PlayButton({onClick}) {
+
+export default function VideoPlayerPlayButton({onClick, disabled}) {
+
   return (
-    <button onClick={onClick} className="btn btn--play movie-card__button" type="button">
+    <button type="button" className="player__play" onClick={onClick} disabled={disabled}>
       <svg viewBox="0 0 19 19" width="19" height="19">
         <use xlinkHref="#play-s"></use>
       </svg>
@@ -12,7 +14,8 @@ export default function PlayButton({onClick}) {
   );
 }
 
-
-PlayButton.propTypes = {
+VideoPlayerPlayButton.propTypes = {
   onClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
+

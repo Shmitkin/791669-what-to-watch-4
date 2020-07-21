@@ -7,6 +7,7 @@ import MovieInfo from "../movie-info/movie-info.jsx";
 import SignInPage from "../sign-in-page/sign-in-page.jsx";
 import MyListPage from "../my-list-page/my-list-page.jsx";
 import AddReviewPage from "../add-review-page/add-review-page.jsx";
+import VideoPlayerPage from "../video-player-page/video-player-page.jsx";
 
 import {MovieInfoTabs, DEFAULT_GENRE, AppRoute} from "../../consts.js";
 import withActiveTab from "../../hocs/with-active-tab.jsx";
@@ -31,6 +32,7 @@ class App extends PureComponent {
           <Route exact path={AppRoute.LOGIN} component={SignInPage} />
           <Route exact path={AppRoute.MY_LIST} component={withPrivateRoute(MyListPage)} />
           <Route exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`} component={withPrivateRoute(AddReviewPage)} />
+          <Route exact path={`${AppRoute.PLAYER}/:id`} component={withRouter(VideoPlayerPage)} />
         </Switch>
       </Router>
     );

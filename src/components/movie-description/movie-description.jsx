@@ -23,6 +23,9 @@ function MovieDescription({movie, isAddReviewButton, changeFavoriteStatus, autho
       <MovieButtons
         isAddReviewButton={isAddReviewButton}
         isFavorite={isFavorite}
+        onPlayButtonClickHandler={() => {
+          history.push(`${AppRoute.PLAYER}/${id}`);
+        }}
         onMyListButtonClickHandler={() => {
           if (authorizationStatus === AuthorizationStatus.AUTH) {
             changeFavoriteStatus(movie);

@@ -45,6 +45,7 @@ export const AppRoute = {
   LOGIN: `/login`,
   REVIEW: `/review`,
   MY_LIST: `/mylist`,
+  PLAYER: `/player`,
 
 };
 
