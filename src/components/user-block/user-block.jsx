@@ -33,7 +33,7 @@ function UserBlock(props) {
 UserBlock.propTypes = {
   authStatus: PropTypes.string.isRequired,
   user: PropTypes.shape({
-    avatarUrl: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string,
   })
 };
 

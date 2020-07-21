@@ -7,11 +7,11 @@ import PageHeader from "../page-header/page-header.jsx";
 import PageFooter from "../page-footer/page-footer.jsx";
 import SignInForm from "../sign-in-form/sign-in-form.jsx";
 
-import withFormValidation from "../../hocs/with-form-validation.jsx";
+import withSignInFormValidation from "../../hocs/with-sign-in-form-validation.jsx";
 import {AuthorizationStatus} from "../../consts.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 
-const WrappedSignInForm = withFormValidation(SignInForm);
+const WrappedSignInForm = withSignInFormValidation(SignInForm);
 
 function SignInPage({authorizationStatus}) {
   switch (authorizationStatus) {

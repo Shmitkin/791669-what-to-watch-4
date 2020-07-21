@@ -1,14 +1,16 @@
 import React, {PureComponent} from "react";
-import {Switch, Route, BrowserRouter, withRouter} from "react-router-dom";
+import {Switch, Route, Router, withRouter} from "react-router-dom";
+import history from "../../history.js";
 
 import MainScreen from "../main-screen/main-screen.jsx";
 import MovieInfo from "../movie-info/movie-info.jsx";
 import SignInPage from "../sign-in-page/sign-in-page.jsx";
 import MyListPage from "../my-list-page/my-list-page.jsx";
+import AddReviewPage from "../add-review-page/add-review-page.jsx";
 
-import {MovieInfoTabs, DEFAULT_GENRE} from "../../consts.js";
+import {MovieInfoTabs, DEFAULT_GENRE, AppRoute} from "../../consts.js";
 import withActiveTab from "../../hocs/with-active-tab.jsx";
-
+import withPrivateRoute from "../../hocs/with-private-route.jsx";
 
 const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
 
@@ -22,14 +24,15 @@ class App extends PureComponent {
 
   render() {
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
-          <Route exact path="/" component={MainScreenWrapped} />
-          <Route exact path="/films/:id" component={withRouter(MovieInfoWrapped)} />
-          <Route exact path="/login" component={SignInPage} />
-          <Route exact path="/mylist" component={MyListPage} />
+          <Route exact path={AppRoute.ROOT} component={MainScreenWrapped} />
+          <Route exact path={`${AppRoute.FILMS}/:id`} component={withRouter(MovieInfoWrapped)} />
+          <Route exact path={AppRoute.LOGIN} component={SignInPage} />
+          <Route exact path={AppRoute.MY_LIST} component={withPrivateRoute(MyListPage)} />
+          <Route exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`} component={withPrivateRoute(AddReviewPage)} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

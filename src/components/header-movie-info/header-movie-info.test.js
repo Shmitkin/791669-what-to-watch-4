@@ -4,6 +4,7 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 
 import HeaderMovieInfo from "./header-movie-info.jsx";
+import {MoviePosterSize} from "../../consts.js";
 import {mockStore, movie} from "../../test-state.js";
 
 it(`Should HeaderMovieInfo render correctly`, () => {
@@ -15,7 +16,8 @@ it(`Should HeaderMovieInfo render correctly`, () => {
         <Provider store={store}>
           <HeaderMovieInfo
             movie = {movie}
-            isMovieDetails = {false}
+            isAddReviewButton = {false}
+            posterSize={MoviePosterSize.DEFAULT}
           />
         </Provider>
     )

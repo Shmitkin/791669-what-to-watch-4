@@ -4,20 +4,22 @@ import MyListButton from "../my-list-button/my-list-button.jsx";
 import PlayButton from "../play-button/play-button.jsx";
 import AddReviewButton from "../add-review-button/add-review-button.jsx";
 
-export default function MovieButtons({isMovieDetails, isFavorite, onMyListButtonClickHandler}) {
+
+export default function MovieButtons({isAddReviewButton, isFavorite, onMyListButtonClickHandler, movieId}) {
 
   return (
     <div className="movie-card__buttons">
       <PlayButton />
       <MyListButton isFavorite={isFavorite} onClick={onMyListButtonClickHandler}/>
-      {isMovieDetails ? <AddReviewButton /> : null}
+      {isAddReviewButton ? <AddReviewButton movieId={movieId}/> : null}
     </div>
   );
 }
 
 
 MovieButtons.propTypes = {
-  isMovieDetails: PropTypes.bool.isRequired,
+  isAddReviewButton: PropTypes.bool.isRequired,
   isFavorite: PropTypes.bool.isRequired,
   onMyListButtonClickHandler: PropTypes.func.isRequired,
+  movieId: PropTypes.string.isRequired,
 };

@@ -14,8 +14,8 @@ const ErrorMessage = {
   PASSWORD: `Please enter your password`,
 };
 
-export default function withFormValidation(Component) {
-  class WithFormValidation extends PureComponent {
+export default function withSignInFormValidation(Component) {
+  class WithSignInFormValidation extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -127,7 +127,7 @@ export default function withFormValidation(Component) {
     }
   }
 
-  WithFormValidation.propTypes = {
+  WithSignInFormValidation.propTypes = {
     loginUser: PropTypes.func.isRequired,
   };
 
@@ -137,5 +137,5 @@ export default function withFormValidation(Component) {
     }
   });
 
-  return connect(null, mapDispatchToProps)(WithFormValidation);
+  return connect(null, mapDispatchToProps)(WithSignInFormValidation);
 }

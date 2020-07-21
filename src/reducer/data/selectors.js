@@ -3,6 +3,7 @@ import {createSelector} from "reselect";
 import {DEFAULT_GENRE, NAV_MAX_GENRES, MAX_SIMILAR_MOVIES} from "../../consts.js";
 import NameSpace from "../name-space.js";
 
+
 const NAME_SPACE = NameSpace.DATA;
 
 export const getMovies = (state) => {

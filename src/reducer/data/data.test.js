@@ -82,6 +82,23 @@ describe(`Reducer works correctly`, () => {
       favoriteMovies: [{id: 131}, {id: `movieId`}],
     });
   });
+
+  it(`Reducer should change movie status in movies array`, () => {
+    expect(reducer({
+      movies: [{id: 1, isFavorite: false}, {id: 2, isFavorite: false}],
+      promoMovie: {},
+      comments: [],
+      favoriteMovies: [],
+    }, {
+      type: ActionType.CHANGE_MOVIE_FAVORITE_STATUS,
+      payload: {id: 2, isFavorite: true}
+    })).toEqual({
+      movies: [{id: 1, isFavorite: false}, {id: 2, isFavorite: true}],
+      promoMovie: {},
+      comments: [],
+      favoriteMovies: [],
+    });
+  });
 });
 
 
@@ -91,7 +108,7 @@ describe(`Operations work correctly`, () => {
 
   it(`Should make a correct API call to /films`, function () {
     const dispatch = jest.fn();
-    const moviesLoader = Operation.loadMovies();
+    const moviesLoader = Operation.loadMovies(()=>{});
 
     const mockFilms = [{id: 34}, {id: 31}, {id: 88}];
     const expectedMoviesInStore = MovieModel.parseMovies(mockFilms);
@@ -112,7 +129,7 @@ describe(`Operations work correctly`, () => {
 
   it(`Should make a correct API call to /films/promo`, function () {
     const dispatch = jest.fn();
-    const promoMovieLoader = Operation.loadPromoMovie();
+    const promoMovieLoader = Operation.loadPromoMovie(()=>{});
 
     const mockFilm = {id: 34, title: `promo movie`};
     const expectedPromoMovieInStore = MovieModel.parseMovie(mockFilm);
@@ -169,6 +186,46 @@ describe(`Operations work correctly`, () => {
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.SET_USER_FAVORITE_MOVIES,
         payload: expectedMoviesInStore,
+      });
+    });
+  });
+
+  it(`Should make a correct POST API call to /favorites/:movieId/:favoriteStatus`, () => {
+    const mockMovie = {id: 22, isFavorite: false};
+    const favoriteMovieStatusChanger = Operation.changeMovieFavoriteStatus(mockMovie);
+    const dispatch = jest.fn();
+
+    apiMock
+    .onPost(`/favorite/${mockMovie.id}/1`)
+    .reply(200, {id: 22, isFavorite: true});
+
+    return favoriteMovieStatusChanger(dispatch, () => {}, api)
+    .then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.CHANGE_MOVIE_FAVORITE_STATUS,
+        payload: MovieModel.parseMovie({id: 22, isFavorite: true}),
+      });
+    });
+  });
+
+  it(`Should make a correct POST API call to /comments:movieId`, () => {
+    const mockMovieId = 23;
+    const mockComment = {rating: 5, text: `comment over 50 symbols`};
+    const commentSender = Operation.sendNewComment(mockMovieId, mockComment, ()=>{}, ()=>{});
+    const dispatch = jest.fn();
+    const mockResponseData = [{id: 3, user: {name: `UserName`, id: `32x`}, comment: `comment over 50 symbols`, rating: 5}];
+
+    apiMock
+    .onPost(`/comments/${mockMovieId}`, CommentModel.parseNewComment(mockComment))
+    .reply(200, mockResponseData);
+
+    return commentSender(dispatch, () => {}, api)
+    .then(() => {
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenNthCalledWith(1, {
+        type: ActionType.SET_COMMENTS,
+        payload: CommentModel.parseComments(mockResponseData)
       });
     });
   });

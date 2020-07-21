@@ -8,6 +8,13 @@ export default class CommentModel {
     this.date = comment[`date`];
   }
 
+  static parseNewComment(comment) {
+    return {
+      "rating": comment.rating,
+      "comment": comment.text,
+    };
+  }
+
   static parseComment(comment) {
     return new CommentModel(comment);
   }

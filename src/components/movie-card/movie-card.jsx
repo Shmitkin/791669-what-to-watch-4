@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 
 import VideoPlayer from "../video-player/video-player.jsx";
+import {AppRoute} from "../../consts";
 
 export default class MovieCard extends React.PureComponent {
   constructor(props) {
@@ -18,7 +19,7 @@ export default class MovieCard extends React.PureComponent {
         onMouseEnter = {onHover}
         onMouseLeave = {onUnhover}
       >
-        <Link to={`/films/${id}`} className="small-movie-card__link">
+        <Link to={`${AppRoute.FILMS}/${id}`} className="small-movie-card__link">
           <div className="small-movie-card__image">
             <VideoPlayer src = {videoPrev} poster = {preview} isPlaying = {isPlaying} muted = {true} />
           </div>
