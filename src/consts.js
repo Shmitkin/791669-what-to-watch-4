@@ -1,3 +1,6 @@
+export const MINUTES_IN_HOUR = 60;
+export const SECONDS_IN_MINUTE = 60;
+
 export const MOVIE_RATING_TITLES = [
   {rating: 10, title: `Awesome`},
   {rating: 8, title: `Very good`},
@@ -46,7 +49,6 @@ export const AppRoute = {
   REVIEW: `/review`,
   MY_LIST: `/mylist`,
   PLAYER: `/player`,
-
 };
 
 export const BASE_URL = `https://4.react.pages.academy/wtw`;

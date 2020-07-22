@@ -26,7 +26,7 @@ exports[`Should render VideoPlayerTimeLine propperly 1`] = `
   <div
     className="player__time-value"
   >
-    700
+    0:11:40
   </div>
 </div>
 `;
