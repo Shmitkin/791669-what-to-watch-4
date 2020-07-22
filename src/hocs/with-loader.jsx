@@ -14,6 +14,8 @@ export default function withLoader(Component) {
         isMoviesLoading: true,
         isPromoMovieLoading: true,
       };
+
+      this._loadData();
     }
 
     _loadData() {
@@ -23,6 +25,7 @@ export default function withLoader(Component) {
           isPromoMovieLoading: false
         });
       });
+
       loadMovies(()=>{
         this.setState({
           isMoviesLoading: false
@@ -31,7 +34,6 @@ export default function withLoader(Component) {
     }
 
     render() {
-      this._loadData();
       const {isMoviesLoading, isPromoMovieLoading} = this.state;
       return (
         (!isMoviesLoading && !isPromoMovieLoading)
