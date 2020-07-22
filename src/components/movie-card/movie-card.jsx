@@ -11,7 +11,7 @@ export default class MovieCard extends React.PureComponent {
   }
 
   render() {
-    const {onHover, onUnhover, movie} = this.props;
+    const {onHover, onUnhover, movie, videoRef} = this.props;
     const {title, preview, videoPrev, id} = movie;
     return (
       <article
@@ -21,7 +21,7 @@ export default class MovieCard extends React.PureComponent {
       >
         <Link to={`${AppRoute.FILMS}/${id}`} className="small-movie-card__link">
           <div className="small-movie-card__image">
-            <VideoPlayer src={videoPrev} poster={preview} muted={true} loop={true} />
+            <VideoPlayer src={videoPrev} poster={preview} muted={true} loop={true} videoRef={videoRef}/>
           </div>
           <h3 className="small-movie-card__title">{title}</h3>
         </Link>
@@ -39,5 +39,5 @@ MovieCard.propTypes = {
   }).isRequired,
   onHover: PropTypes.func.isRequired,
   onUnhover: PropTypes.func.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
+  videoRef: PropTypes.object.isRequired,
 };
