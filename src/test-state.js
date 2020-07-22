@@ -5,6 +5,7 @@ export const movie = {
   isFavorite: false,
   id: `23`,
   title: `Pulp Fiction`,
+  videoFull: `scr/videFull`,
   videoPrev: `img/seven-years-in-tibet.mp4`,
   preview: `img/pulp-fiction.jpg`,
   poster: `img/pulp-fiction.jpg`,
