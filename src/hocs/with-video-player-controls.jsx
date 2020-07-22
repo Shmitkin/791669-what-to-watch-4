@@ -22,7 +22,7 @@ export default function withVideoPlayerControls(Component) {
       super(props);
 
       this.state = {
-        isPlaying: false,
+        isPlaying: true,
         progress: 0,
         remaining: 0,
       };
@@ -46,6 +46,8 @@ export default function withVideoPlayerControls(Component) {
 
       this._video.addEventListener(`timeupdate`, this._onTimeUpdateHandler);
       this._video.addEventListener(`canplaythrough`, this._onCanPlayThroughHandler);
+
+      this._video.play();
     }
 
     componentWillUnmount() {
