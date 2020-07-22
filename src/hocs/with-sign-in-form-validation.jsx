@@ -74,19 +74,19 @@ export default function withSignInFormValidation(Component) {
       }
     }
 
-    _onFormChange(target) {
-      switch (target.type) {
+    _onFormChange(evt) {
+      switch (evt.target.type) {
         case InputType.EMAIL:
-          this._email = target.value;
+          this._email = evt.target.value;
           break;
         case InputType.PASSWORD:
-          this._pass = target.value;
+          this._pass = evt.target.value;
           break;
       }
     }
 
-    _onInputFocus(target) {
-      switch (target.type) {
+    _onInputFocus(evt) {
+      switch (evt.target.type) {
         case InputType.EMAIL:
           this.setState({
             emailValidity: true

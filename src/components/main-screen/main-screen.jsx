@@ -6,10 +6,11 @@ import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import GenresList from "../genres-list/genres-list.jsx";
 import PageFooter from "../page-footer/page-footer.jsx";
-import HeaderMovieInfo from "../header-movie-info/header-movie-info.jsx";
 import PageHeader from "../page-header/page-header.jsx";
 import MovieBackground from "../movie-background/movie-background.jsx";
 import UserBlock from "../user-block/user-block.jsx";
+import MovieDescription from "../movie-description/movie-description.jsx";
+import MoviePoster from "../movie-poster/movie-poster.jsx";
 
 import {getMoviesByGenre, getPromoMovie, getGenres} from "../../reducer/data/selectors.js";
 import {getShowingMovieCount} from "../../reducer/main/selectors.js";
@@ -45,7 +46,10 @@ class MainScreen extends React.PureComponent {
           </PageHeader>
 
           <div className="movie-card__wrap">
-            <HeaderMovieInfo movie={promoMovie} isAddReviewButton={false} posterSize={MoviePosterSize.DEFAULT} />
+            <div className="movie-card__info">
+              <MoviePoster movie={promoMovie} posterSize={MoviePosterSize.DEFAULT}/>
+              <MovieDescription movie={promoMovie} isAddReviewButton={false}/>
+            </div>
           </div>
 
         </section>
