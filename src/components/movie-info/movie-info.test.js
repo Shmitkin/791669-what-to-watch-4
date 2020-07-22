@@ -4,6 +4,7 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {BrowserRouter} from 'react-router-dom';
 
+import {AuthorizationStatus} from "../../consts.js";
 import {MovieInfo} from "./movie-info.jsx";
 import {mockStore, movie, comments} from "../../test-state.js";
 
@@ -22,7 +23,7 @@ it(`Should MovieInfo render correctly`, () => {
               reviews={comments}
               similarMovies={[]}
               loadReviews={() => {}}
-              authorizationStatus={true}
+              authorizationStatus={AuthorizationStatus.AUTH}
             />
           </Provider>
         </BrowserRouter>

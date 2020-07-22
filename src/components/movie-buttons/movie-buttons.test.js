@@ -11,6 +11,7 @@ it(`Should MovieButtons render correctly`, () => {
           isFavorite={false}
           onMyListButtonClickHandler={()=>{}}
           movieId={`id`}
+          onPlayButtonClickHandler={()=>{}}
         />
     )
     .toJSON();
