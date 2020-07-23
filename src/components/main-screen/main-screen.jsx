@@ -12,10 +12,10 @@ import UserBlock from "../user-block/user-block.jsx";
 import MovieDescription from "../movie-description/movie-description.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 
-import {getMoviesByGenre, getPromoMovie, getGenres} from "../../reducer/data/selectors.js";
+import {getMoviesByGenre, getPromoMovie, getGenres, getDataLoadStatus} from "../../reducer/data/selectors.js";
 import {getShowingMovieCount} from "../../reducer/main/selectors.js";
 import {ActionCreator} from "../../reducer/main/main.js";
-import {MoviePosterSize} from "../../consts.js";
+import {MoviePosterSize, DataLoadStatus} from "../../consts.js";
 
 
 class MainScreen extends React.PureComponent {
@@ -31,49 +31,57 @@ class MainScreen extends React.PureComponent {
     onGenreClick();
   }
 
-  render() {
-    const {promoMovie, activeTab, movies, showingMoviesCount, onShowMoreButtonCLick, genres} = this.props;
+  _renderMainPage() {
+    const {
+      promoMovie, activeTab, movies, showingMoviesCount,
+      onShowMoreButtonCLick, genres
+    } = this.props;
+
     return (
       <React.Fragment>
         <section className="movie-card">
-
           <MovieBackground movie = {promoMovie} />
-
           <h1 className="visually-hidden">WTW</h1>
-
           <PageHeader extraClass={`movie-card__head`}>
             <UserBlock />
           </PageHeader>
-
           <div className="movie-card__wrap">
             <div className="movie-card__info">
               <MoviePoster movie={promoMovie} posterSize={MoviePosterSize.DEFAULT}/>
               <MovieDescription movie={promoMovie} isAddReviewButton={false}/>
             </div>
           </div>
-
         </section>
         <div className="page-content">
           <section className="catalog">
             <h2 className="catalog__title visually-hidden">Catalog</h2>
-
             <GenresList activeTab={activeTab} onTabClick={this._onGenreClickHandler} genres = {genres} />
-
             <MovieCardsList movies={movies.slice(0, showingMoviesCount)} />
-
             {movies.length >= showingMoviesCount ?
               <ShowMoreButton onClick = {onShowMoreButtonCLick}/> : null
             }
-
           </section>
           <PageFooter />
         </div>
       </React.Fragment>
     );
   }
+
+  render() {
+    const {isMoviesLoaded, isPromoMovieLoaded} = this.props;
+    return (
+      isMoviesLoaded && isPromoMovieLoaded
+        ? this._renderMainPage()
+        : null
+    );
+
+  }
 }
 
+
 MainScreen.propTypes = {
+  isMoviesLoaded: PropTypes.bool.isRequired,
+  isPromoMovieLoaded: PropTypes.bool.isRequired,
   promoMovie: PropTypes.object.isRequired,
   movies: PropTypes.array.isRequired,
   activeTab: PropTypes.string.isRequired,
@@ -89,6 +97,9 @@ const mapStateToProps = (state, props) => ({
   movies: getMoviesByGenre(state, props.activeTab),
   showingMoviesCount: getShowingMovieCount(state),
   genres: getGenres(state),
+  isMoviesLoaded: getDataLoadStatus(state, DataLoadStatus.MOVIES),
+  isPromoMovieLoaded: getDataLoadStatus(state, DataLoadStatus.PROMO_MOVIE),
+
 });
 
 const mapDispatchToProps = (dispatch) => ({

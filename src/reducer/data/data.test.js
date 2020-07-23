@@ -1,8 +1,9 @@
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api";
-import {reducer, ActionType, Operation, DataType} from "./data";
+import {reducer, ActionType, Operation} from "./data";
 import MovieModel from "../../models/movie.js";
 import CommentModel from "../../models/comment.js";
+import {DataLoadStatus} from "../../consts.js";
 
 describe(`Reducer works correctly`, () => {
 
@@ -132,7 +133,7 @@ describe(`Reducer works correctly`, () => {
       isPromoMovieLoaded: false,
     }, {
       type: ActionType.SET_DATA_LOAD_STATUS,
-      payload: {dataType: DataType.MOVIES, status: true}
+      payload: {dataType: DataLoadStatus.MOVIES, status: true}
     })).toEqual({
       movies: [],
       promoMovie: {},
@@ -153,7 +154,7 @@ describe(`Reducer works correctly`, () => {
       isPromoMovieLoaded: false,
     }, {
       type: ActionType.SET_DATA_LOAD_STATUS,
-      payload: {dataType: DataType.PROMO_MOVIE, status: true}
+      payload: {dataType: DataLoadStatus.PROMO_MOVIE, status: true}
     })).toEqual({
       movies: [],
       promoMovie: {},
@@ -192,7 +193,7 @@ describe(`Operations work correctly`, () => {
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.SET_DATA_LOAD_STATUS,
-          payload: {dataType: DataType.MOVIES, status: true},
+          payload: {dataType: DataLoadStatus.MOVIES, status: true},
         });
       });
   });
@@ -217,7 +218,7 @@ describe(`Operations work correctly`, () => {
         });
         expect(dispatch).toHaveBeenNthCalledWith(2, {
           type: ActionType.SET_DATA_LOAD_STATUS,
-          payload: {dataType: DataType.PROMO_MOVIE, status: true},
+          payload: {dataType: DataLoadStatus.PROMO_MOVIE, status: true},
         });
       });
   });

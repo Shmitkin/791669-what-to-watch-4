@@ -24,6 +24,8 @@ it(`Should MainScreen render correctly`, () => {
               onGenreClick={()=>{}}
               onTabClick={()=>{}}
               genres={genres}
+              isPromoMovieLoaded={true}
+              isMoviesLoaded={true}
             />
           </Provider>
         </Router>

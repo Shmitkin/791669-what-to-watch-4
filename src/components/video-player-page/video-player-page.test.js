@@ -8,7 +8,15 @@ it(`Should render VideoPlayerPage propperly`, () => {
   const tree = renderer.create(
       <VideoPlayerPage
         movie={movie}
-      />
+      />, {
+        createNodeMock: (element) => {
+          if (element.type === `video`) {
+            return {
+              addEventListener: () =>{}
+            };
+          }
+        }
+      }
   );
   expect(tree).toMatchSnapshot();
 });

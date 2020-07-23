@@ -9,6 +9,11 @@ export const MOVIE_RATING_TITLES = [
   {rating: 0, title: `Bad`},
 ];
 
+export const DataLoadStatus = {
+  MOVIES: `isMoviesLoaded`,
+  PROMO_MOVIE: `isPromoMovieLoaded`,
+};
+
 export const MovieInfoTabs = {
   OVERVIEW: `Overview`,
   DETAILS: `Details`,

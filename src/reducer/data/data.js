@@ -1,19 +1,15 @@
 import {extend} from "../../utils.js";
 import MovieModel from "../../models/movie.js";
 import CommentModel from "../../models/comment.js";
+import {DataLoadStatus} from "../../consts.js";
 
 const initialState = {
   movies: [],
   promoMovie: {},
   comments: [],
   favoriteMovies: [],
-  isMoviesLoaded: false,
-  isPromoMovieLoaded: false,
-};
-
-export const DataType = {
-  MOVIES: `MOVIES`,
-  PROMO_MOVIE: `PROMO_MOVIE`,
+  [DataLoadStatus.MOVIES]: false,
+  [DataLoadStatus.PROMO_MOVIE]: false,
 };
 
 const ActionType = {
@@ -63,7 +59,7 @@ const Operation = {
     return api.get(`/films`)
       .then((response) => {
         dispatch(ActionCreator.setMovies(MovieModel.parseMovies(response.data)));
-        dispatch(ActionCreator.setDataLoadStatus(DataType.MOVIES, true));
+        dispatch(ActionCreator.setDataLoadStatus(DataLoadStatus.MOVIES, true));
       });
   },
 
@@ -71,7 +67,7 @@ const Operation = {
     return api.get(`/films/promo`)
     .then((response) => {
       dispatch(ActionCreator.setPromoMovie(MovieModel.parseMovie(response.data)));
-      dispatch(ActionCreator.setDataLoadStatus(DataType.PROMO_MOVIE, true));
+      dispatch(ActionCreator.setDataLoadStatus(DataLoadStatus.PROMO_MOVIE, true));
     });
   },
 
@@ -138,16 +134,10 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.SET_DATA_LOAD_STATUS:
       const {dataType, status} = action.payload;
-      switch (dataType) {
-        case DataType.MOVIES:
-          return extend(state, {
-            isMoviesLoaded: status
-          });
-        case DataType.PROMO_MOVIE:
-          return extend(state, {
-            isPromoMovieLoaded: status
-          });
-      }
+      return extend(state, {
+        [dataType]: status
+      });
+
   }
   return state;
 };
