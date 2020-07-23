@@ -1,6 +1,6 @@
 import MockAdapter from "axios-mock-adapter";
 import {createAPI} from "../../api";
-import {reducer, ActionType, Operation} from "./data";
+import {reducer, ActionType, Operation, DataType} from "./data";
 import MovieModel from "../../models/movie.js";
 import CommentModel from "../../models/comment.js";
 
@@ -12,6 +12,8 @@ describe(`Reducer works correctly`, () => {
       promoMovie: {},
       comments: [],
       favoriteMovies: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
     });
   });
 
@@ -21,6 +23,8 @@ describe(`Reducer works correctly`, () => {
       promoMovie: {},
       comments: [],
       favoriteMovies: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
     }, {
       type: ActionType.SET_MOVIES,
       payload: [{title: `first movie`}, {title: `second movie`}],
@@ -29,6 +33,8 @@ describe(`Reducer works correctly`, () => {
       promoMovie: {},
       comments: [],
       favoriteMovies: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
     });
   });
 
@@ -38,6 +44,8 @@ describe(`Reducer works correctly`, () => {
       movies: [],
       promoMovie: {},
       comments: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
     }, {
       type: ActionType.SET_PROMO_MOVIE,
       payload: {title: `promoMovie`},
@@ -46,6 +54,8 @@ describe(`Reducer works correctly`, () => {
       movies: [],
       promoMovie: {title: `promoMovie`},
       comments: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
     });
   });
 
@@ -55,6 +65,8 @@ describe(`Reducer works correctly`, () => {
       movies: [],
       promoMovie: {},
       comments: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
     }, {
       type: ActionType.SET_COMMENTS,
       payload: [{title: `first comment`}, {title: `second comment`}],
@@ -63,6 +75,8 @@ describe(`Reducer works correctly`, () => {
       movies: [],
       promoMovie: {},
       comments: [{title: `first comment`}, {title: `second comment`}],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
     });
   });
 
@@ -72,6 +86,8 @@ describe(`Reducer works correctly`, () => {
       promoMovie: {},
       comments: [],
       favoriteMovies: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
     }, {
       type: ActionType.SET_USER_FAVORITE_MOVIES,
       payload: [{id: 131}, {id: `movieId`}]
@@ -80,6 +96,8 @@ describe(`Reducer works correctly`, () => {
       promoMovie: {},
       comments: [],
       favoriteMovies: [{id: 131}, {id: `movieId`}],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
     });
   });
 
@@ -89,6 +107,8 @@ describe(`Reducer works correctly`, () => {
       promoMovie: {},
       comments: [],
       favoriteMovies: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
     }, {
       type: ActionType.CHANGE_MOVIE_FAVORITE_STATUS,
       payload: {id: 2, isFavorite: true}
@@ -97,8 +117,54 @@ describe(`Reducer works correctly`, () => {
       promoMovie: {},
       comments: [],
       favoriteMovies: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
     });
   });
+
+  it(`Reducer should change load status of isMoviesLoaded when DataType.MOVIES`, () => {
+    expect(reducer({
+      movies: [],
+      promoMovie: {},
+      comments: [],
+      favoriteMovies: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
+    }, {
+      type: ActionType.SET_DATA_LOAD_STATUS,
+      payload: {dataType: DataType.MOVIES, status: true}
+    })).toEqual({
+      movies: [],
+      promoMovie: {},
+      comments: [],
+      favoriteMovies: [],
+      isMoviesLoaded: true,
+      isPromoMovieLoaded: false,
+    });
+  });
+
+  it(`Reducer should change load status of isPromoMovieLoaded when DataType.PROMO_MOVIE`, () => {
+    expect(reducer({
+      movies: [],
+      promoMovie: {},
+      comments: [],
+      favoriteMovies: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: false,
+    }, {
+      type: ActionType.SET_DATA_LOAD_STATUS,
+      payload: {dataType: DataType.PROMO_MOVIE, status: true}
+    })).toEqual({
+      movies: [],
+      promoMovie: {},
+      comments: [],
+      favoriteMovies: [],
+      isMoviesLoaded: false,
+      isPromoMovieLoaded: true,
+    });
+  });
+
+
 });
 
 
@@ -119,10 +185,14 @@ describe(`Operations work correctly`, () => {
 
     return moviesLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.SET_MOVIES,
           payload: expectedMoviesInStore,
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.SET_DATA_LOAD_STATUS,
+          payload: {dataType: DataType.MOVIES, status: true},
         });
       });
   });
@@ -140,10 +210,14 @@ describe(`Operations work correctly`, () => {
 
     return promoMovieLoader(dispatch, () => {}, api)
       .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.SET_PROMO_MOVIE,
           payload: expectedPromoMovieInStore,
+        });
+        expect(dispatch).toHaveBeenNthCalledWith(2, {
+          type: ActionType.SET_DATA_LOAD_STATUS,
+          payload: {dataType: DataType.PROMO_MOVIE, status: true},
         });
       });
   });

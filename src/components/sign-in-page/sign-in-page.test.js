@@ -17,7 +17,7 @@ it(`Should SignInPage render correctly when AuthorizationStatus NO_AUTH`, () => 
     .create(
         <Provider store = {store}>
           <Router>
-            <SignInPage authorizationStatus={AuthorizationStatus.NO_AUTH} />
+            <SignInPage authorizationStatus={AuthorizationStatus.NO_AUTH} loginUser={()=>{}}/>
           </Router>
         </Provider>
     )

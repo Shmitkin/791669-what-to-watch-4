@@ -7,6 +7,13 @@ const initialState = {
   promoMovie: {},
   comments: [],
   favoriteMovies: [],
+  isMoviesLoaded: false,
+  isPromoMovieLoaded: false,
+};
+
+export const DataType = {
+  MOVIES: `MOVIES`,
+  PROMO_MOVIE: `PROMO_MOVIE`,
 };
 
 const ActionType = {
@@ -15,6 +22,7 @@ const ActionType = {
   SET_COMMENTS: `SET_COMMENTS`,
   SET_USER_FAVORITE_MOVIES: `SET_USER_FAVORITE_MOVIES`,
   CHANGE_MOVIE_FAVORITE_STATUS: `CHANGE_MOVIE_FAVORITE_STATUS`,
+  SET_DATA_LOAD_STATUS: `SET_DATA_LOAD_STATUS`,
 };
 
 export const ActionCreator = {
@@ -42,22 +50,28 @@ export const ActionCreator = {
       payload: movie,
     };
   },
+  setDataLoadStatus: (dataType, status) => {
+    return {
+      type: ActionType.SET_DATA_LOAD_STATUS,
+      payload: {dataType, status}
+    };
+  }
 };
 
 const Operation = {
-  loadMovies: (onSuccess) => (dispatch, getState, api) => {
+  loadMovies: () => (dispatch, getState, api) => {
     return api.get(`/films`)
       .then((response) => {
         dispatch(ActionCreator.setMovies(MovieModel.parseMovies(response.data)));
-        onSuccess();
+        dispatch(ActionCreator.setDataLoadStatus(DataType.MOVIES, true));
       });
   },
 
-  loadPromoMovie: (onSuccess) => (dispatch, getState, api) => {
+  loadPromoMovie: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`)
     .then((response) => {
       dispatch(ActionCreator.setPromoMovie(MovieModel.parseMovie(response.data)));
-      onSuccess();
+      dispatch(ActionCreator.setDataLoadStatus(DataType.PROMO_MOVIE, true));
     });
   },
 
@@ -77,7 +91,7 @@ const Operation = {
 
   changeMovieFavoriteStatus: (movie) => (dispatch, getState, api) => {
     return api.post(`/favorite/${movie.id}/${movie.isFavorite ? 0 : 1}`)
-    .then(({data})=>{
+    .then(({data})=> {
       dispatch(ActionCreator.changeMovieFavoriteStatus(MovieModel.parseMovie(data)));
     });
   },
@@ -122,6 +136,18 @@ const reducer = (state = initialState, action) => {
         movies,
         promoMovie
       });
+    case ActionType.SET_DATA_LOAD_STATUS:
+      const {dataType, status} = action.payload;
+      switch (dataType) {
+        case DataType.MOVIES:
+          return extend(state, {
+            isMoviesLoaded: status
+          });
+        case DataType.PROMO_MOVIE:
+          return extend(state, {
+            isPromoMovieLoaded: status
+          });
+      }
   }
   return state;
 };

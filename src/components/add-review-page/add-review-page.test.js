@@ -16,7 +16,7 @@ it(`Should AddReviewPage render correctly`, () => {
   .create(
       <BrowserRouter>
         <Provider store={store}>
-          <AddReviewPage movie={movie}/>
+          <AddReviewPage movie={movie} sendComment={()=>{}}/>
         </Provider>
       </BrowserRouter>
   )

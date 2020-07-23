@@ -18,7 +18,6 @@ const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
 const MovieInfoWrapped = withActiveTab(MovieInfo, DEFAULT_MOVIE_INFO_TAB);
 const MainScreenWrapped = withActiveTab(MainScreen, DEFAULT_GENRE);
 
-// gперенести withrouter в компоненты
 
 class App extends PureComponent {
   constructor(props) {
