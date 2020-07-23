@@ -20,6 +20,8 @@ const MovieInfoWrapped = withActiveTab(MovieInfo, DEFAULT_MOVIE_INFO_TAB);
 const MainScreenWrapped = withActiveTab(MainScreen, DEFAULT_GENRE);
 const VideoPlayerPageWrapped = withVideoPlayerControls(VideoPlayerPage);
 
+// gперенести withrouter в компоненты
+
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -30,7 +32,7 @@ class App extends PureComponent {
       <Router history={history}>
         <Switch>
           <Route exact path={AppRoute.ROOT} component={MainScreenWrapped} />
-          <Route exact path={`${AppRoute.FILMS}/:id`} component={withRouter(MovieInfoWrapped)} />
+          <Route exact path={`${AppRoute.FILMS}/:id`} component={MovieInfoWrapped} />
           <Route exact path={AppRoute.LOGIN} component={SignInPage} />
           <Route exact path={AppRoute.MY_LIST} component={withPrivateRoute(MyListPage)} />
           <Route exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`} component={withPrivateRoute(AddReviewPage)} />

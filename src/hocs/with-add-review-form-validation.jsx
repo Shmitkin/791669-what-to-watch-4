@@ -1,10 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import history from "../history.js";
 
-import {AppRoute} from "../consts.js";
-import {Operation as DataOperation} from "../reducer/data/data.js";
 
 const InputType = {
   RADIO: `radio`,
@@ -29,8 +25,6 @@ export default function withAddReviewFormValidation(Component) {
     constructor(props) {
       super(props);
 
-      this._movieId = this.props.movieId;
-
       this.state = {
         errorMessages: [],
         isPostButtonDisabled: true,
@@ -41,7 +35,6 @@ export default function withAddReviewFormValidation(Component) {
 
       this._onFormSubmit = this._onFormSubmit.bind(this);
       this._onFormChange = this._onFormChange.bind(this);
-      this._onSuccessHandler = this._onSuccessHandler.bind(this);
       this._onErrorHandler = this._onErrorHandler.bind(this);
     }
 
@@ -83,6 +76,7 @@ export default function withAddReviewFormValidation(Component) {
       } else {
         this.setState({
           errorMessages: this._setErrorMessages(),
+          isPostButtonDisabled: true,
         });
       }
     }
@@ -106,25 +100,17 @@ export default function withAddReviewFormValidation(Component) {
 
     _onFormSubmit(evt) {
       evt.preventDefault();
-      this.props.sendComment(
-          this._movieId,
+      this.setState({
+        isFormDisabled: true,
+      });
+
+      this.props.onFormSubmit(
           {
             rating: this.state.rating,
             text: this.state.text,
           },
-          this._onSuccessHandler,
           this._onErrorHandler
       );
-      this.setState({
-        isFormDisabled: true,
-      });
-    }
-
-    _onSuccessHandler() {
-      this.setState({
-        isFormDisabled: false,
-      });
-      return history.push(`${AppRoute.FILMS}/${this._movieId}`);
     }
 
     _onErrorHandler() {
@@ -149,15 +135,8 @@ export default function withAddReviewFormValidation(Component) {
   }
 
   WithAddReviewFormValidation.propTypes = {
-    sendComment: PropTypes.func.isRequired,
-    movieId: PropTypes.string.isRequired,
+    onFormSubmit: PropTypes.func.isRequired,
   };
 
-  const mapDispatchToProps = (dispatch) => ({
-    sendComment(movieId, commentData, onSuccess, onError) {
-      dispatch(DataOperation.sendNewComment(movieId, commentData, onSuccess, onError));
-    }
-  });
-
-  return connect(null, mapDispatchToProps)(WithAddReviewFormValidation);
+  return WithAddReviewFormValidation;
 }

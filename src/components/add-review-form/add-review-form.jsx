@@ -9,7 +9,6 @@ import {ReviewFormStars} from "../../consts.js";
 export default function AddReviewForm(props) {
   const {onFormChange, onFormSubmit, isPostButtonDisabled, errorMessages, isFormDisabled} = props;
   return (
-
     <form action="#" className="add-review__form" onChange={onFormChange} onSubmit={onFormSubmit}>
       <AddReviewFormRating starsCount={ReviewFormStars.COUNT} defaultChecked={ReviewFormStars.DEFAULT_CHECKED} disabled={isFormDisabled}/>
       <div className="add-review__text">

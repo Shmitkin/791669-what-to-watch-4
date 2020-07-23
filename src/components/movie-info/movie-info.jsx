@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 
 import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
 import PageFooter from "../page-footer/page-footer.jsx";
@@ -135,4 +136,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {MovieInfo};
-export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MovieInfo));
