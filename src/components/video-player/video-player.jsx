@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 export default function VideoPlayer(props) {
-  const {src, poster, muted, extraClass = ``, videoRef, loop} = props;
+  const {src, poster, muted, extraClass, videoRef, loop} = props;
 
   return (
     <video
@@ -18,6 +18,12 @@ export default function VideoPlayer(props) {
     </video>
   );
 }
+
+VideoPlayer.defaultProps = {
+  extraClass: ``,
+  loop: false,
+  muted: true,
+};
 
 VideoPlayer.propTypes = {
   src: PropTypes.string.isRequired,

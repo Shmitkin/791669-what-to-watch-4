@@ -1,10 +1,6 @@
 import React, {PureComponent, createRef} from "react";
-import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import history from "../history.js";
 
-import {getMovieById} from "../reducer/data/selectors.js";
-import {AppRoute} from "../consts.js";
 
 const calculateRemainingTime = (duration, currentTime) => {
   return Math.floor(duration - currentTime);
@@ -30,7 +26,6 @@ export default function withVideoPlayerControls(Component) {
 
       this._duration = 0;
       this._video = null;
-      this._movie = this.props.movie;
 
       this._onPlayButtonClickHandler = this._onPlayButtonClickHandler.bind(this);
       this._onPauseButtonClickHandler = this._onPauseButtonClickHandler.bind(this);
@@ -91,7 +86,7 @@ export default function withVideoPlayerControls(Component) {
       this.setState({
         isPlaying: false
       });
-      history.push(`${AppRoute.FILMS}/${this._movie.id}`);
+      this.props.onExitButtonClickHandler();
     }
 
     _onTimeUpdateHandler() {
@@ -105,7 +100,6 @@ export default function withVideoPlayerControls(Component) {
       return (
         <Component
           {...this.props}
-          movie={this._movie}
           videoRef={this._videoRef}
           progress={this.state.progress}
           remaining={this.state.remaining}
@@ -120,15 +114,8 @@ export default function withVideoPlayerControls(Component) {
   }
 
   WithVideoPlayerControls.propTypes = {
-    movie: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }).isRequired
+    onExitButtonClickHandler: PropTypes.func.isRequired,
   };
 
-
-  const mapStateToProps = (state, props) => ({
-    movie: getMovieById(state, props.match.params.id)
-  });
-
-  return connect(mapStateToProps)(WithVideoPlayerControls);
+  return WithVideoPlayerControls;
 }
