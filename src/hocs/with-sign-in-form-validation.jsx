@@ -1,7 +1,6 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import {Operation as UserOperation} from "../reducer/user/user.js";
+
 
 const InputType = {
   EMAIL: `email`,
@@ -104,7 +103,7 @@ export default function withSignInFormValidation(Component) {
       evt.preventDefault();
       this._checkValidity(this._isEmailCorrect(), this._isPasswordTyped());
       if (this._isEmailCorrect() && this._isPasswordTyped()) {
-        this.props.loginUser({
+        this.props.onFormSubmit({
           email: this._email,
           password: this._pass,
         });
@@ -117,9 +116,9 @@ export default function withSignInFormValidation(Component) {
         <Component
           {...this.props}
           onSubmit = {this._onFormSubmit}
-          errorMessage = {this.state.errorMessage}
           onChange = {this._onFormChange}
           onFocus = {this._onInputFocus}
+          errorMessage = {this.state.errorMessage}
           emailValidity = {this.state.emailValidity}
           passValidity = {this.state.passValidity}
         />
@@ -128,14 +127,8 @@ export default function withSignInFormValidation(Component) {
   }
 
   WithSignInFormValidation.propTypes = {
-    loginUser: PropTypes.func.isRequired,
+    onFormSubmit: PropTypes.func.isRequired,
   };
 
-  const mapDispatchToProps = (dispatch) => ({
-    loginUser(authData) {
-      dispatch(UserOperation.login(authData));
-    }
-  });
-
-  return connect(null, mapDispatchToProps)(WithSignInFormValidation);
+  return WithSignInFormValidation;
 }
