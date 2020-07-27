@@ -8,10 +8,12 @@ import SignInPage from "../sign-in-page/sign-in-page.jsx";
 import MyListPage from "../my-list-page/my-list-page.jsx";
 import AddReviewPage from "../add-review-page/add-review-page.jsx";
 import VideoPlayerPage from "../video-player-page/video-player-page.jsx";
+import Loader from "../loader/loader.jsx";
+import PrivateRoute from "../private-route/private-route.jsx";
 
-import {MovieInfoTabs, DEFAULT_GENRE, AppRoute} from "../../consts.js";
+import {MovieInfoTabs, DEFAULT_GENRE, AppRoute, DataLoadStatus} from "../../consts.js";
 import withActiveTab from "../../hocs/with-active-tab.jsx";
-import withPrivateRoute from "../../hocs/with-private-route.jsx";
+
 
 const DEFAULT_MOVIE_INFO_TAB = MovieInfoTabs.OVERVIEW;
 
@@ -28,12 +30,46 @@ class App extends PureComponent {
     return (
       <Router history={history}>
         <Switch>
-          <Route exact path={AppRoute.ROOT} component={MainScreenWrapped} />
-          <Route exact path={`${AppRoute.FILMS}/:id`} component={MovieInfoWrapped} />
+
+          <Route exact path={AppRoute.ROOT}>
+            <Loader requiredData={[DataLoadStatus.MOVIES, DataLoadStatus.PROMO_MOVIE]}>
+              <MainScreenWrapped />
+            </Loader>
+          </Route>
+
+          <Route exact path={`${AppRoute.FILMS}/:id`}>
+            <Loader requiredData={[DataLoadStatus.MOVIES]}>
+              <MovieInfoWrapped />
+            </Loader>
+          </Route>
+
           <Route exact path={AppRoute.LOGIN} component={SignInPage} />
-          <Route exact path={AppRoute.MY_LIST} component={withPrivateRoute(MyListPage)} />
-          <Route exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`} component={withPrivateRoute(AddReviewPage)} />
-          <Route exact path={`${AppRoute.PLAYER}/:id`} component={VideoPlayerPage} />
+
+
+          <PrivateRoute exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`}
+            render={()=>{
+              return (
+                <Loader requiredData={[DataLoadStatus.MOVIES]}>
+                  <AddReviewPage />
+                </Loader>
+              );
+            }}
+          />
+
+          <Route exact path={`${AppRoute.PLAYER}/:id`}>
+            <Loader requiredData={[DataLoadStatus.MOVIES]}>
+              <VideoPlayerPage />
+            </Loader>
+          </Route>
+
+          <PrivateRoute exact path={AppRoute.MY_LIST}
+            render={() => {
+              return (
+                <MyListPage />
+              );
+            }}
+          />
+
         </Switch>
       </Router>
     );

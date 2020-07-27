@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import history from "../../history.js";
+import {withRouter} from "react-router-dom";
 
 import PageHeader from "../page-header/page-header.jsx";
 import UserBlock from "../user-block/user-block.jsx";
@@ -68,5 +69,5 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {AddReviewPage};
-export default connect(mapStateToProps, mapDispatchToProps)(AddReviewPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddReviewPage));
 

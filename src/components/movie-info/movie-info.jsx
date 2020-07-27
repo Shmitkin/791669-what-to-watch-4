@@ -16,10 +16,10 @@ import MovieReviews from "../movie-reviews/movie-reviews.jsx";
 import UserBlock from "../user-block/user-block.jsx";
 
 import {MovieInfoTabs, MoviePosterSize} from "../../consts.js";
-import {getSimilarMovies, getMovieById, getComments} from "../../reducer/data/selectors.js";
+import {getSimilarMovies, getMovieById, getComments, getDataLoadStatus} from "../../reducer/data/selectors.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {AuthorizationStatus} from "../../consts.js";
+import {AuthorizationStatus, DataLoadStatus} from "../../consts.js";
 
 class MovieInfo extends React.PureComponent {
   constructor(props) {
@@ -127,6 +127,7 @@ const mapStateToProps = (state, props) => ({
   movie: getMovieById(state, props.match.params.id),
   reviews: getComments(state),
   authorizationStatus: getAuthorizationStatus(state),
+  isMoviesLoaded: getDataLoadStatus(state, DataLoadStatus.MOVIES),
 });
 
 const mapDispatchToProps = (dispatch) => ({

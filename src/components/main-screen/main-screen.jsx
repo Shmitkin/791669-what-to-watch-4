@@ -12,10 +12,10 @@ import UserBlock from "../user-block/user-block.jsx";
 import MovieDescription from "../movie-description/movie-description.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 
-import {getMoviesByGenre, getPromoMovie, getGenres, getDataLoadStatus} from "../../reducer/data/selectors.js";
+import {getMoviesByGenre, getPromoMovie, getGenres} from "../../reducer/data/selectors.js";
 import {getShowingMovieCount} from "../../reducer/main/selectors.js";
 import {ActionCreator} from "../../reducer/main/main.js";
-import {MoviePosterSize, DataLoadStatus} from "../../consts.js";
+import {MoviePosterSize} from "../../consts.js";
 
 
 class MainScreen extends React.PureComponent {
@@ -31,7 +31,7 @@ class MainScreen extends React.PureComponent {
     onGenreClick();
   }
 
-  _renderMainPage() {
+  render() {
     const {
       promoMovie, activeTab, movies, showingMoviesCount,
       onShowMoreButtonCLick, genres
@@ -64,24 +64,13 @@ class MainScreen extends React.PureComponent {
           <PageFooter />
         </div>
       </React.Fragment>
-    );
-  }
 
-  render() {
-    const {isMoviesLoaded, isPromoMovieLoaded} = this.props;
-    return (
-      isMoviesLoaded && isPromoMovieLoaded
-        ? this._renderMainPage()
-        : null
     );
-
   }
 }
 
 
 MainScreen.propTypes = {
-  isMoviesLoaded: PropTypes.bool.isRequired,
-  isPromoMovieLoaded: PropTypes.bool.isRequired,
   promoMovie: PropTypes.object.isRequired,
   movies: PropTypes.array.isRequired,
   activeTab: PropTypes.string.isRequired,
@@ -97,9 +86,6 @@ const mapStateToProps = (state, props) => ({
   movies: getMoviesByGenre(state, props.activeTab),
   showingMoviesCount: getShowingMovieCount(state),
   genres: getGenres(state),
-  isMoviesLoaded: getDataLoadStatus(state, DataLoadStatus.MOVIES),
-  isPromoMovieLoaded: getDataLoadStatus(state, DataLoadStatus.PROMO_MOVIE),
-
 });
 
 const mapDispatchToProps = (dispatch) => ({
