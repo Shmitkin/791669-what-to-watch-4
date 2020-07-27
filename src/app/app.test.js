@@ -4,7 +4,7 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 
 import App from "./app.jsx";
-import {mockStore} from "../../test-state.js";
+import {mockStore} from "../test-state.js";
 
 
 it(`Should App render correctly`, () => {

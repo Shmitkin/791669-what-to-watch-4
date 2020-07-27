@@ -5,10 +5,10 @@ import configureStore from "redux-mock-store";
 import {BrowserRouter} from 'react-router-dom';
 
 import {AuthorizationStatus} from "../../consts.js";
-import {MovieInfo} from "./movie-info.jsx";
+import {MovieInfoPage} from "./movie-info-page.jsx";
 import {mockStore, movie, comments} from "../../test-state.js";
 
-it(`Should MovieInfo render correctly`, () => {
+it(`Should MovieInfoPage render correctly`, () => {
   const testStore = configureStore();
   const store = testStore(mockStore);
 
@@ -16,7 +16,7 @@ it(`Should MovieInfo render correctly`, () => {
     .create(
         <BrowserRouter>
           <Provider store={store}>
-            <MovieInfo
+            <MovieInfoPage
               onTabClick ={()=>{}}
               activeTab={`active`}
               movie={movie}

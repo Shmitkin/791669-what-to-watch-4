@@ -4,12 +4,12 @@ import {connect} from "react-redux";
 import history from "../../history.js";
 import {withRouter} from "react-router-dom";
 
-import PageHeader from "../page-header/page-header.jsx";
-import UserBlock from "../user-block/user-block.jsx";
-import MoviePoster from "../movie-poster/movie-poster.jsx";
-import AddReviewBreadcrumps from "../add-review-breadcrumbs/add-review-breadcrumbs.jsx";
-import MovieBackground from "../movie-background/movie-background.jsx";
-import AddReviewForm from "../add-review-form/add-review-form.jsx";
+import PageHeader from "../../components/page-header/page-header.jsx";
+import UserBlock from "../../components/user-block/user-block.jsx";
+import MoviePoster from "../../components/movie-poster/movie-poster.jsx";
+import AddReviewBreadcrumps from "../../components/add-review-breadcrumbs/add-review-breadcrumbs.jsx";
+import MovieBackground from "../../components/movie-background/movie-background.jsx";
+import AddReviewForm from "../../components/add-review-form/add-review-form.jsx";
 import withAddReviewFormValidation from "../../hocs/with-add-review-form-validation.jsx";
 
 import {MoviePosterSize, AppRoute} from "../../consts.js";

@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import history from "../../history.js";
 
-import VideoPlayerContainer from "../video-player-container/video-player-container.jsx";
+import VideoPlayerContainer from "../../components/video-player-container/video-player-container.jsx";
 
 import withVideoPlayerControls from "../../hocs/with-video-player-controls.jsx";
 import {getMovieById} from "../../reducer/data/selectors.js";

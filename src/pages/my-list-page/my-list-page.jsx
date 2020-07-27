@@ -2,10 +2,10 @@ import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
-import PageHeader from "../page-header/page-header.jsx";
-import PageFooter from "../page-footer/page-footer.jsx";
-import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
-import UserBlock from "../user-block/user-block.jsx";
+import PageHeader from "../../components/page-header/page-header.jsx";
+import PageFooter from "../../components/page-footer/page-footer.jsx";
+import MovieCardsList from "../../components/movie-cards-list/movie-cards-list.jsx";
+import UserBlock from "../../components/user-block/user-block.jsx";
 
 import {getUserFavoriteMovies} from "../../reducer/data/selectors.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";

@@ -4,10 +4,10 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {BrowserRouter as Router} from 'react-router-dom';
 
-import {MainScreen} from "./main-screen.jsx";
+import {MainPage} from "./main-page.jsx";
 import {mockStore, movie, movies, genres} from "../../test-state.js";
 
-it(`Should MainScreen render correctly`, () => {
+it(`Should MainPage render correctly`, () => {
   const testStore = configureStore();
   const store = testStore(mockStore);
 
@@ -15,7 +15,7 @@ it(`Should MainScreen render correctly`, () => {
     .create(
         <Router>
           <Provider store = {store}>
-            <MainScreen
+            <MainPage
               promoMovie={movie}
               movies={movies}
               activeTab={`All genres`}

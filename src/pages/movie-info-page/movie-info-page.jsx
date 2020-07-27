@@ -3,17 +3,17 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 
-import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
-import PageFooter from "../page-footer/page-footer.jsx";
-import MovieDescription from "../movie-description/movie-description.jsx";
-import PageHeader from "../page-header/page-header.jsx";
-import MovieBackground from "../movie-background/movie-background.jsx";
-import MovieOverview from "../movie-overview/movie-overview.jsx";
-import MovieInfoNav from "../movie-info-nav/movie-info-nav.jsx";
-import MoviePoster from "../movie-poster/movie-poster.jsx";
-import MovieDetails from "../movie-details/movie-details.jsx";
-import MovieReviews from "../movie-reviews/movie-reviews.jsx";
-import UserBlock from "../user-block/user-block.jsx";
+import MovieCardsList from "../../components/movie-cards-list/movie-cards-list.jsx";
+import PageFooter from "../../components/page-footer/page-footer.jsx";
+import MovieDescription from "../../components/movie-description/movie-description.jsx";
+import PageHeader from "../../components/page-header/page-header.jsx";
+import MovieBackground from "../../components/movie-background/movie-background.jsx";
+import MovieOverview from "../../components/movie-overview/movie-overview.jsx";
+import MovieInfoNav from "../../components/movie-info-nav/movie-info-nav.jsx";
+import MoviePoster from "../../components/movie-poster/movie-poster.jsx";
+import MovieDetails from "../../components/movie-details/movie-details.jsx";
+import MovieReviews from "../../components/movie-reviews/movie-reviews.jsx";
+import UserBlock from "../../components/user-block/user-block.jsx";
 
 import {MovieInfoTabs, MoviePosterSize} from "../../consts.js";
 import {getSimilarMovies, getMovieById, getComments, getDataLoadStatus} from "../../reducer/data/selectors.js";
@@ -21,7 +21,7 @@ import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus, DataLoadStatus} from "../../consts.js";
 
-class MovieInfo extends React.PureComponent {
+class MovieInfoPage extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -112,7 +112,7 @@ class MovieInfo extends React.PureComponent {
   }
 }
 
-MovieInfo.propTypes = {
+MovieInfoPage.propTypes = {
   activeTab: PropTypes.string.isRequired,
   onTabClick: PropTypes.func.isRequired,
   movie: PropTypes.object.isRequired,
@@ -136,5 +136,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export {MovieInfo};
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MovieInfo));
+export {MovieInfoPage};
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MovieInfoPage));

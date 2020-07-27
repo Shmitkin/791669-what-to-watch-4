@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 
-import MovieCardsList from "../movie-cards-list/movie-cards-list.jsx";
-import ShowMoreButton from "../show-more-button/show-more-button.jsx";
-import GenresList from "../genres-list/genres-list.jsx";
-import PageFooter from "../page-footer/page-footer.jsx";
-import PageHeader from "../page-header/page-header.jsx";
-import MovieBackground from "../movie-background/movie-background.jsx";
-import UserBlock from "../user-block/user-block.jsx";
-import MovieDescription from "../movie-description/movie-description.jsx";
-import MoviePoster from "../movie-poster/movie-poster.jsx";
+import MovieCardsList from "../../components/movie-cards-list/movie-cards-list.jsx";
+import ShowMoreButton from "../../components/show-more-button/show-more-button.jsx";
+import GenresList from "../../components/genres-list/genres-list.jsx";
+import PageFooter from "../../components/page-footer/page-footer.jsx";
+import PageHeader from "../../components/page-header/page-header.jsx";
+import MovieBackground from "../../components/movie-background/movie-background.jsx";
+import UserBlock from "../../components/user-block/user-block.jsx";
+import MovieDescription from "../../components/movie-description/movie-description.jsx";
+import MoviePoster from "../../components/movie-poster/movie-poster.jsx";
 
 import {getMoviesByGenre, getPromoMovie, getGenres} from "../../reducer/data/selectors.js";
 import {getShowingMovieCount} from "../../reducer/main/selectors.js";
@@ -18,7 +18,7 @@ import {ActionCreator} from "../../reducer/main/main.js";
 import {MoviePosterSize} from "../../consts.js";
 
 
-class MainScreen extends React.PureComponent {
+class MainPage extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -70,7 +70,7 @@ class MainScreen extends React.PureComponent {
 }
 
 
-MainScreen.propTypes = {
+MainPage.propTypes = {
   promoMovie: PropTypes.object.isRequired,
   movies: PropTypes.array.isRequired,
   activeTab: PropTypes.string.isRequired,
@@ -97,5 +97,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export {MainScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(MainScreen);
+export {MainPage};
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

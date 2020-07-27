@@ -12,7 +12,7 @@ it(`Should render VideoPlayerPage propperly`, () => {
         createNodeMock: (element) => {
           if (element.type === `video`) {
             return {
-              addEventListener: () =>{}
+              addEventListener: () => {}
             };
           }
         }

@@ -5,7 +5,7 @@ import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 
-import App from "./components/app/app.jsx";
+import App from "./app/app.jsx";
 
 import {createAPI} from "./api.js";
 import reducer from "./reducer/reducer.js";

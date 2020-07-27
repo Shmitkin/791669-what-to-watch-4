@@ -3,9 +3,9 @@ import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
-import PageHeader from "../page-header/page-header.jsx";
-import PageFooter from "../page-footer/page-footer.jsx";
-import SignInForm from "../sign-in-form/sign-in-form.jsx";
+import PageHeader from "../../components/page-header/page-header.jsx";
+import PageFooter from "../../components/page-footer/page-footer.jsx";
+import SignInForm from "../../components/sign-in-form/sign-in-form.jsx";
 
 import withSignInFormValidation from "../../hocs/with-sign-in-form-validation.jsx";
 import {AuthorizationStatus} from "../../consts.js";
