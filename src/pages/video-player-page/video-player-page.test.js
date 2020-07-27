@@ -15,6 +15,7 @@ it(`Should render VideoPlayerPage propperly`, () => {
               addEventListener: () => {}
             };
           }
+          return null;
         }
       }
   );
