@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {AppRoute} from "../../consts.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {AuthorizationStatus} from "../../consts.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 
 
@@ -24,7 +24,9 @@ const PrivateRoute = (props) => {
 };
 
 PrivateRoute.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.oneOf(
+      Object.values(AuthorizationStatus)
+  ).isRequired,
   exact: PropTypes.bool.isRequired,
   path: PropTypes.string.isRequired,
   render: PropTypes.func.isRequired,

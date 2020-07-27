@@ -5,7 +5,7 @@ import {getDataLoadStatus} from "../../reducer/data/selectors.js";
 import {DataLoadStatus} from "../../consts.js";
 
 
-export function Loader({children, requiredData, isDataLoaded}) {
+function Loader({children, requiredData, isDataLoaded}) {
   const loadStatus = requiredData.map((data) => isDataLoaded(data));
 
   return loadStatus.indexOf(false) === -1
@@ -18,10 +18,12 @@ Loader.propTypes = {
   requiredData: PropTypes.arrayOf(
       PropTypes.oneOf(Object.values(DataLoadStatus))
   ).isRequired,
+  children: PropTypes.object.isRequired,
 };
 
 const MapStateToProps = (state) => ({
   isDataLoaded: (data) => getDataLoadStatus(state, data),
 });
 
+export {Loader};
 export default connect(MapStateToProps)(Loader);
