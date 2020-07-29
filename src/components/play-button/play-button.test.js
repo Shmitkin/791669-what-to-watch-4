@@ -8,7 +8,7 @@ it(`Should PlayButton render correctly`, () => {
 
   const tree = renderer
     .create(
-        <PlayButton />
+        <PlayButton onClick={()=>{}}/>
     )
     .toJSON();
 

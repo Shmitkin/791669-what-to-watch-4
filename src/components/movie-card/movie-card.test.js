@@ -7,11 +7,12 @@ import {movie} from "../../test-state.js";
 
 
 it(`Should MovieCard render correctly`, () => {
+  const mockRef = React.createRef();
   const tree = renderer
     .create(
         <Router>
           <MovieCard
-            isPlaying = {true}
+            videoRef = {mockRef}
             movie ={movie}
             onHover = {() => {}}
             onUnhover = {() => {}}

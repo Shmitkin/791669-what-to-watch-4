@@ -1,3 +1,6 @@
+export const MINUTES_IN_HOUR = 60;
+export const SECONDS_IN_MINUTE = 60;
+
 export const MOVIE_RATING_TITLES = [
   {rating: 10, title: `Awesome`},
   {rating: 8, title: `Very good`},
@@ -5,6 +8,11 @@ export const MOVIE_RATING_TITLES = [
   {rating: 3, title: `Normal`},
   {rating: 0, title: `Bad`},
 ];
+
+export const DataLoadStatus = {
+  MOVIES: `isMoviesLoaded`,
+  PROMO_MOVIE: `isPromoMovieLoaded`,
+};
 
 export const MovieInfoTabs = {
   OVERVIEW: `Overview`,
@@ -45,7 +53,7 @@ export const AppRoute = {
   LOGIN: `/login`,
   REVIEW: `/review`,
   MY_LIST: `/mylist`,
-
+  PLAYER: `/player`,
 };
 
 export const BASE_URL = `https://4.react.pages.academy/wtw`;

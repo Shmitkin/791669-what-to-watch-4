@@ -1,10 +1,12 @@
 import {AuthorizationStatus} from "./consts.js";
 import NameSpace from "./reducer/name-space.js";
+import {DataLoadStatus} from "./consts.js";
 
 export const movie = {
   isFavorite: false,
   id: `23`,
   title: `Pulp Fiction`,
+  videoFull: `scr/videFull`,
   videoPrev: `img/seven-years-in-tibet.mp4`,
   preview: `img/pulp-fiction.jpg`,
   poster: `img/pulp-fiction.jpg`,
@@ -186,6 +188,9 @@ export const mockStore = {
     promoMovie: movie,
     favoriteMovies: [movies[0], movies[1]],
     comments,
+    [DataLoadStatus.MOVIES]: true,
+    [DataLoadStatus.PROMO_MOVIE]: true
+
   },
   [NameSpace.MAIN]: {
     showingMoviesCount: 8,

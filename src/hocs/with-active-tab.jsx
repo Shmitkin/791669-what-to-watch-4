@@ -7,7 +7,7 @@ export default function withActiveTab(Component, activeTab) {
       super(props);
 
       this.state = {
-        activeTab,
+        activeTab
       };
 
       this._onTabClick = this._onTabClick.bind(this);

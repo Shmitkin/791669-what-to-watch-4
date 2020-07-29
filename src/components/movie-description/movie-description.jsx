@@ -23,6 +23,9 @@ function MovieDescription({movie, isAddReviewButton, changeFavoriteStatus, autho
       <MovieButtons
         isAddReviewButton={isAddReviewButton}
         isFavorite={isFavorite}
+        onPlayButtonClickHandler={() => {
+          history.push(`${AppRoute.PLAYER}/${id}`);
+        }}
         onMyListButtonClickHandler={() => {
           if (authorizationStatus === AuthorizationStatus.AUTH) {
             changeFavoriteStatus(movie);
@@ -47,7 +50,7 @@ MovieDescription.propTypes = {
   }).isRequired,
   isAddReviewButton: PropTypes.bool.isRequired,
   changeFavoriteStatus: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.oneOf(Object.values(AuthorizationStatus)). isRequired,
+  authorizationStatus: PropTypes.oneOf(Object.values(AuthorizationStatus)).isRequired,
 };
 
 const mapStateToProps = (state) => ({

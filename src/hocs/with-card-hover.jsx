@@ -5,25 +5,32 @@ export default function withCardHover(Component) {
     constructor(props) {
       super(props);
 
-      this.state = {
-        isHovered: false,
-      };
+      this._videoRef = React.createRef();
 
       this._timeout = null;
+      this._video = null;
 
       this._mouseEnterHandler = this._mouseEnterHandler.bind(this);
       this._mouseLeaveHandler = this._mouseLeaveHandler.bind(this);
     }
 
+    componentDidMount() {
+      this._video = this._videoRef.current;
+    }
+
+    componentWillUnMount() {
+      this._videoRef = null;
+    }
+
     _mouseEnterHandler() {
       this._timeout = setTimeout(() => {
-        this.setState({isHovered: true});
+        this._video.play();
       }, 1000);
     }
 
     _mouseLeaveHandler() {
       clearTimeout(this._timeout);
-      this.setState({isHovered: false});
+      this._video.load();
     }
 
     componentWillUnmount() {
@@ -34,7 +41,7 @@ export default function withCardHover(Component) {
       return (
         <Component
           {...this.props}
-          isPlaying = {this.state.isHovered}
+          videoRef = {this._videoRef}
           onHover = {this._mouseEnterHandler}
           onUnhover = {this._mouseLeaveHandler}
         />

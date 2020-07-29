@@ -20,23 +20,18 @@ export default function SignInForm({onSubmit, errorMessage, onChange, onFocus, e
     <form className="sign-in__form"
       noValidate={true}
       onSubmit={onSubmit}
-      onChange={(evt) => {
-        onChange(evt.target);
-      }}>
+      onChange={onChange}
+    >
       {createErrorMessage(errorMessage)}
       <div className="sign-in__fields">
         <div className={`sign-in__field ${emailValidity ? `` : `sign-in__field--error`}`}>
-          <input onFocus={(evt) => {
-            onFocus(evt.target);
-          }}
-          className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" />
+          <input onFocus={onFocus}
+            className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" />
           <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
         </div>
         <div className={`sign-in__field ${passValidity ? `` : `sign-in__field--error`}`}>
-          <input onFocus={(evt) => {
-            onFocus(evt.target);
-          }}
-          className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password"/>
+          <input onFocus={onFocus}
+            className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password"/>
           <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
         </div>
       </div>
