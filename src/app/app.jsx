@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import {Switch, Route, Router} from "react-router-dom";
 import history from "../history.js";
 
@@ -21,59 +21,52 @@ const MovieInfoPageWrapped = withActiveTab(MovieInfoPage, DEFAULT_MOVIE_INFO_TAB
 const MainPageWrapped = withActiveTab(MainPage, DEFAULT_GENRE);
 
 
-class App extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
+export default function App() {
 
-  render() {
-    return (
-      <Router history={history}>
-        <Switch>
+  return (
+    <Router history={history}>
+      <Switch>
 
-          <Route exact path={AppRoute.ROOT}>
-            <Loader requiredData={[DataLoadStatus.MOVIES, DataLoadStatus.PROMO_MOVIE]}>
-              <MainPageWrapped />
-            </Loader>
-          </Route>
+        <Route exact path={AppRoute.ROOT}>
+          <Loader requiredData={[DataLoadStatus.MOVIES, DataLoadStatus.PROMO_MOVIE]}>
+            <MainPageWrapped />
+          </Loader>
+        </Route>
 
-          <Route exact path={`${AppRoute.FILMS}/:id`}>
-            <Loader requiredData={[DataLoadStatus.MOVIES]}>
-              <MovieInfoPageWrapped />
-            </Loader>
-          </Route>
+        <Route exact path={`${AppRoute.FILMS}/:id`}>
+          <Loader requiredData={[DataLoadStatus.MOVIES]}>
+            <MovieInfoPageWrapped />
+          </Loader>
+        </Route>
 
-          <Route exact path={AppRoute.LOGIN} component={SignInPage} />
+        <Route exact path={AppRoute.LOGIN} component={SignInPage} />
 
 
-          <PrivateRoute exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`}
-            render={()=>{
-              return (
-                <Loader requiredData={[DataLoadStatus.MOVIES]}>
-                  <AddReviewPage />
-                </Loader>
-              );
-            }}
-          />
+        <PrivateRoute exact path={`${AppRoute.FILMS}/:id${AppRoute.REVIEW}`}
+          render={()=>{
+            return (
+              <Loader requiredData={[DataLoadStatus.MOVIES]}>
+                <AddReviewPage />
+              </Loader>
+            );
+          }}
+        />
 
-          <Route exact path={`${AppRoute.PLAYER}/:id`}>
-            <Loader requiredData={[DataLoadStatus.MOVIES]}>
-              <VideoPlayerPage />
-            </Loader>
-          </Route>
+        <Route exact path={`${AppRoute.PLAYER}/:id`}>
+          <Loader requiredData={[DataLoadStatus.MOVIES]}>
+            <VideoPlayerPage />
+          </Loader>
+        </Route>
 
-          <PrivateRoute exact path={AppRoute.MY_LIST}
-            render={() => {
-              return (
-                <MyListPage />
-              );
-            }}
-          />
+        <PrivateRoute exact path={AppRoute.MY_LIST}
+          render={() => {
+            return (
+              <MyListPage />
+            );
+          }}
+        />
 
-        </Switch>
-      </Router>
-    );
-  }
+      </Switch>
+    </Router>
+  );
 }
-
-export default App;

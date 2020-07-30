@@ -10,9 +10,14 @@ import App from "./app/app.jsx";
 import {createAPI} from "./api.js";
 import reducer from "./reducer/reducer.js";
 import {Operation as DataOperation} from "./reducer/data/data.js";
-import {Operation as UserOperation} from "./reducer/user/user.js";
+import {Operation as UserOperation, ActionCreator} from "./reducer/user/user.js";
+import {AuthorizationStatus} from "./consts.js";
 
-const api = createAPI();
+const onUnauthorized = () => {
+  store.dispatch(ActionCreator.setAuthorization(AuthorizationStatus.NO_AUTH));
+};
+
+const api = createAPI(onUnauthorized);
 
 const store = createStore(
     reducer,
