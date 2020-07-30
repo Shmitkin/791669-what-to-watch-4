@@ -38,5 +38,9 @@ export default function MovieReviews(props) {
 }
 
 MovieReviews.propTypes = {
-  reviews: PropTypes.array.isRequired,
+  reviews: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+      })
+  ).isRequired,
 };

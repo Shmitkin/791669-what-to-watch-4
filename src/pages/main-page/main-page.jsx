@@ -72,13 +72,17 @@ class MainPage extends React.PureComponent {
 
 MainPage.propTypes = {
   promoMovie: PropTypes.object.isRequired,
-  movies: PropTypes.array.isRequired,
+  movies: PropTypes.arrayOf(
+      PropTypes.object.isRequired
+  ).isRequired,
   activeTab: PropTypes.string.isRequired,
   showingMoviesCount: PropTypes.number.isRequired,
   onShowMoreButtonCLick: PropTypes.func.isRequired,
   onGenreClick: PropTypes.func.isRequired,
   onTabClick: PropTypes.func.isRequired,
-  genres: PropTypes.array.isRequired,
+  genres: PropTypes.arrayOf(
+      PropTypes.string.isRequired
+  ).isRequired,
 };
 
 const mapStateToProps = (state, props) => ({

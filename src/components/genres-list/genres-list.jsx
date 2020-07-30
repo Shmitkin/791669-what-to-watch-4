@@ -20,7 +20,9 @@ export default function GenresList({genres, activeTab, onTabClick}) {
 }
 
 GenresList.propTypes = {
-  genres: PropTypes.array.isRequired,
+  genres: PropTypes.arrayOf(
+      PropTypes.string.isRequired
+  ).isRequired,
   onTabClick: PropTypes.func.isRequired,
   activeTab: PropTypes.string.isRequired,
 };
