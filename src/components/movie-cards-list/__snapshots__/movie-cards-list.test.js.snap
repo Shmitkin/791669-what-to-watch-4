@@ -19,6 +19,7 @@ exports[`Should MovieCardsList render correctly 1`] = `
       >
         <video
           className=""
+          controls={false}
           height="175"
           loop={true}
           muted={true}
@@ -49,6 +50,7 @@ exports[`Should MovieCardsList render correctly 1`] = `
       >
         <video
           className=""
+          controls={false}
           height="175"
           loop={true}
           muted={true}
@@ -79,6 +81,7 @@ exports[`Should MovieCardsList render correctly 1`] = `
       >
         <video
           className=""
+          controls={false}
           height="175"
           loop={true}
           muted={true}

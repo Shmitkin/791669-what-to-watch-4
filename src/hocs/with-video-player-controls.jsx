@@ -31,6 +31,7 @@ export default function withVideoPlayerControls(Component) {
       this._onPauseButtonClickHandler = this._onPauseButtonClickHandler.bind(this);
       this._onFullscreenButtonClickHandler = this._onFullscreenButtonClickHandler.bind(this);
       this._onExitButtonClickHandler = this._onExitButtonClickHandler.bind(this);
+      this._onFullScreenChangeHandler = this._onFullScreenChangeHandler.bind(this);
 
       this._onCanPlayThroughHandler = this._onCanPlayThroughHandler.bind(this);
       this._onTimeUpdateHandler = this._onTimeUpdateHandler.bind(this);
@@ -41,15 +42,24 @@ export default function withVideoPlayerControls(Component) {
 
       this._video.addEventListener(`timeupdate`, this._onTimeUpdateHandler);
       this._video.addEventListener(`canplaythrough`, this._onCanPlayThroughHandler);
+      this._video.addEventListener(`fullscreenchange`, this._onFullScreenChangeHandler);
+      this._video.addEventListener(`webkitfullscreenchange`, this._onFullScreenChangeHandler);
+      this._video.addEventListener(`mozfullscreenchange`, this._onFullScreenChangeHandler);
+      this._video.addEventListener(`MSFullscreenChange`, this._onFullScreenChangeHandler);
     }
 
     componentWillUnmount() {
       this._video.removeEventListener(`timeupdate`, this._onTimeUpdateHandler);
       this._video.removeEventListener(`canplaythrough`, this._onCanPlayThroughHandler);
+      this._video.removeEventListener(`fullscreenchange`, this._onFullScreenChangeHandler);
+      this._video.removeEventListener(`webkitfullscreenchange`, this._onFullScreenChangeHandler);
+      this._video.removeEventListener(`mozfullscreenchange`, this._onFullScreenChangeHandler);
+      this._video.removeEventListener(`MSFullscreenChange`, this._onFullScreenChangeHandler);
       this._videoRef = null;
     }
 
     _onFullscreenButtonClickHandler() {
+      this._video.controls = true;
       if (this._video.requestFullscreen) {
         this._video.requestFullscreen();
       } else if (this._video.mozRequestFullScreen) { /* Firefox */
@@ -58,6 +68,12 @@ export default function withVideoPlayerControls(Component) {
         this._video.webkitRequestFullscreen();
       } else if (this._video.msRequestFullscreen) { /* IE/Edge */
         this._video.msRequestFullscreen();
+      }
+    }
+
+    _onFullScreenChangeHandler() {
+      if (!document.fullscreenElement) {
+        this._video.controls = false;
       }
     }
 

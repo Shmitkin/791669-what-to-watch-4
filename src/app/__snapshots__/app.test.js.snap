@@ -217,6 +217,7 @@ Array [
             >
               <video
                 className=""
+                controls={false}
                 height="175"
                 loop={true}
                 muted={true}
@@ -247,6 +248,7 @@ Array [
             >
               <video
                 className=""
+                controls={false}
                 height="175"
                 loop={true}
                 muted={true}
@@ -277,6 +279,7 @@ Array [
             >
               <video
                 className=""
+                controls={false}
                 height="175"
                 loop={true}
                 muted={true}

@@ -14,6 +14,7 @@ export default function VideoPlayer(props) {
       muted={muted}
       poster={poster}
       className={extraClass}
+      controls={false}
     >
     </video>
   );

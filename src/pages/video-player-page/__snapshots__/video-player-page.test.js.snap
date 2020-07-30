@@ -6,6 +6,7 @@ exports[`Should render VideoPlayerPage propperly 1`] = `
 >
   <video
     className="player__video"
+    controls={false}
     height="175"
     loop={false}
     muted={true}
